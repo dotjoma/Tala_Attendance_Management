@@ -92,10 +92,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddAnnouncement.Designer.vb">
+    <Compile Include="Presentation\Forms\Announcements\AddAnnouncement.Designer.vb">
       <DependentUpon>AddAnnouncement.vb</DependentUpon>
     </Compile>
-    <Compile Include="AddAnnouncement.vb">
+    <Compile Include="Presentation\Forms\Announcements\AddAnnouncement.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentation\Forms\Faculty\AddFaculty.Designer.vb">
@@ -104,136 +104,136 @@
     <Compile Include="Presentation\Forms\Faculty\AddFaculty.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddStudents.Designer.vb">
+    <Compile Include="Presentation\Forms\Students\AddStudents.Designer.vb">
       <DependentUpon>AddStudents.vb</DependentUpon>
     </Compile>
-    <Compile Include="AddStudents.vb">
+    <Compile Include="Presentation\Forms\Students\AddStudents.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="admin_class_schedules\AddSections.Designer.vb">
+    <Compile Include="Presentation\Forms\Sections\AddSections.Designer.vb">
       <DependentUpon>AddSections.vb</DependentUpon>
     </Compile>
-    <Compile Include="admin_class_schedules\AddSections.vb">
+    <Compile Include="Presentation\Forms\Sections\AddSections.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="admin_class_schedules\AddStudentSection.Designer.vb">
+    <Compile Include="Presentation\Forms\Sections\AddStudentSection.Designer.vb">
       <DependentUpon>AddStudentSection.vb</DependentUpon>
     </Compile>
-    <Compile Include="admin_class_schedules\AddStudentSection.vb">
+    <Compile Include="Presentation\Forms\Sections\AddStudentSection.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="admin_class_schedules\AddTeacherClassSchedule.Designer.vb">
+    <Compile Include="Presentation\Forms\TeacherSchedules\AddTeacherClassSchedule.Designer.vb">
       <DependentUpon>AddTeacherClassSchedule.vb</DependentUpon>
     </Compile>
-    <Compile Include="admin_class_schedules\AddTeacherClassSchedule.vb">
+    <Compile Include="Presentation\Forms\TeacherSchedules\AddTeacherClassSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="admin_class_schedules\AssignSection.Designer.vb">
+    <Compile Include="Presentation\Forms\Sections\AssignSection.Designer.vb">
       <DependentUpon>AssignSection.vb</DependentUpon>
     </Compile>
-    <Compile Include="admin_class_schedules\AssignSection.vb">
+    <Compile Include="Presentation\Forms\Sections\AssignSection.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="admin_class_schedules\FormAddTeacherSchedule.Designer.vb">
+    <Compile Include="Presentation\Forms\TeacherSchedules\FormAddTeacherSchedule.Designer.vb">
       <DependentUpon>FormAddTeacherSchedule.vb</DependentUpon>
     </Compile>
-    <Compile Include="admin_class_schedules\FormAddTeacherSchedule.vb">
+    <Compile Include="Presentation\Forms\TeacherSchedules\FormAddTeacherSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="admin_class_schedules\FormSections.Designer.vb">
+    <Compile Include="Presentation\Forms\Sections\FormSections.Designer.vb">
       <DependentUpon>FormSections.vb</DependentUpon>
     </Compile>
-    <Compile Include="admin_class_schedules\FormSections.vb">
+    <Compile Include="Presentation\Forms\Sections\FormSections.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="admin_class_schedules\SectionLists.Designer.vb">
+    <Compile Include="Presentation\Forms\Sections\SectionLists.Designer.vb">
       <DependentUpon>SectionLists.vb</DependentUpon>
     </Compile>
-    <Compile Include="admin_class_schedules\SectionLists.vb">
+    <Compile Include="Presentation\Forms\Sections\SectionLists.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AnnouncementCard.Designer.vb">
+    <Compile Include="Presentation\Forms\Announcements\AnnouncementCard.Designer.vb">
       <DependentUpon>AnnouncementCard.vb</DependentUpon>
     </Compile>
-    <Compile Include="AnnouncementCard.vb">
+    <Compile Include="Presentation\Forms\Announcements\AnnouncementCard.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="class_schedules\CLassScheduleForm.Designer.vb">
+    <Compile Include="Presentation\Forms\Schedules\CLassScheduleForm.Designer.vb">
       <DependentUpon>CLassScheduleForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\CLassScheduleForm.vb">
+    <Compile Include="Presentation\Forms\Schedules\CLassScheduleForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="class_schedules\ContainerSection.Designer.vb">
+    <Compile Include="Presentation\Forms\Sections\ContainerSection.Designer.vb">
       <DependentUpon>ContainerSection.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\ContainerSection.vb">
+    <Compile Include="Presentation\Forms\Sections\ContainerSection.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="class_schedules\DataForms\AddSubjects.Designer.vb">
+    <Compile Include="Presentation\Forms\Subjects\AddSubjects.Designer.vb">
       <DependentUpon>AddSubjects.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\DataForms\AddSubjects.vb">
+    <Compile Include="Presentation\Forms\Subjects\AddSubjects.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="class_schedules\DataForms\FormClassAttendance.Designer.vb">
+    <Compile Include="Presentation\Forms\Attendance\FormClassAttendance.Designer.vb">
       <DependentUpon>FormClassAttendance.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\DataForms\FormClassAttendance.vb">
+    <Compile Include="Presentation\Forms\Attendance\FormClassAttendance.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="class_schedules\DataForms\FormClassSchedule.Designer.vb">
+    <Compile Include="Presentation\Forms\Schedules\FormClassSchedule.Designer.vb">
       <DependentUpon>FormClassSchedule.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\DataForms\FormClassSchedule.vb">
+    <Compile Include="Presentation\Forms\Schedules\FormClassSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="class_schedules\DataForms\FormMyStudents.Designer.vb">
+    <Compile Include="Presentation\Forms\TeacherSchedules\FormMyStudents.Designer.vb">
       <DependentUpon>FormMyStudents.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\DataForms\FormMyStudents.vb">
+    <Compile Include="Presentation\Forms\TeacherSchedules\FormMyStudents.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="class_schedules\DataForms\FormSubjects.Designer.vb">
+    <Compile Include="Presentation\Forms\Subjects\FormSubjects.Designer.vb">
       <DependentUpon>FormSubjects.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\DataForms\FormSubjects.vb">
+    <Compile Include="Presentation\Forms\Subjects\FormSubjects.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="class_schedules\DataForms\students_attendance\FormStudentAttendance.Designer.vb">
+    <Compile Include="Presentation\Forms\Attendance\FormStudentAttendance.Designer.vb">
       <DependentUpon>FormStudentAttendance.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\DataForms\students_attendance\FormStudentAttendance.vb">
+    <Compile Include="Presentation\Forms\Attendance\FormStudentAttendance.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="class_schedules\FormClassroom.Designer.vb">
+    <Compile Include="Presentation\Forms\Classrooms\FormClassroom.Designer.vb">
       <DependentUpon>FormClassroom.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\FormClassroom.vb">
+    <Compile Include="Presentation\Forms\Classrooms\FormClassroom.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="class_schedules\FormProcessClassrooms.Designer.vb">
+    <Compile Include="Presentation\Forms\Classrooms\FormProcessClassrooms.Designer.vb">
       <DependentUpon>FormProcessClassrooms.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\FormProcessClassrooms.vb">
+    <Compile Include="Presentation\Forms\Classrooms\FormProcessClassrooms.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="class_schedules\FormTeacherAttendanceReports.Designer.vb">
+    <Compile Include="Presentation\Forms\Attendance\FormTeacherAttendanceReports.Designer.vb">
       <DependentUpon>FormTeacherAttendanceReports.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\FormTeacherAttendanceReports.vb">
+    <Compile Include="Presentation\Forms\Attendance\FormTeacherAttendanceReports.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="class_schedules\StudentSchedule.Designer.vb">
+    <Compile Include="Presentation\Forms\Schedules\StudentSchedule.Designer.vb">
       <DependentUpon>StudentSchedule.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\StudentSchedule.vb">
+    <Compile Include="Presentation\Forms\Schedules\StudentSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="class_schedules\TeacherSchedule.Designer.vb">
+    <Compile Include="Presentation\Forms\Schedules\TeacherSchedule.Designer.vb">
       <DependentUpon>TeacherSchedule.vb</DependentUpon>
     </Compile>
-    <Compile Include="class_schedules\TeacherSchedule.vb">
+    <Compile Include="Presentation\Forms\Schedules\TeacherSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="common\Constants.vb" />
@@ -249,10 +249,10 @@
     <Compile Include="DataSet_Attendance.vb">
       <DependentUpon>DataSet_Attendance.xsd</DependentUpon>
     </Compile>
-    <Compile Include="FormAnnouncement.Designer.vb">
+    <Compile Include="Presentation\Forms\Announcements\FormAnnouncement.Designer.vb">
       <DependentUpon>FormAnnouncement.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormAnnouncement.vb">
+    <Compile Include="Presentation\Forms\Announcements\FormAnnouncement.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentation\Forms\Attendance\FormAttendance.Designer.vb">
@@ -273,22 +273,22 @@
     <Compile Include="Presentation\Forms\Faculty\FormFaculty.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormIDScanner.Designer.vb">
+    <Compile Include="Presentation\Forms\Attendance\FormIDScanner.Designer.vb">
       <DependentUpon>FormIDScanner.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormIDScanner.vb">
+    <Compile Include="Presentation\Forms\Attendance\FormIDScanner.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormReportsFaculty.Designer.vb">
+    <Compile Include="Presentation\Forms\Faculty\FormReportsFaculty.Designer.vb">
       <DependentUpon>FormReportsFaculty.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormReportsFaculty.vb">
+    <Compile Include="Presentation\Forms\Faculty\FormReportsFaculty.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStudents.Designer.vb">
+    <Compile Include="Presentation\Forms\Students\FormStudents.Designer.vb">
       <DependentUpon>FormStudents.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormStudents.vb">
+    <Compile Include="Presentation\Forms\Students\FormStudents.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="infrastructure\Logging\FileLogger.vb" />
@@ -318,10 +318,10 @@
     <Compile Include="Presentation\Forms\Users\AddUserButton.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="manage_user\BatchGenerate.Designer.vb">
+    <Compile Include="Presentation\Forms\Users\BatchGenerate.Designer.vb">
       <DependentUpon>BatchGenerate.vb</DependentUpon>
     </Compile>
-    <Compile Include="manage_user\BatchGenerate.vb">
+    <Compile Include="Presentation\Forms\Users\BatchGenerate.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentation\Forms\Users\ManageUser.Designer.vb">
@@ -348,87 +348,87 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="myModule.vb" />
-    <Compile Include="StudentCard.Designer.vb">
+    <Compile Include="Presentation\Forms\Students\StudentCard.Designer.vb">
       <DependentUpon>StudentCard.vb</DependentUpon>
     </Compile>
-    <Compile Include="StudentCard.vb">
+    <Compile Include="Presentation\Forms\Students\StudentCard.vb">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddAnnouncement.resx">
+    <EmbeddedResource Include="Presentation\Forms\Announcements\AddAnnouncement.resx">
       <DependentUpon>AddAnnouncement.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Forms\Faculty\AddFaculty.resx">
       <DependentUpon>AddFaculty.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddStudents.resx">
+    <EmbeddedResource Include="Presentation\Forms\Students\AddStudents.resx">
       <DependentUpon>AddStudents.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="admin_class_schedules\AddSections.resx">
+    <EmbeddedResource Include="Presentation\Forms\Sections\AddSections.resx">
       <DependentUpon>AddSections.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="admin_class_schedules\AddStudentSection.resx">
+    <EmbeddedResource Include="Presentation\Forms\Sections\AddStudentSection.resx">
       <DependentUpon>AddStudentSection.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="admin_class_schedules\AddTeacherClassSchedule.resx">
+    <EmbeddedResource Include="Presentation\Forms\TeacherSchedules\AddTeacherClassSchedule.resx">
       <DependentUpon>AddTeacherClassSchedule.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="admin_class_schedules\AssignSection.resx">
+    <EmbeddedResource Include="Presentation\Forms\Sections\AssignSection.resx">
       <DependentUpon>AssignSection.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="admin_class_schedules\FormAddTeacherSchedule.resx">
+    <EmbeddedResource Include="Presentation\Forms\TeacherSchedules\FormAddTeacherSchedule.resx">
       <DependentUpon>FormAddTeacherSchedule.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="admin_class_schedules\FormSections.resx">
+    <EmbeddedResource Include="Presentation\Forms\Sections\FormSections.resx">
       <DependentUpon>FormSections.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="admin_class_schedules\SectionLists.resx">
+    <EmbeddedResource Include="Presentation\Forms\Sections\SectionLists.resx">
       <DependentUpon>SectionLists.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AnnouncementCard.resx">
+    <EmbeddedResource Include="Presentation\Forms\Announcements\AnnouncementCard.resx">
       <DependentUpon>AnnouncementCard.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\CLassScheduleForm.resx">
+    <EmbeddedResource Include="Presentation\Forms\Schedules\CLassScheduleForm.resx">
       <DependentUpon>CLassScheduleForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\ContainerSection.resx">
+    <EmbeddedResource Include="Presentation\Forms\Sections\ContainerSection.resx">
       <DependentUpon>ContainerSection.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\DataForms\AddSubjects.resx">
+    <EmbeddedResource Include="Presentation\Forms\Subjects\AddSubjects.resx">
       <DependentUpon>AddSubjects.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\DataForms\FormClassAttendance.resx">
+    <EmbeddedResource Include="Presentation\Forms\Attendance\FormClassAttendance.resx">
       <DependentUpon>FormClassAttendance.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\DataForms\FormClassSchedule.resx">
+    <EmbeddedResource Include="Presentation\Forms\Schedules\FormClassSchedule.resx">
       <DependentUpon>FormClassSchedule.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\DataForms\FormMyStudents.resx">
+    <EmbeddedResource Include="Presentation\Forms\TeacherSchedules\FormMyStudents.resx">
       <DependentUpon>FormMyStudents.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\DataForms\FormSubjects.resx">
+    <EmbeddedResource Include="Presentation\Forms\Subjects\FormSubjects.resx">
       <DependentUpon>FormSubjects.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\DataForms\students_attendance\FormStudentAttendance.resx">
+    <EmbeddedResource Include="Presentation\Forms\Attendance\FormStudentAttendance.resx">
       <DependentUpon>FormStudentAttendance.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\FormClassroom.resx">
+    <EmbeddedResource Include="Presentation\Forms\Classrooms\FormClassroom.resx">
       <DependentUpon>FormClassroom.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\FormProcessClassrooms.resx">
+    <EmbeddedResource Include="Presentation\Forms\Classrooms\FormProcessClassrooms.resx">
       <DependentUpon>FormProcessClassrooms.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\FormTeacherAttendanceReports.resx">
+    <EmbeddedResource Include="Presentation\Forms\Attendance\FormTeacherAttendanceReports.resx">
       <DependentUpon>FormTeacherAttendanceReports.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\StudentSchedule.resx">
+    <EmbeddedResource Include="Presentation\Forms\Schedules\StudentSchedule.resx">
       <DependentUpon>StudentSchedule.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="class_schedules\TeacherSchedule.resx">
+    <EmbeddedResource Include="Presentation\Forms\Schedules\TeacherSchedule.resx">
       <DependentUpon>TeacherSchedule.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAnnouncement.resx">
+    <EmbeddedResource Include="Presentation\Forms\Announcements\FormAnnouncement.resx">
       <DependentUpon>FormAnnouncement.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Forms\Attendance\FormAttendance.resx">
@@ -440,13 +440,13 @@
     <EmbeddedResource Include="Presentation\Forms\Faculty\FormFaculty.resx">
       <DependentUpon>FormFaculty.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormIDScanner.resx">
+    <EmbeddedResource Include="Presentation\Forms\Attendance\FormIDScanner.resx">
       <DependentUpon>FormIDScanner.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormReportsFaculty.resx">
+    <EmbeddedResource Include="Presentation\Forms\Faculty\FormReportsFaculty.resx">
       <DependentUpon>FormReportsFaculty.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStudents.resx">
+    <EmbeddedResource Include="Presentation\Forms\Students\FormStudents.resx">
       <DependentUpon>FormStudents.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Forms\Authentication\LoginForm.resx">
@@ -461,7 +461,7 @@
     <EmbeddedResource Include="Presentation\Forms\Users\AddUserButton.resx">
       <DependentUpon>AddUserButton.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="manage_user\BatchGenerate.resx">
+    <EmbeddedResource Include="Presentation\Forms\Users\BatchGenerate.resx">
       <DependentUpon>BatchGenerate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Forms\Users\ManageUser.resx">
@@ -476,7 +476,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="StudentCard.resx">
+    <EmbeddedResource Include="Presentation\Forms\Students\StudentCard.resx">
       <DependentUpon>StudentCard.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -613,6 +613,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Presentation\Controls\" />
+    <Folder Include="Presentation\Helpers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
