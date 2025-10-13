@@ -99,18 +99,20 @@ Public Class ManageUser
             da.SelectCommand = cmd
             da.Fill(dt)
 
-            'AddUser.cbUsers.Enabled = False
-            'AddUser.cbUsers.DataSource = Nothing
-            'AddUser.cbUsers.Items.Clear()
-            'AddUser.cbUsers.Items.Add(dt.Rows(0)("teacher_name").ToString)
-            'AddUser.cbUsers.SelectedIndex = 0
-            'AddUser.Label3.Visible = False
+            ' Load user data into AddUser form
             AddUser.txtUsername.Text = dt.Rows(0)("username").ToString
             AddUser.txtPassword.Text = dt.Rows(0)("password").ToString
             AddUser.txtName.Text = dt.Rows(0)("fullname").ToString
             AddUser.txtEmail.Text = dt.Rows(0)("email").ToString
             AddUser.txtAddress.Text = dt.Rows(0)("address").ToString
-            'AddUser.cbPermission.Text = dt.Rows(0)("role").ToString
+            
+            ' Set the role in ComboBox
+            Dim userRole As String = dt.Rows(0)("role").ToString().ToLower()
+            Dim roleIndex As Integer = AddUser.cboUserRole.FindStringExact(userRole)
+            If roleIndex >= 0 Then
+                AddUser.cboUserRole.SelectedIndex = roleIndex
+            End If
+            
             AddUser.userID = dt.Rows(0)("login_id").ToString
             AddUser.ShowDialog()
         Catch ex As Exception

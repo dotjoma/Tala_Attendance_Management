@@ -71,12 +71,17 @@ Public Class AddUser
     End Sub
 
     Private Sub AddUser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Initialize role ComboBox
+        If cboUserRole.Items.Count = 0 Then
+            cboUserRole.Items.Clear()
+            cboUserRole.Items.Add("admin")
+            cboUserRole.Items.Add("hr")
+            cboUserRole.Items.Add("attendance")
+        End If
         
+        ' Set default role to admin if creating new user
         If userID = 0 Then
-            'loadCBO("SELECT teacherID, 
-            '        CONCAT(firstname, ' ', lastname) AS teacher_name 
-            '        FROM teacherinformation 
-            '        WHERE isActive=1 AND user_id IS NULL", "teacherID", "teacher_name", cbUsers)
+            cboUserRole.SelectedIndex = 0 ' Default to admin
         End If
     End Sub
     Private Function ValidatePasswordComplexity(password As String) As Boolean
@@ -110,15 +115,21 @@ Public Class AddUser
             Try
                 connectDB()
                 If userID = 0 Then
+                    ' Validate role selection
+                    If cboUserRole.SelectedIndex = -1 Then
+                        MessageBox.Show("Please select a user role.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        Return
+                    End If
+                    
                     ' Insert a new record into the logins table
-                    cmd = New Odbc.OdbcCommand("INSERT INTO logins(fullname, username, password, email, address, role, created_at) VALUES(?,?,?,?,?, 'admin', ?)", con)
+                    cmd = New Odbc.OdbcCommand("INSERT INTO logins(fullname, username, password, email, address, role, created_at) VALUES(?,?,?,?,?,?,?)", con)
                     With cmd.Parameters
                         .AddWithValue("?", Trim(txtName.Text))
                         .AddWithValue("?", Trim(txtUsername.Text))
                         .AddWithValue("?", Trim(txtPassword.Text))
                         .AddWithValue("?", Trim(txtEmail.Text))
                         .AddWithValue("?", Trim(txtAddress.Text))
-                        '.AddWithValue("?", user_id)
+                        .AddWithValue("?", LCase(cboUserRole.Text)) ' Use selected role
                         .AddWithValue("?", DateAndTime.Now)
                     End With
                     cmd.ExecuteNonQuery()
@@ -131,15 +142,21 @@ Public Class AddUser
 
                     MsgBox("Created user successfully", MsgBoxStyle.Information, "Success")
                 Else
+                    ' Validate role selection
+                    If cboUserRole.SelectedIndex = -1 Then
+                        MessageBox.Show("Please select a user role.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        Return
+                    End If
+                    
                     ' Update existing user record in the logins table
-                    cmd = New Odbc.OdbcCommand("UPDATE logins SET fullname=?, username=?, password=?, email=?, address=? WHERE login_id=?", con)
+                    cmd = New Odbc.OdbcCommand("UPDATE logins SET fullname=?, username=?, password=?, email=?, address=?, role=? WHERE login_id=?", con)
                     With cmd.Parameters
                         .AddWithValue("?", Trim(txtName.Text))
                         .AddWithValue("?", Trim(txtUsername.Text))
                         .AddWithValue("?", Trim(txtPassword.Text))
                         .AddWithValue("?", Trim(txtEmail.Text))
                         .AddWithValue("?", Trim(txtAddress.Text))
-                        '.AddWithValue("?", LCase(cbPermission.Text))
+                        .AddWithValue("?", LCase(cboUserRole.Text)) ' Use selected role
                         .AddWithValue("?", userID)
                     End With
                     cmd.ExecuteNonQuery()

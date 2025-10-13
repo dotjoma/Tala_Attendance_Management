@@ -164,13 +164,42 @@ Based on code analysis, the following RDLC files need to be created:
 
 ---
 
+### ✨ New Features
+
+#### User Role Selection (2025-10-13)
+**Feature:** Add role selection when creating or editing users
+
+**Implementation:**
+- Added `cboUserRole` ComboBox with options: Admin, HR, Attendance
+- Role is now required when creating new users
+- Role can be changed when editing existing users
+- Role is properly loaded when editing a user
+- Role is saved in lowercase to database for consistency
+
+**Files Modified:**
+- `Tala_Attendance_Management_System/manage_user/AddUser.vb`
+  - Added role ComboBox initialization in `AddUser_Load`
+  - Added role validation in `btnSave_Click`
+  - Updated INSERT query to use selected role
+  - Updated UPDATE query to include role
+- `Tala_Attendance_Management_System/manage_user/ManageUser.vb`
+  - Updated `loadUserAccount` to load and set user role in ComboBox
+
+**Usage:**
+1. When creating a new user, select a role from the dropdown
+2. When editing a user, the current role is pre-selected
+3. Role can be changed during edit
+
+---
+
 ### 🚀 Next Steps
 
 #### Immediate Actions Required
 1. ✅ Run database ALTER TABLE commands to fix `login_id` AUTO_INCREMENT
-2. ⏳ Create RDLC report files
-3. ⏳ Test new user creation and editing
-4. ⏳ Test HR role access restrictions
+2. ✅ Wire up user role selection in Add/Edit user forms
+3. ⏳ Create RDLC report files
+4. ⏳ Test new user creation and editing with role selection
+5. ⏳ Test HR role access restrictions
 
 #### Future Improvements
 - [ ] Move database connection logic to `Infrastructure/Data/`

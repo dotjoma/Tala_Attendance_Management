@@ -41,6 +41,8 @@ Partial Class AddUser
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.cboUserRole = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.panelHeader.SuspendLayout()
         Me.panelBottom.SuspendLayout()
         Me.panelContainer.SuspendLayout()
@@ -85,7 +87,7 @@ Partial Class AddUser
         Me.panelBottom.Controls.Add(Me.btnCancel)
         Me.panelBottom.Controls.Add(Me.btnSave)
         Me.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panelBottom.Location = New System.Drawing.Point(0, 405)
+        Me.panelBottom.Location = New System.Drawing.Point(0, 447)
         Me.panelBottom.Name = "panelBottom"
         Me.panelBottom.Size = New System.Drawing.Size(517, 68)
         Me.panelBottom.TabIndex = 3
@@ -129,6 +131,8 @@ Partial Class AddUser
         'panelContainer
         '
         Me.panelContainer.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.panelContainer.Controls.Add(Me.Label7)
+        Me.panelContainer.Controls.Add(Me.cboUserRole)
         Me.panelContainer.Controls.Add(Me.txtAddress)
         Me.panelContainer.Controls.Add(Me.Label4)
         Me.panelContainer.Controls.Add(Me.txtEmail)
@@ -144,7 +148,7 @@ Partial Class AddUser
         Me.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelContainer.Location = New System.Drawing.Point(0, 73)
         Me.panelContainer.Name = "panelContainer"
-        Me.panelContainer.Size = New System.Drawing.Size(517, 332)
+        Me.panelContainer.Size = New System.Drawing.Size(517, 374)
         Me.panelContainer.TabIndex = 4
         '
         'txtAddress
@@ -153,7 +157,7 @@ Partial Class AddUser
         Me.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtAddress.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtAddress.ForeColor = System.Drawing.Color.DimGray
-        Me.txtAddress.Location = New System.Drawing.Point(128, 143)
+        Me.txtAddress.Location = New System.Drawing.Point(128, 134)
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.Size = New System.Drawing.Size(268, 29)
         Me.txtAddress.TabIndex = 46
@@ -163,7 +167,7 @@ Partial Class AddUser
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.DimGray
-        Me.Label4.Location = New System.Drawing.Point(61, 147)
+        Me.Label4.Location = New System.Drawing.Point(61, 138)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(61, 19)
         Me.Label4.TabIndex = 47
@@ -175,7 +179,7 @@ Partial Class AddUser
         Me.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtEmail.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEmail.ForeColor = System.Drawing.Color.DimGray
-        Me.txtEmail.Location = New System.Drawing.Point(128, 86)
+        Me.txtEmail.Location = New System.Drawing.Point(128, 83)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(268, 29)
         Me.txtEmail.TabIndex = 44
@@ -185,7 +189,7 @@ Partial Class AddUser
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.DimGray
-        Me.Label3.Location = New System.Drawing.Point(76, 90)
+        Me.Label3.Location = New System.Drawing.Point(76, 87)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(46, 19)
         Me.Label3.TabIndex = 45
@@ -217,7 +221,7 @@ Partial Class AddUser
         '
         Me.chkShowPassword.AutoSize = True
         Me.chkShowPassword.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkShowPassword.Location = New System.Drawing.Point(128, 292)
+        Me.chkShowPassword.Location = New System.Drawing.Point(128, 326)
         Me.chkShowPassword.Name = "chkShowPassword"
         Me.chkShowPassword.Size = New System.Drawing.Size(58, 21)
         Me.chkShowPassword.TabIndex = 41
@@ -233,7 +237,7 @@ Partial Class AddUser
         Me.btnGenerate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnGenerate.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnGenerate.ForeColor = System.Drawing.Color.SeaGreen
-        Me.btnGenerate.Location = New System.Drawing.Point(402, 257)
+        Me.btnGenerate.Location = New System.Drawing.Point(402, 287)
         Me.btnGenerate.Name = "btnGenerate"
         Me.btnGenerate.Size = New System.Drawing.Size(66, 29)
         Me.btnGenerate.TabIndex = 18
@@ -246,7 +250,7 @@ Partial Class AddUser
         Me.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtPassword.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPassword.ForeColor = System.Drawing.Color.DimGray
-        Me.txtPassword.Location = New System.Drawing.Point(128, 257)
+        Me.txtPassword.Location = New System.Drawing.Point(128, 287)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(268, 29)
         Me.txtPassword.TabIndex = 33
@@ -257,7 +261,7 @@ Partial Class AddUser
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.DimGray
-        Me.Label2.Location = New System.Drawing.Point(51, 261)
+        Me.Label2.Location = New System.Drawing.Point(51, 291)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(71, 19)
         Me.Label2.TabIndex = 36
@@ -269,7 +273,7 @@ Partial Class AddUser
         Me.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtUsername.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUsername.ForeColor = System.Drawing.Color.DimGray
-        Me.txtUsername.Location = New System.Drawing.Point(128, 202)
+        Me.txtUsername.Location = New System.Drawing.Point(128, 185)
         Me.txtUsername.Name = "txtUsername"
         Me.txtUsername.Size = New System.Drawing.Size(268, 29)
         Me.txtUsername.TabIndex = 32
@@ -279,18 +283,39 @@ Partial Class AddUser
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.DimGray
-        Me.Label1.Location = New System.Drawing.Point(48, 206)
+        Me.Label1.Location = New System.Drawing.Point(48, 189)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(74, 19)
         Me.Label1.TabIndex = 35
         Me.Label1.Text = "Username:"
+        '
+        'cboUserRole
+        '
+        Me.cboUserRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboUserRole.FormattingEnabled = True
+        Me.cboUserRole.Items.AddRange(New Object() {"Admin", "Hr", "Attendance"})
+        Me.cboUserRole.Location = New System.Drawing.Point(128, 236)
+        Me.cboUserRole.Name = "cboUserRole"
+        Me.cboUserRole.Size = New System.Drawing.Size(138, 29)
+        Me.cboUserRole.TabIndex = 48
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.DimGray
+        Me.Label7.Location = New System.Drawing.Point(50, 240)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(72, 19)
+        Me.Label7.TabIndex = 49
+        Me.Label7.Text = "User Role:"
         '
         'AddUser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 21.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(517, 473)
+        Me.ClientSize = New System.Drawing.Size(517, 515)
         Me.Controls.Add(Me.panelContainer)
         Me.Controls.Add(Me.panelBottom)
         Me.Controls.Add(Me.panelHeader)
@@ -329,4 +354,6 @@ Partial Class AddUser
     Friend WithEvents Label3 As Label
     Friend WithEvents txtAddress As TextBox
     Friend WithEvents Label4 As Label
+    Friend WithEvents cboUserRole As ComboBox
+    Friend WithEvents Label7 As Label
 End Class
