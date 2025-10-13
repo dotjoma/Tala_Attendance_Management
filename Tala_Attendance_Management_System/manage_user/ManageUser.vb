@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class ManageUser
+    Private ReadOnly _logger As ILogger = LoggerFactory.Instance
     Public Sub DefaultSettings()
         dgvManageUser.Tag = 0
         dgvManageUser.RowTemplate.Height = 50
@@ -41,6 +42,24 @@ Public Class ManageUser
 
     Private Sub dgvManageUser_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles dgvManageUser.DataBindingComplete
         dgvManageUser.CurrentCell = Nothing
+        dgvManageUser.Tag = 0 ' Reset tag when data is reloaded
+    End Sub
+
+    Private Sub dgvManageUser_SelectionChanged(sender As Object, e As EventArgs) Handles dgvManageUser.SelectionChanged
+        Try
+            If dgvManageUser.SelectedRows.Count > 0 AndAlso dgvManageUser.SelectedRows(0).Cells("login_id").Value IsNot Nothing Then
+                ' Update Tag with the login_id of the selected row
+                Dim loginIdValue = dgvManageUser.SelectedRows(0).Cells("login_id").Value
+                If Not IsDBNull(loginIdValue) Then
+                    dgvManageUser.Tag = Convert.ToInt32(loginIdValue)
+                End If
+            Else
+                dgvManageUser.Tag = 0
+            End If
+        Catch ex As Exception
+            ' Ignore errors during initial load
+            dgvManageUser.Tag = 0
+        End Try
     End Sub
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
@@ -104,9 +123,33 @@ Public Class ManageUser
 
     Private Sub dgvManageUser_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvManageUser.CellClick
         Try
-            dgvManageUser.Tag = dgvManageUser.Item(0, e.RowIndex).Value
+            _logger.LogDebug($"CellClick Event - RowIndex: {e.RowIndex}, ColumnIndex: {e.ColumnIndex}")
 
-            If e.RowIndex < 0 Then Exit Sub ' Ignore clicks on headers
+            If e.RowIndex < 0 Then
+                _logger.LogDebug("CellClick ignored - header row clicked")
+                Exit Sub
+            End If
+
+            ' Get login_id from the selected row by column name, not index
+            Dim cellValue = dgvManageUser.Rows(e.RowIndex).Cells("login_id").Value
+
+            ' Log detailed information about the cell value
+            _logger.LogDebug($"Cell Value Details - IsNothing: {cellValue Is Nothing}, IsDBNull: {IsDBNull(cellValue)}, Value: {If(cellValue Is Nothing, "NULL", cellValue.ToString())}, Type: {If(cellValue Is Nothing, "NULL", cellValue.GetType().Name)}")
+
+            ' Log all cell values in the row for debugging
+            Dim rowData As String = ""
+            For Each cell As DataGridViewCell In dgvManageUser.Rows(e.RowIndex).Cells
+                rowData &= $"{cell.OwningColumn.Name}={If(cell.Value Is Nothing, "NULL", cell.Value.ToString())}; "
+            Next
+            _logger.LogDebug($"Full Row Data: {rowData}")
+
+            If cellValue IsNot Nothing AndAlso Not IsDBNull(cellValue) Then
+                dgvManageUser.Tag = Convert.ToInt32(cellValue)
+                _logger.LogInfo($"Tag set successfully to: {dgvManageUser.Tag}")
+            Else
+                dgvManageUser.Tag = 0
+                _logger.LogWarning($"Cell value is NULL or DBNull, Tag set to 0")
+            End If
 
             ' Handle Edit button click
             If dgvManageUser.Columns(e.ColumnIndex).Name = "EditBtn" Then
@@ -126,7 +169,8 @@ Public Class ManageUser
                 End If
             End If
         Catch ex As Exception
-
+            _logger.LogError("Error in dgvManageUser_CellClick", ex)
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub DeleteUser(loginId As Integer)

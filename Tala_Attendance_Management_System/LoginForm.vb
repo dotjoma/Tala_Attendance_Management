@@ -43,6 +43,30 @@ Public Class LoginForm
                         End If
 
                         MainForm.labelCurrentUser.Text = currentUser
+                        ' Show all controls for admin
+                        MainForm.ToolStripSeparator1.Visible = True
+                        MainForm.tsManageAccounts.Visible = True
+                        MainForm.Show()
+
+                    Case "hr"
+                        ' Prepare and execute the command to check login credentials
+                        cmd = New OdbcCommand("SELECT CONCAT(firstname, ' ', lastname) AS user_name FROM teacherinformation WHERE user_id = ? AND isActive=1", con)
+                        cmd.Parameters.AddWithValue("?", userID)
+                        da.SelectCommand = cmd
+                        da.Fill(dt2)
+
+                        Dim currentUser As String
+
+                        If dt2.Rows.Count > 0 Then
+                            currentUser = dt2.Rows(0)("user_name").ToString()
+                        Else
+                            currentUser = "HR"
+                        End If
+
+                        MainForm.labelCurrentUser.Text = currentUser
+                        ' Hide Manage Accounts for HR role
+                        MainForm.ToolStripSeparator1.Visible = False
+                        MainForm.tsManageAccounts.Visible = False
                         MainForm.Show()
 
                     Case "attendance"

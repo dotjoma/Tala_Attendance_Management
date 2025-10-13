@@ -236,6 +236,11 @@
     <Compile Include="class_schedules\TeacherSchedule.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="common\Constants.vb" />
+    <Compile Include="common\Enums.vb" />
+    <Compile Include="common\Extensions.vb" />
+    <Compile Include="common\LogLevel.vb" />
+    <Compile Include="Core\Interfaces\ILogger.vb" />
     <Compile Include="DataSet_Attendance.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -286,6 +291,8 @@
     <Compile Include="FormStudents.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="infrastructure\Logging\FileLogger.vb" />
+    <Compile Include="infrastructure\Logging\LoggerFactory.vb" />
     <Compile Include="LoginForm.Designer.vb">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </Compile>
