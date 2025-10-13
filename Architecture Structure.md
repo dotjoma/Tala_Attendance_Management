@@ -3,125 +3,53 @@ Tala_Attendance_Management_System/
 ├── Presentation/                    # UI Layer (Forms, Controls, Views)
 │   ├── Forms/                      # Main application forms
 │   │   ├── Authentication/         # Login, logout related forms
-│   │   │   ├── LoginForm.vb       
-│   │   │   ├── LoginForm.Designer.vb
-│   │   │   └── LoginForm.resx
+│   │   │   └── LoginForm.vb       
 │   │   ├── Faculty/               # Faculty management forms
 │   │   │   ├── FormFaculty.vb    
-│   │   │   ├── FormFaculty.Designer.vb
-│   │   │   ├── FormFaculty.resx
-│   │   │   ├── AddFaculty.vb      
-│   │   │   ├── AddFaculty.Designer.vb
-│   │   │   ├── AddFaculty.resx
-│   │   │   ├── FormReportsFaculty.vb    # Move from root
-│   │   │   ├── FormReportsFaculty.Designer.vb
-│   │   │   └── FormReportsFaculty.resx
+│   │   │   ├── AddFaculty.vb     
+│   │   │   └── FormReportsFaculty.vb    # Move from root
 │   │   ├── Users/                 # User management forms
-│   │   │   ├── ManageUser.vb     
-│   │   │   ├── ManageUser.Designer.vb
-│   │   │   ├── ManageUser.resx
+│   │   │   ├── ManageUser.vb    
 │   │   │   ├── AddUser.vb       
-│   │   │   ├── AddUser.Designer.vb
-│   │   │   ├── AddUser.resx
 │   │   │   ├── AddUserButton.vb  
-│   │   │   ├── AddUserButton.Designer.vb
-│   │   │   ├── AddUserButton.resx
 │   │   │   ├── UserSettings.vb   
-│   │   │   ├── UserSettings.Designer.vb
-│   │   │   ├── UserSettings.resx
-│   │   │   ├── BatchGenerate.vb   # Move from manage_user/
-│   │   │   ├── BatchGenerate.Designer.vb
-│   │   │   └── BatchGenerate.resx
+│   │   │   └── BatchGenerate.vb   # Move from manage_user/
 │   │   ├── Students/              # Student management forms
 │   │   │   ├── FormStudents.vb    # Move from root
-│   │   │   ├── FormStudents.Designer.vb
-│   │   │   ├── FormStudents.resx
 │   │   │   ├── AddStudents.vb     # Move from root
-│   │   │   ├── AddStudents.Designer.vb
-│   │   │   ├── AddStudents.resx
-│   │   │   ├── StudentCard.vb     # Move from root
-│   │   │   ├── StudentCard.Designer.vb
-│   │   │   └── StudentCard.resx
+│   │   │   └── StudentCard.vb     # Move from root
 │   │   ├── Attendance/            # Attendance related forms
 │   │   │   ├── FormIDScanner.vb   # Move from root
-│   │   │   ├── FormIDScanner.Designer.vb
-│   │   │   ├── FormIDScanner.resx
 │   │   │   ├── FormTeacherAttendanceReports.vb  # Move from class_schedules/
-│   │   │   ├── FormTeacherAttendanceReports.Designer.vb
-│   │   │   ├── FormTeacherAttendanceReports.resx
-│   │   │   ├── FormClassAttendance.vb           # Move from class_schedules/DataForms/
-│   │   │   ├── FormClassAttendance.Designer.vb
-│   │   │   └── FormClassAttendance.resx
+│   │   │   └── FormClassAttendance.vb           # Move from class_schedules/DataForms/
 │   │   ├── Announcements/         # Announcement forms
 │   │   │   ├── FormAnnouncement.vb    # Move from root
-│   │   │   ├── FormAnnouncement.Designer.vb
-│   │   │   ├── FormAnnouncement.resx
 │   │   │   ├── AddAnnouncement.vb     # Move from root
-│   │   │   ├── AddAnnouncement.Designer.vb
-│   │   │   ├── AddAnnouncement.resx
-│   │   │   ├── AnnouncementCard.vb    # Move from root
-│   │   │   ├── AnnouncementCard.Designer.vb
-│   │   │   └── AnnouncementCard.resx
+│   │   │   └── AnnouncementCard.vb    # Move from root
 │   │   ├── Schedules/             # Class schedule forms
 │   │   │   ├── CLassScheduleForm.vb           # Move from class_schedules/
-│   │   │   ├── CLassScheduleForm.Designer.vb
-│   │   │   ├── CLassScheduleForm.resx
 │   │   │   ├── FormClassSchedule.vb           # Move from class_schedules/DataForms/
-│   │   │   ├── FormClassSchedule.Designer.vb
-│   │   │   ├── FormClassSchedule.resx
 │   │   │   ├── StudentSchedule.vb             # Move from class_schedules/
-│   │   │   ├── StudentSchedule.Designer.vb
-│   │   │   ├── StudentSchedule.resx
-│   │   │   ├── TeacherSchedule.vb             # Move from class_schedules/
-│   │   │   ├── TeacherSchedule.Designer.vb
-│   │   │   └── TeacherSchedule.resx
+│   │   │   └── TeacherSchedule.vb             # Move from class_schedules/
 │   │   ├── Sections/              # Section management forms
 │   │   │   ├── FormSections.vb                # Move from admin_class_schedules/
-│   │   │   ├── FormSections.Designer.vb
-│   │   │   ├── FormSections.resx
 │   │   │   ├── AddSections.vb                 # Move from admin_class_schedules/
-│   │   │   ├── AddSections.Designer.vb
-│   │   │   ├── AddSections.resx
 │   │   │   ├── SectionLists.vb                # Move from admin_class_schedules/
-│   │   │   ├── SectionLists.Designer.vb
-│   │   │   ├── SectionLists.resx
 │   │   │   ├── ContainerSection.vb            # Move from class_schedules/
-│   │   │   ├── ContainerSection.Designer.vb
-│   │   │   ├── ContainerSection.resx
 │   │   │   ├── AddStudentSection.vb           # Move from admin_class_schedules/
-│   │   │   ├── AddStudentSection.Designer.vb
-│   │   │   ├── AddStudentSection.resx
-│   │   │   ├── AssignSection.vb               # Move from admin_class_schedules/
-│   │   │   ├── AssignSection.Designer.vb
-│   │   │   └── AssignSection.resx
+│   │   │   └── AssignSection.vb               # Move from admin_class_schedules/
 │   │   ├── Subjects/              # Subject management forms
 │   │   │   ├── FormSubjects.vb                # Move from class_schedules/DataForms/
-│   │   │   ├── FormSubjects.Designer.vb
-│   │   │   ├── FormSubjects.resx
-│   │   │   ├── AddSubjects.vb                 # Move from class_schedules/DataForms/
-│   │   │   ├── AddSubjects.Designer.vb
-│   │   │   └── AddSubjects.resx
+│   │   │   └── AddSubjects.vb                 # Move from class_schedules/DataForms/
 │   │   ├── Classrooms/            # Classroom management forms
 │   │   │   ├── FormClassroom.vb               # Move from class_schedules/
-│   │   │   ├── FormClassroom.Designer.vb
-│   │   │   ├── FormClassroom.resx
-│   │   │   ├── FormProcessClassrooms.vb       # Move from class_schedules/
-│   │   │   ├── FormProcessClassrooms.Designer.vb
-│   │   │   └── FormProcessClassrooms.resx
+│   │   │   └── FormProcessClassrooms.vb       # Move from class_schedules/
 │   │   ├── TeacherSchedules/      # Teacher schedule management
 │   │   │   ├── FormAddTeacherSchedule.vb      # Move from admin_class_schedules/
-│   │   │   ├── FormAddTeacherSchedule.Designer.vb
-│   │   │   ├── FormAddTeacherSchedule.resx
 │   │   │   ├── AddTeacherClassSchedule.vb     # Move from admin_class_schedules/
-│   │   │   ├── AddTeacherClassSchedule.Designer.vb
-│   │   │   ├── AddTeacherClassSchedule.resx
-│   │   │   ├── FormMyStudents.vb              # Move from class_schedules/DataForms/
-│   │   │   ├── FormMyStudents.Designer.vb
-│   │   │   └── FormMyStudents.resx
+│   │   │   └── FormMyStudents.vb              # Move from class_schedules/DataForms/
 │   │   └── Main/                  # Main application forms
-│   │       ├── MainForm.vb      
-│   │       ├── MainForm.Designer.vb
-│   │       └── MainForm.resx
+│   │       └── MainForm.vb       
 │   ├── Controls/                  # Custom user controls
 │   │   ├── AddressSelector.vb     # Create - Reusable address ComboBox control
 │   │   └── UserRoleSelector.vb    # Create - Reusable role selection control
@@ -130,7 +58,7 @@ Tala_Attendance_Management_System/
 │       └── MessageBoxHelper.vb    # Create - Standardized message boxes
 ├── Core/                          # Business Logic Layer
 │   ├── Interfaces/                # Contracts and abstractions
-│   │   ├── ILogger.vb            
+│   │   ├── ILogger.vb           
 │   │   ├── IUserService.vb       # Create - User business logic interface
 │   │   ├── IFacultyService.vb    # Create - Faculty business logic interface
 │   │   ├── IStudentService.vb    # Create - Student business logic interface
@@ -176,25 +104,24 @@ Tala_Attendance_Management_System/
 │   │   │   └── DatabaseContext.vb       # Create - Database connection management
 │   │   └── Migrations/          # Database schema changes
 │   ├── Logging/                 # Logging implementations
-│   │   ├── FileLogger.vb       
-│   │   ├── LoggerFactory.vb   
+│   │   ├── FileLogger.vb        
+│   │   ├── LoggerFactory.vb    
 │   │   └── README.md         
 │   └── External/                # External service integrations
 │       └── ReportGenerator.vb   # Create - RDLC report generation
 ├── Common/                      # Shared utilities
-│   ├── Constants.vb          
-│   ├── Enums.vb            
-│   ├── Extensions.vb         
-│   ├── LogLevel.vb          
+│   ├── Constants.vb           
+│   ├── Enums.vb              
+│   ├── Extensions.vb        
+│   ├── LogLevel.vb           
 │   └── Helpers/               # Helper utilities
 │       ├── NameFormatter.vb   # Create - Move name formatting from myModule
 │       └── ValidationHelper.vb # Create - Move fieldChecker from myModule
 ├── Legacy/                     # Temporary - old files during migration
 │   └── myModule.vb            # Move from root - Keep temporarily, gradually move functions
-├── Resources/                
-├── My Project/               
+├── Resources/                 
+├── My Project/                
 ├── DataSets/                   # Create - Move dataset files
-│   ├── DataSet_Attendance.Designer.vb  # Move from root
 │   ├── DataSet_Attendance.vb           # Move from root
 │   ├── DataSet_Attendance.xsc          # Move from root
 │   ├── DataSet_Attendance.xsd          # Move from root
@@ -202,5 +129,4 @@ Tala_Attendance_Management_System/
 └── Configuration/              # Create - Configuration files
     ├── App.config             # Move from root
     └── packages.config        # Move from root
-
 ```
