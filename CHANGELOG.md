@@ -192,38 +192,119 @@ Based on code analysis, the following RDLC files need to be created:
 
 ---
 
+#### Proper Logout & Exit Implementation (2025-10-13)
+**Feature:** Implemented proper logout and exit functionality with confirmation dialogs
+
+**Implementation:**
+- **Logout (`msLogout_Click`):**
+  - Shows confirmation dialog before logging out
+  - Closes all open child forms
+  - Closes all application forms except MainForm and LoginForm
+  - Hides MainForm and shows LoginForm
+  - Clears login credentials
+  - Logs all logout actions
+  
+- **Exit (`msExit_Click`):**
+  - Shows confirmation dialog before exiting
+  - Closes database connections properly
+  - Exits application cleanly
+  - Logs all exit actions
+  
+- **Form Closing (`MainForm_FormClosing`):**
+  - Intercepts X button click
+  - Shows confirmation dialog
+  - Allows user to cancel closing
+  - Properly cleans up resources
+  - Shows login form after closing
+
+- **Improved Legacy LogOut Method:**
+  - Added logging
+  - Proper form cleanup
+  - Clear login credentials
+
+**Files Modified:**
+- `Tala_Attendance_Management_System/MainForm.vb`
+  - Added logger instance
+  - Implemented `msLogout_Click` handler
+  - Implemented `msExit_Click` handler
+  - Improved `MainForm_FormClosing` handler
+  - Enhanced `LogOut()` method with logging
+
+**Benefits:**
+- ✅ User confirmation before logout/exit
+- ✅ Proper cleanup of resources
+- ✅ All actions are logged for audit trail
+- ✅ Prevents accidental logout/exit
+- ✅ Clears sensitive data (passwords) on logout
+
+---
+
 ### 🚀 Next Steps
+
+#### Display User's Full Name Instead of Role (2025-10-13)
+**Bug Fix:** MainForm was displaying user's role instead of their actual name
+
+**Problem:** 
+- Logs showed: "User 'HR' initiated logout" instead of "User 'John Doe' initiated logout"
+- `labelCurrentUser` was showing role name instead of user's full name
+
+**Root Cause:**
+- LoginForm was falling back to role name when `teacherinformation` lookup failed
+- Not using the `fullname` column from `logins` table
+
+**Solution:**
+- Updated LoginForm to use `fullname` from `logins` table first
+- Falls back to `teacherinformation` only if fullname is empty
+- Shows "ADMIN" or "HR User" only as last resort
+
+**Files Modified:**
+- `Tala_Attendance_Management_System/LoginForm.vb`
+  - Updated admin case to use `dt.Rows(0)("fullname")`
+  - Updated hr case to use `dt.Rows(0)("fullname")`
+  - Added proper fallback logic
+
+**Verification:**
+- Logs now show: "User 'John Doe' initiated logout"
+- MainForm displays actual user name, not role
+
+---
+
+#### Enhanced User Display Format (2025-10-13)
+**Feature:** Display user information with role in a formatted way
+
+**Implementation:**
+- Changed label format from: `"John Doe"` 
+- To: `"Logged in as: John Doe (Admin)"`
+- Added `currentUserRole` property to MainForm to store user's role
+- Updated logging to show: `"User 'John Doe' (Admin) initiated logout"`
+
+**Files Modified:**
+- `Tala_Attendance_Management_System/MainForm.vb`
+  - Added `currentUserRole` property
+  - Updated `msLogout_Click` to extract user name and log with role
+  - Updated `msExit_Click` to extract user name and log with role
+  
+- `Tala_Attendance_Management_System/LoginForm.vb`
+  - Updated admin case to set label: `"Logged in as: {name} (Admin)"`
+  - Updated hr case to set label: `"Logged in as: {name} (HR)"`
+  - Sets `MainForm.currentUserRole` for logging purposes
+
+**Display Examples:**
+- Admin: `"Logged in as: Mark Elliot (Admin)"`
+- HR: `"Logged in as: Jane Smith (HR)"`
+
+**Log Examples:**
+```
+[2025-10-13 17:30:45.123] [INFO] User 'Mark Elliot' (Admin) initiated logout
+[2025-10-13 17:30:47.456] [INFO] User 'Jane Smith' (HR) logged out successfully
+```
+
+---
 
 #### Immediate Actions Required
 1. ✅ Run database ALTER TABLE commands to fix `login_id` AUTO_INCREMENT
 2. ✅ Wire up user role selection in Add/Edit user forms
-3. ⏳ Create RDLC report files
-4. ⏳ Test new user creation and editing with role selection
-5. ⏳ Test HR role access restrictions
-
-#### Future Improvements
-- [ ] Move database connection logic to `Infrastructure/Data/`
-- [ ] Create repository pattern for data access
-- [ ] Add unit tests for business logic
-- [ ] Implement database logger (optional)
-- [ ] Add user activity audit logging
-- [ ] Refactor forms to use dependency injection
-
----
-
-### 📊 Statistics
-
-- **Files Created:** 8
-- **Files Modified:** 5
-- **Bugs Fixed:** 4
-- **Features Added:** 2 (Logging System, HR Access Control)
-- **Lines of Code Added:** ~500+
-- **Architecture Improvements:** Clean Architecture + SOLID Principles
-
----
-
-### 👥 Contributors
-
-- Development Session: 2025-10-13
-- Refactoring: Clean Architecture Implementation
-- Bug Fixes: Database & UI Issues
+3. ✅ Fix user name display (was showing role instead)
+4. ⏳ Create RDLC report files
+5. ⏳ Test new user creation and editing with role selection
+6. ⏳ Test HR role access restrictions

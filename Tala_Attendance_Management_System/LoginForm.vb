@@ -28,42 +28,58 @@ Public Class LoginForm
 
                 Select Case userRole.ToLower()
                     Case "admin"
-                        ' Prepare and execute the command to check login credentials
-                        cmd = New OdbcCommand("SELECT CONCAT(firstname, ' ', lastname) AS user_name FROM teacherinformation WHERE user_id = ? AND isActive=1", con)
-                        cmd.Parameters.AddWithValue("?", userID)
-                        da.SelectCommand = cmd
-                        da.Fill(dt2)
-
-                        Dim currentUser As String
-
-                        If dt2.Rows.Count > 0 Then
-                            currentUser = dt2.Rows(0)("user_name").ToString()
-                        Else
-                            currentUser = "ADMIN"
+                        ' Get user's full name from logins table
+                        Dim currentUser As String = dt.Rows(0)("fullname").ToString()
+                        
+                        ' If fullname is empty, try to get from teacherinformation
+                        If String.IsNullOrWhiteSpace(currentUser) AndAlso Not IsDBNull(userID) AndAlso userID <> "0" Then
+                            cmd = New OdbcCommand("SELECT CONCAT(firstname, ' ', lastname) AS user_name FROM teacherinformation WHERE user_id = ? AND isActive=1", con)
+                            cmd.Parameters.AddWithValue("?", userID)
+                            da.SelectCommand = cmd
+                            da.Fill(dt2)
+                            
+                            If dt2.Rows.Count > 0 Then
+                                currentUser = dt2.Rows(0)("user_name").ToString()
+                            Else
+                                currentUser = "Administrator"
+                            End If
+                        ElseIf String.IsNullOrWhiteSpace(currentUser) Then
+                            currentUser = "Administrator"
                         End If
 
-                        MainForm.labelCurrentUser.Text = currentUser
+                        ' Set label with format: "Logged in as: Name (Role)"
+                        MainForm.currentUserRole = "Admin"
+                        MainForm.lblUser.Text = $"Logged in as: {currentUser} (Admin)"
+                        
                         ' Show all controls for admin
                         MainForm.ToolStripSeparator1.Visible = True
                         MainForm.tsManageAccounts.Visible = True
                         MainForm.Show()
 
                     Case "hr"
-                        ' Prepare and execute the command to check login credentials
-                        cmd = New OdbcCommand("SELECT CONCAT(firstname, ' ', lastname) AS user_name FROM teacherinformation WHERE user_id = ? AND isActive=1", con)
-                        cmd.Parameters.AddWithValue("?", userID)
-                        da.SelectCommand = cmd
-                        da.Fill(dt2)
-
-                        Dim currentUser As String
-
-                        If dt2.Rows.Count > 0 Then
-                            currentUser = dt2.Rows(0)("user_name").ToString()
-                        Else
-                            currentUser = "HR"
+                        ' Get user's full name from logins table
+                        Dim currentUser As String = dt.Rows(0)("fullname").ToString()
+                        
+                        ' If fullname is empty, try to get from teacherinformation
+                        If String.IsNullOrWhiteSpace(currentUser) AndAlso Not IsDBNull(userID) AndAlso userID <> "0" Then
+                            cmd = New OdbcCommand("SELECT CONCAT(firstname, ' ', lastname) AS user_name FROM teacherinformation WHERE user_id = ? AND isActive=1", con)
+                            cmd.Parameters.AddWithValue("?", userID)
+                            da.SelectCommand = cmd
+                            da.Fill(dt2)
+                            
+                            If dt2.Rows.Count > 0 Then
+                                currentUser = dt2.Rows(0)("user_name").ToString()
+                            Else
+                                currentUser = "HR User"
+                            End If
+                        ElseIf String.IsNullOrWhiteSpace(currentUser) Then
+                            currentUser = "HR User"
                         End If
 
-                        MainForm.labelCurrentUser.Text = currentUser
+                        ' Set label with format: "Logged in as: Name (Role)"
+                        MainForm.currentUserRole = "HR"
+                        MainForm.lblUser.Text = $"Logged in as: {currentUser} (HR)"
+                        
                         ' Hide Manage Accounts for HR role
                         MainForm.ToolStripSeparator1.Visible = False
                         MainForm.tsManageAccounts.Visible = False

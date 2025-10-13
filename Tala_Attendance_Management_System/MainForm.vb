@@ -2,8 +2,10 @@
 Imports System.Windows.Forms.DataVisualization.Charting
 
 Public Class MainForm
+    Private ReadOnly _logger As ILogger = LoggerFactory.Instance
     Public currentChild As Form
     Public currentButton As Button
+    Public currentUserRole As String = "" ' Store the user's role
     Private Sub OpenForm(ByVal childForm As Form, ByVal isMaximized As Boolean)
         Try
             If currentChild IsNot Nothing Then
@@ -69,8 +71,8 @@ Public Class MainForm
             End Using
 
             ' Clear chart
-            attendanceChart.Series.Clear()
-            attendanceChart.ChartAreas.Clear()
+            'attendanceChart.Series.Clear()
+            'attendanceChart.ChartAreas.Clear()
 
             ' Set up chart area
             Dim chartArea As New ChartArea("MainArea")
@@ -78,7 +80,7 @@ Public Class MainForm
             chartArea.AxisX.Interval = 1
             chartArea.AxisX.MajorGrid.LineColor = Color.LightGray
             chartArea.AxisY.MajorGrid.LineColor = Color.LightGray
-            attendanceChart.ChartAreas.Add(chartArea)
+            'attendanceChart.ChartAreas.Add(chartArea)
 
             ' Create series
             Dim series As New Series("Weekly Attendance")
@@ -94,7 +96,7 @@ Public Class MainForm
                 series.Points.AddXY(kvp.Key, kvp.Value)
             Next
 
-            attendanceChart.Series.Add(series)
+            'attendanceChart.Series.Add(series)
 
         Catch ex As Exception
             MessageBox.Show("Error loading chart: " & ex.Message)
@@ -147,8 +149,40 @@ Public Class MainForm
 
 
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        'LogOut()
-        LoginForm.Show()
+        Try
+            _logger.LogInfo($"MainForm closing - User: '{labelCurrentUser.Text}'")
+
+            ' If user is closing via X button, ask for confirmation
+            If e.CloseReason = CloseReason.UserClosing Then
+                Dim result As DialogResult = MessageBox.Show(
+                    "Are you sure you want to log out?",
+                    "Confirm Logout",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question)
+
+                If result = DialogResult.No Then
+                    e.Cancel = True
+                    _logger.LogInfo("User cancelled form closing")
+                    Return
+                End If
+            End If
+
+            ' Close all child forms
+            If currentChild IsNot Nothing Then
+                currentChild.Close()
+                currentChild = Nothing
+            End If
+
+            ' Show login form
+            LoginForm.Show()
+            LoginForm.ttxtUser.Clear()
+            LoginForm.ttxtPass.Clear()
+            LoginForm.ttxtUser.Focus()
+
+            _logger.LogInfo("MainForm closed successfully")
+        Catch ex As Exception
+            _logger.LogError("Error during MainForm closing", ex)
+        End Try
     End Sub
 
     'Private Sub btnFac_Click(sender As Object, e As EventArgs)
@@ -182,10 +216,31 @@ Public Class MainForm
     End Sub
 
     Private Sub LogOut()
-        If MsgBox("Are you sure you want to Log Out?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Log Out") = DialogResult.Yes Then
-            LoginForm.Show()
-            Me.Close()
-        End If
+        Try
+            _logger.LogInfo($"User '{labelCurrentUser.Text}' initiated logout (legacy method)")
+
+            If MsgBox("Are you sure you want to Log Out?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Log Out") = DialogResult.Yes Then
+                _logger.LogInfo($"User '{labelCurrentUser.Text}' logged out successfully")
+
+                ' Close all child forms
+                If currentChild IsNot Nothing Then
+                    currentChild.Close()
+                    currentChild = Nothing
+                End If
+
+                ' Hide and show login
+                Me.Hide()
+                LoginForm.Show()
+                LoginForm.ttxtUser.Clear()
+                LoginForm.ttxtPass.Clear()
+                LoginForm.ttxtUser.Focus()
+            Else
+                _logger.LogInfo($"User '{labelCurrentUser.Text}' cancelled logout")
+            End If
+        Catch ex As Exception
+            _logger.LogError("Error in LogOut method", ex)
+            MessageBox.Show($"An error occurred during logout: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
     Private Sub btnLogout_Click(sender As Object, e As EventArgs)
         LogOut()
@@ -206,8 +261,8 @@ Public Class MainForm
         Dim faculty As Integer = FacultyCount()
         Dim attendance As Integer = AttendanceCount()
 
-        labelFacultyCount.Text = faculty.ToString()
-        labelAttendanceCount.Text = attendance.ToString()
+        'labelFacultyCount.Text = faculty.ToString()
+        'labelAttendanceCount.Text = attendance.ToString()
         FacultyAttendanceLineGraph()
     End Sub
 
@@ -299,11 +354,11 @@ Public Class MainForm
         FormAnnouncement.Show()
     End Sub
 
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+    Private Sub Label3_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub labelAttendanceCount_Click(sender As Object, e As EventArgs) Handles labelAttendanceCount.Click
+    Private Sub labelAttendanceCount_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -319,19 +374,106 @@ Public Class MainForm
 
     End Sub
 
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+    Private Sub Label2_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub attendanceChart_Click(sender As Object, e As EventArgs) Handles attendanceChart.Click
+    Private Sub attendanceChart_Click(sender As Object, e As EventArgs)
 
     End Sub
 
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub msLogout_Click(sender As Object, e As EventArgs) Handles msLogout.Click
+        Try
+            ' Extract just the user name from the label (remove "Logged in as: " and role)
+            Dim userName As String = lblUser.Text.Replace("Logged in as: ", "")
+            If userName.Contains("(") Then
+                userName = userName.Substring(0, userName.IndexOf("(")).Trim()
+            End If
+
+            _logger.LogInfo($"User '{userName}' ({currentUserRole}) initiated logout")
+
+            Dim result As DialogResult = MessageBox.Show(
+                "Are you sure you want to log out?",
+                "Confirm Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question)
+
+            If result = DialogResult.Yes Then
+                _logger.LogInfo($"User '{userName}' ({currentUserRole}) logged out successfully")
+
+                ' Close all open child forms
+                If currentChild IsNot Nothing Then
+                    currentChild.Close()
+                    currentChild = Nothing
+                End If
+
+                ' Close any other open forms
+                For Each frm As Form In Application.OpenForms.Cast(Of Form).ToList()
+                    If frm IsNot Me AndAlso frm IsNot LoginForm Then
+                        frm.Close()
+                    End If
+                Next
+
+                ' Hide main form and show login form
+                Me.Hide()
+                LoginForm.Show()
+                LoginForm.ttxtUser.Clear()
+                LoginForm.ttxtPass.Clear()
+                LoginForm.ttxtUser.Focus()
+            Else
+                _logger.LogInfo($"User '{userName}' ({currentUserRole}) cancelled logout")
+            End If
+        Catch ex As Exception
+            _logger.LogError("Error during logout", ex)
+            MessageBox.Show($"An error occurred during logout: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub msExit_Click(sender As Object, e As EventArgs) Handles msExit.Click
+        Try
+            ' Extract just the user name from the label (remove "Logged in as: " and role)
+            Dim userName As String = lblUser.Text.Replace("Logged in as: ", "")
+            If userName.Contains("(") Then
+                userName = userName.Substring(0, userName.IndexOf("(")).Trim()
+            End If
+
+            _logger.LogInfo($"User '{userName}' ({currentUserRole}) initiated application exit")
+
+            Dim result As DialogResult = MessageBox.Show(
+                "Are you sure you want to exit the application?",
+                "Confirm Exit",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question)
+
+            If result = DialogResult.Yes Then
+                _logger.LogInfo($"User '{userName}' ({currentUserRole}) exited application")
+
+                ' Close database connection if open
+                Try
+                    If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+                        con.Close()
+                    End If
+                Catch
+                    ' Ignore connection close errors
+                End Try
+
+                ' Exit application
+                Application.Exit()
+            Else
+                _logger.LogInfo($"User '{userName}' ({currentUserRole}) cancelled exit")
+            End If
+        Catch ex As Exception
+            _logger.LogError("Error during application exit", ex)
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Application.Exit()
+        End Try
     End Sub
 End Class
