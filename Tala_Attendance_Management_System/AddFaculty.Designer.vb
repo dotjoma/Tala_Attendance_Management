@@ -51,7 +51,6 @@ Partial Class AddFaculty
         Me.txtTagID = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtExtName = New System.Windows.Forms.TextBox()
-        Me.Label36 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label34 = New System.Windows.Forms.Label()
         Me.Label33 = New System.Windows.Forms.Label()
@@ -216,7 +215,6 @@ Partial Class AddFaculty
         Me.panelContainer.Controls.Add(Me.Label38)
         Me.panelContainer.Controls.Add(Me.GroupBox1)
         Me.panelContainer.Controls.Add(Me.txtExtName)
-        Me.panelContainer.Controls.Add(Me.Label36)
         Me.panelContainer.Controls.Add(Me.Label23)
         Me.panelContainer.Controls.Add(Me.Label34)
         Me.panelContainer.Controls.Add(Me.Label33)
@@ -493,18 +491,6 @@ Partial Class AddFaculty
         Me.txtExtName.Name = "txtExtName"
         Me.txtExtName.Size = New System.Drawing.Size(202, 29)
         Me.txtExtName.TabIndex = 5
-        '
-        'Label36
-        '
-        Me.Label36.AutoSize = True
-        Me.Label36.BackColor = System.Drawing.Color.Transparent
-        Me.Label36.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label36.ForeColor = System.Drawing.Color.Red
-        Me.Label36.Location = New System.Drawing.Point(594, 87)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(23, 30)
-        Me.Label36.TabIndex = 87
-        Me.Label36.Text = "*"
         '
         'Label23
         '
@@ -993,7 +979,6 @@ Partial Class AddFaculty
     Friend WithEvents Label34 As Label
     Friend WithEvents Label37 As Label
     Friend WithEvents Label23 As Label
-    Friend WithEvents Label36 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label35 As Label
     Friend WithEvents txtEmail As TextBox

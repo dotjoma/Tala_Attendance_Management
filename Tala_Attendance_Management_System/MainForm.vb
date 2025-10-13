@@ -155,7 +155,7 @@ Public Class MainForm
             If userName.Contains("(") Then
                 userName = userName.Substring(0, userName.IndexOf("(")).Trim()
             End If
-            
+
             _logger.LogInfo($"MainForm closing - User: '{userName}' ({currentUserRole})")
 
             ' If user is closing via X button, ask for confirmation to exit application
@@ -171,7 +171,7 @@ Public Class MainForm
                     _logger.LogInfo($"User '{userName}' ({currentUserRole}) cancelled application exit")
                     Return
                 End If
-                
+
                 _logger.LogInfo($"User '{userName}' ({currentUserRole}) exited application via X button")
             End If
 
@@ -191,8 +191,13 @@ Public Class MainForm
             End If
 
             _logger.LogInfo("MainForm closed successfully - Application exiting")
+            
+            ' Exit the application completely
+            Application.Exit()
         Catch ex As Exception
             _logger.LogError("Error during MainForm closing", ex)
+            ' Force exit even if there's an error
+            Application.Exit()
         End Try
     End Sub
 
