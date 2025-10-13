@@ -67,7 +67,7 @@ Public Class ManageUser
             loadDGV("SELECT login_id, fullname AS full_name, email, address, created_at, role, 
                  username, REPEAT('*', CHAR_LENGTH(password)) AS password  
                  FROM logins
-                 WHERE isActive=1 ", dgvManageUser, "username", "CONCAT(firstname, ' ', lastname)", "email", txtSearch.Text.Trim)
+                 WHERE isActive=1 ", dgvManageUser, "username", "fullname", "email", txtSearch.Text.Trim)
         Else
             loadDGV("SELECT login_id, fullname AS full_name, email, address, created_at, role, 
                  username, REPEAT('*', CHAR_LENGTH(password)) AS password  

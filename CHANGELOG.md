@@ -212,10 +212,11 @@ Based on code analysis, the following RDLC files need to be created:
   
 - **Form Closing (`MainForm_FormClosing`):**
   - Intercepts X button click
-  - Shows confirmation dialog
+  - Shows "Exit Application" confirmation dialog (not logout)
   - Allows user to cancel closing
-  - Properly cleans up resources
-  - Shows login form after closing
+  - Closes database connections
+  - Exits application completely
+  - Does NOT show login form (application exits)
 
 - **Improved Legacy LogOut Method:**
   - Added logging
@@ -236,6 +237,11 @@ Based on code analysis, the following RDLC files need to be created:
 - ✅ All actions are logged for audit trail
 - ✅ Prevents accidental logout/exit
 - ✅ Clears sensitive data (passwords) on logout
+
+**Behavior:**
+- **Logout (msLogout):** Hides MainForm, shows LoginForm, clears credentials
+- **Exit (msExit):** Closes database, exits application completely
+- **X Button:** Same as Exit - closes application completely
 
 ---
 
@@ -301,10 +307,39 @@ Based on code analysis, the following RDLC files need to be created:
 
 ---
 
+#### Fixed Search Feature in ManageUser (2025-10-13)
+**Bug Fix:** Search was not working in user management
+
+**Problem:**
+- Search feature was trying to use `CONCAT(firstname, ' ', lastname)` 
+- But `logins` table has `fullname` column, not separate firstname/lastname
+- Search would fail silently
+
+**Root Cause:**
+- Incorrect column reference in search query
+- Using `CONCAT(firstname, ' ', lastname)` instead of `fullname`
+
+**Solution:**
+- Changed search field from `CONCAT(firstname, ' ', lastname)` to `fullname`
+- Now searches across: username, fullname, and email
+
+**Files Modified:**
+- `Tala_Attendance_Management_System/manage_user/ManageUser.vb`
+  - Updated `txtSearch_TextChanged` to use `fullname` column
+
+**Search Now Works On:**
+- Username
+- Full Name
+- Email Address
+
+---
+
 #### Immediate Actions Required
 1. ✅ Run database ALTER TABLE commands to fix `login_id` AUTO_INCREMENT
 2. ✅ Wire up user role selection in Add/Edit user forms
 3. ✅ Fix user name display (was showing role instead)
-4. ⏳ Create RDLC report files
-5. ⏳ Test new user creation and editing with role selection
-6. ⏳ Test HR role access restrictions
+4. ✅ Fix search feature in ManageUser
+5. ⏳ Create RDLC report files
+6. ⏳ Test new user creation and editing with role selection
+7. ⏳ Test HR role access restrictions
+8. ⏳ Test search functionality in user management

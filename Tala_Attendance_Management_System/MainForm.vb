@@ -150,22 +150,39 @@ Public Class MainForm
 
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Try
-            _logger.LogInfo($"MainForm closing - User: '{labelCurrentUser.Text}'")
+            ' Extract user name for logging
+            Dim userName As String = lblUser.Text.Replace("Logged in as: ", "")
+            If userName.Contains("(") Then
+                userName = userName.Substring(0, userName.IndexOf("(")).Trim()
+            End If
+            
+            _logger.LogInfo($"MainForm closing - User: '{userName}' ({currentUserRole})")
 
-            ' If user is closing via X button, ask for confirmation
+            ' If user is closing via X button, ask for confirmation to exit application
             If e.CloseReason = CloseReason.UserClosing Then
                 Dim result As DialogResult = MessageBox.Show(
-                    "Are you sure you want to log out?",
-                    "Confirm Logout",
+                    "Are you sure you want to exit the application?",
+                    "Confirm Exit",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question)
 
                 If result = DialogResult.No Then
                     e.Cancel = True
-                    _logger.LogInfo("User cancelled form closing")
+                    _logger.LogInfo($"User '{userName}' ({currentUserRole}) cancelled application exit")
                     Return
                 End If
+                
+                _logger.LogInfo($"User '{userName}' ({currentUserRole}) exited application via X button")
             End If
+
+            ' Close database connection if open
+            Try
+                If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+                    con.Close()
+                End If
+            Catch
+                ' Ignore connection close errors
+            End Try
 
             ' Close all child forms
             If currentChild IsNot Nothing Then
@@ -173,13 +190,7 @@ Public Class MainForm
                 currentChild = Nothing
             End If
 
-            ' Show login form
-            LoginForm.Show()
-            LoginForm.ttxtUser.Clear()
-            LoginForm.ttxtPass.Clear()
-            LoginForm.ttxtUser.Focus()
-
-            _logger.LogInfo("MainForm closed successfully")
+            _logger.LogInfo("MainForm closed successfully - Application exiting")
         Catch ex As Exception
             _logger.LogError("Error during MainForm closing", ex)
         End Try
