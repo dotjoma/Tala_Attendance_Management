@@ -29,8 +29,8 @@ Improvements needed for the Add/Edit Faculty form to enhance data validation, us
 **Expected State:** Dropdown with departments (English, Filipino, Math, Science, etc.)
 
 **Implementation:**
-- [ ] Add ComboBox for department selection
-- [ ] Populate with departments:
+- [x] Add ComboBox for department selection
+- [x] Populate with departments:
   - English
   - Filipino
   - Mathematics
@@ -41,8 +41,7 @@ Improvements needed for the Add/Edit Faculty form to enhance data validation, us
   - Values Education
   - Computer/ICT
   - Others
-- [ ] Sort alphabetically
-- [ ] Make it required field
+- [x] Make it required field
 
 **Database Changes:**
 ```sql

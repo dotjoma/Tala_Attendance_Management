@@ -81,19 +81,11 @@ Public Class FormFaculty
             dgvTeachers.AlternatingRowsDefaultCellStyle = dgvTeachers.DefaultCellStyle
             dgvTeachers.AutoGenerateColumns = False
 
-            loadDGV("
-                SELECT ti.teacherID AS teacherID, 
-                ti.employeeID AS employeeID, 
-                " & GetNameConcatSQL() & " AS teacher_name, 
-                email, ti.gender AS gender, ti.birthdate AS birthdate, 
-                ti.contactNo AS contactNo, 
-                CONCAT(ti.homeadd, ' ', rb.brgyDesc, '. ', rc.citymunDesc) AS teacher_address, 
-                ti.emergencyContact AS emergencyContact 
-                FROM teacherinformation ti JOIN refregion rg ON ti.regionID = rg.id 
-                JOIN refprovince rp ON ti.provinceID = rp.id 
-                JOIN refcitymun rc ON ti.cityID = rc.id 
-                JOIN refbrgy rb ON ti.brgyID = rb.id 
-                WHERE ti.isActive = 1", dgvTeachers)
+            ' Load departments for filtering
+            LoadDepartmentFilter()
+
+            ' Load all faculty initially
+            LoadFacultyList()
 
             _logger.LogInfo($"FormFaculty - Faculty list loaded successfully, {dgvTeachers.Rows.Count} records displayed")
         Catch ex As Exception
@@ -172,7 +164,7 @@ Public Class FormFaculty
             _logger.LogInfo($"FormFaculty - Loading faculty record for editing - Faculty ID: {id}")
 
             connectDB()
-            cmd = New Odbc.OdbcCommand("SELECT teacherID, profileImg, employeeID,tagID,firstname,middlename,lastname,extName, email, gender,birthdate,homeadd,brgyID, cityID, provinceID, regionID,contactNo, emergencyContact, relationship FROM teacherinformation WHERE teacherID=?", con)
+            cmd = New Odbc.OdbcCommand("SELECT teacherID, profileImg, employeeID,tagID,firstname,middlename,lastname,extName, email, gender,birthdate,homeadd,brgyID, cityID, provinceID, regionID,contactNo, emergencyContact, relationship, department_id FROM teacherinformation WHERE teacherID=?", con)
             cmd.Parameters.AddWithValue("@", id)
             da.SelectCommand = cmd
             da.Fill(dt)
@@ -198,6 +190,14 @@ Public Class FormFaculty
                 AddFaculty.txtContactNo.Text = dt.Rows(0)("contactNo").ToString()
                 AddFaculty.txtEmergencyContact.Text = dt.Rows(0)("emergencyContact").ToString()
                 AddFaculty.cbRelationship.Text = dt.Rows(0)("relationship").ToString()
+
+                ' Load department selection
+                If Not IsDBNull(dt.Rows(0)("department_id")) Then
+                    Dim departmentId As Integer = Convert.ToInt32(dt.Rows(0)("department_id"))
+                    AddFaculty.SetDepartmentSelection(departmentId)
+                Else
+                    AddFaculty.SetDepartmentSelection(Nothing)
+                End If
 
                 Dim myreader As Odbc.OdbcDataReader = cmd.ExecuteReader
                 If myreader.Read Then
@@ -249,14 +249,14 @@ Public Class FormFaculty
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
         Try
-            If txtSearch.TextLength > 0 Then
-                _logger.LogInfo($"FormFaculty - Search performed with term: '{txtSearch.Text.Trim()}'")
-                loadDGV("SELECT ti.teacherID AS teacherID, ti.employeeID AS employeeID, " & GetNameConcatSQL() & " AS teacher_name, email, ti.gender AS gender, ti.birthdate AS birthdate, ti.contactNo AS contactNo, CONCAT(ti.homeadd, ' ', rb.brgyDesc, '. ', rc.citymunDesc) AS teacher_address, ti.emergencyContact AS emergencyContact FROM teacherinformation ti JOIN refregion rg ON ti.regionID = rg.id JOIN refprovince rp ON ti.provinceID = rp.id JOIN refcitymun rc ON ti.cityID = rc.id JOIN refbrgy rb ON ti.brgyID = rb.id WHERE ti.isActive=1", dgvTeachers, "ti.lastname", "ti.firstname", "ti.employeeID", txtSearch.Text.Trim)
-                _logger.LogInfo($"FormFaculty - Search completed, {dgvTeachers.Rows.Count} results found")
-            Else
-                _logger.LogInfo("FormFaculty - Search cleared, showing all faculty records")
-                loadDGV("SELECT ti.teacherID AS teacherID, ti.employeeID AS employeeID, " & GetNameConcatSQL() & " AS teacher_name, email, ti.gender AS gender, ti.birthdate AS birthdate, ti.contactNo AS contactNo, CONCAT(ti.homeadd, ' ', rb.brgyDesc, '. ', rc.citymunDesc) AS teacher_address, ti.emergencyContact AS emergencyContact FROM teacherinformation ti JOIN refregion rg ON ti.regionID = rg.id JOIN refprovince rp ON ti.provinceID = rp.id JOIN refcitymun rc ON ti.cityID = rc.id JOIN refbrgy rb ON ti.brgyID = rb.id WHERE ti.isActive = 1", dgvTeachers)
-            End If
+            Dim searchTerm As String = txtSearch.Text.Trim()
+            Dim selectedDepartment As String = If(cboDepartment.SelectedValue IsNot Nothing, cboDepartment.SelectedValue.ToString(), "ALL")
+
+            _logger.LogInfo($"FormFaculty - Search changed to: '{searchTerm}', Department filter: {selectedDepartment}")
+
+            ' Reload faculty list with current filters
+            LoadFacultyList(selectedDepartment, searchTerm)
+
         Catch ex As Exception
             _logger.LogError($"FormFaculty - Error during search operation: {ex.Message}")
         End Try
@@ -275,5 +275,129 @@ Public Class FormFaculty
 
     Private Sub dgvTeachers_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles dgvTeachers.DataBindingComplete
         dgvTeachers.CurrentCell = Nothing
+    End Sub
+
+    Private Sub LoadDepartmentFilter()
+        Try
+            _logger.LogInfo("FormFaculty - Loading departments for filtering")
+
+            ' Create a DataTable for the ComboBox
+            Dim dt As New DataTable()
+            dt.Columns.Add("department_id", GetType(String))
+            dt.Columns.Add("department_display", GetType(String))
+
+            ' Add "All Departments" option first
+            Dim allRow As DataRow = dt.NewRow()
+            allRow("department_id") = "ALL"
+            allRow("department_display") = "All Departments"
+            dt.Rows.Add(allRow)
+
+            ' Get departments from service
+            Dim departmentService As New DepartmentService()
+            Dim departments = departmentService.GetActiveDepartments()
+
+            If departments IsNot Nothing AndAlso departments.Count > 0 Then
+                ' Add departments to DataTable
+                For Each dept As Department In departments
+                    Dim row As DataRow = dt.NewRow()
+                    row("department_id") = dept.DepartmentId.ToString()
+                    row("department_display") = $"{dept.DepartmentCode} - {dept.DepartmentName}"
+                    dt.Rows.Add(row)
+                Next
+
+                _logger.LogInfo($"FormFaculty - {departments.Count} departments loaded for filtering")
+            Else
+                _logger.LogWarning("FormFaculty - No departments found for filtering")
+            End If
+
+            ' Bind to ComboBox
+            cboDepartment.DataSource = dt
+            cboDepartment.ValueMember = "department_id"
+            cboDepartment.DisplayMember = "department_display"
+            cboDepartment.SelectedIndex = 0 ' Select "All Departments" by default
+
+            _logger.LogInfo("FormFaculty - Department filter ComboBox populated successfully")
+
+        Catch ex As Exception
+            _logger.LogError($"FormFaculty - Error loading department filter: {ex.Message}")
+
+            ' Create fallback DataTable with error message
+            Dim errorDt As New DataTable()
+            errorDt.Columns.Add("department_id", GetType(String))
+            errorDt.Columns.Add("department_display", GetType(String))
+
+            Dim errorRow As DataRow = errorDt.NewRow()
+            errorRow("department_id") = "ALL"
+            errorRow("department_display") = "All Departments"
+            errorDt.Rows.Add(errorRow)
+
+            cboDepartment.DataSource = errorDt
+            cboDepartment.ValueMember = "department_id"
+            cboDepartment.DisplayMember = "department_display"
+            cboDepartment.SelectedIndex = 0
+        End Try
+    End Sub
+
+    Private Sub LoadFacultyList(Optional departmentFilter As String = "ALL", Optional searchTerm As String = "")
+        Try
+            Dim baseQuery As String = "
+                SELECT ti.teacherID AS teacherID, 
+                       ti.employeeID AS employeeID, 
+                       " & GetNameConcatSQL() & " AS teacher_name, 
+                       ti.email, 
+                       ti.gender AS gender, 
+                       ti.birthdate AS birthdate, 
+                       ti.contactNo AS contactNo, 
+                       CONCAT(ti.homeadd, ' ', rb.brgyDesc, '. ', rc.citymunDesc) AS teacher_address, 
+                       ti.emergencyContact AS emergencyContact,
+                       COALESCE(d.department_code, 'No Dept') AS department_code
+                FROM teacherinformation ti 
+                JOIN refregion rg ON ti.regionID = rg.id 
+                JOIN refprovince rp ON ti.provinceID = rp.id 
+                JOIN refcitymun rc ON ti.cityID = rc.id 
+                JOIN refbrgy rb ON ti.brgyID = rb.id 
+                LEFT JOIN departments d ON ti.department_id = d.department_id
+                WHERE ti.isActive = 1"
+
+            ' Add department filter
+            If departmentFilter <> "ALL" AndAlso IsNumeric(departmentFilter) Then
+                baseQuery &= $" AND ti.department_id = {departmentFilter}"
+                _logger.LogInfo($"FormFaculty - Filtering by department ID: {departmentFilter}")
+            ElseIf departmentFilter <> "ALL" Then
+                _logger.LogWarning($"FormFaculty - Invalid department filter: {departmentFilter}")
+            End If
+
+            ' Add search filter
+            If Not String.IsNullOrWhiteSpace(searchTerm) Then
+                baseQuery &= $" AND (ti.lastname LIKE '%{searchTerm}%' OR ti.firstname LIKE '%{searchTerm}%' OR ti.employeeID LIKE '%{searchTerm}%')"
+                _logger.LogInfo($"FormFaculty - Applying search filter: '{searchTerm}'")
+            End If
+
+            baseQuery &= " ORDER BY ti.lastname, ti.firstname"
+
+            loadDGV(baseQuery, dgvTeachers)
+
+            _logger.LogInfo($"FormFaculty - Faculty list loaded with filters - Department: {departmentFilter}, Search: '{searchTerm}', Results: {dgvTeachers.Rows.Count}")
+
+        Catch ex As Exception
+            _logger.LogError($"FormFaculty - Error loading faculty list: {ex.Message}")
+            MessageBox.Show("Error loading faculty list. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub cboDepartment_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDepartment.SelectedIndexChanged
+        Try
+            If cboDepartment.SelectedValue IsNot Nothing Then
+                Dim selectedDepartment As String = cboDepartment.SelectedValue.ToString()
+                Dim searchTerm As String = txtSearch.Text.Trim()
+
+                _logger.LogInfo($"FormFaculty - Department filter changed to: {cboDepartment.Text} (ID: {selectedDepartment})")
+
+                ' Reload faculty list with new department filter
+                LoadFacultyList(selectedDepartment, searchTerm)
+            End If
+        Catch ex As Exception
+            _logger.LogError($"FormFaculty - Error in department filter change: {ex.Message}")
+        End Try
     End Sub
 End Class

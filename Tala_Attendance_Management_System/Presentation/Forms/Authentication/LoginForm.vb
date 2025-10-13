@@ -51,6 +51,9 @@ Public Class LoginForm
                         MainForm.currentUserRole = "Admin"
                         MainForm.lblUser.Text = $"Logged in as: {currentUser} (Admin)"
                         
+                        ' Set user role and apply access control
+                        MainForm.SetUserRole("Admin")
+                        
                         ' Show all controls for admin
                         MainForm.ToolStripSeparator1.Visible = True
                         MainForm.tsManageAccounts.Visible = True
@@ -79,6 +82,9 @@ Public Class LoginForm
                         ' Set label with format: "Logged in as: Name (Role)"
                         MainForm.currentUserRole = "HR"
                         MainForm.lblUser.Text = $"Logged in as: {currentUser} (HR)"
+                        
+                        ' Set user role and apply access control
+                        MainForm.SetUserRole("HR")
                         
                         ' Hide Manage Accounts for HR role
                         MainForm.ToolStripSeparator1.Visible = False

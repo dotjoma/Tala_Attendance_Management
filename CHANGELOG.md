@@ -955,5 +955,162 @@ Tala_Attendance_Management_System/
 
 ---
 
-*Last Updated: 2025-10-13 20:45:00*
-*Architecture Version: 2.0.0 - Clean Architecture Implementation*
+## [2025-10-13] - Department Management System
+
+### 🏢 Department Management Features
+
+#### Complete Department Management System
+**Feature:** Implemented comprehensive department management with CRUD operations
+
+**Implementation:**
+- **Department Entity & Service Layer:**
+  - `Core/Entities/Department.vb` - Department domain model
+  - `Core/Interfaces/IDepartmentService.vb` - Service contract
+  - `Application/Services/DepartmentService.vb` - Business logic implementation
+  - `Infrastructure/Data/Repositories/DepartmentRepository.vb` - Data access layer
+
+- **Department Forms:**
+  - `FormDepartments.vb` - Main department listing and management
+  - `AddDepartment.vb` - Add/Edit department form with validation
+  - `DepartmentSelector.vb` - Reusable department selection component
+
+**Key Features:**
+- ✅ **CRUD Operations** - Create, Read, Update, Delete departments
+- ✅ **Department Head Assignment** - Optional teacher assignment as department head
+- ✅ **Unique Code Validation** - Prevents duplicate department codes
+- ✅ **Soft Delete** - Departments marked inactive instead of hard delete
+- ✅ **Comprehensive Logging** - Full audit trail of all operations
+- ✅ **Input Validation** - Required fields and business rule validation
+
+---
+
+#### Department-Faculty Integration
+**Feature:** Integrated department management with faculty management system
+
+**Implementation:**
+- **Faculty Department Assignment:**
+  - Added department selection to AddFaculty form
+  - Department ComboBox with all active departments
+  - Department assignment stored in `teacherinformation.department_id`
+  - Department information loaded when editing faculty
+
+- **Department Filtering in Faculty List:**
+  - Added department filter ComboBox to FormFaculty
+  - "All Departments" option shows all faculty (default)
+  - Department-specific filtering shows only faculty from selected department
+  - Added "DEPARTMENT" column to faculty DataGridView
+  - Combined department and search filtering
+
+- **Required Department Selection:**
+  - Department selection is now mandatory when adding new faculty
+  - Enhanced ValidationHelper with `ValidateDepartmentSelection()` method
+  - Clear error messages guide users to select department
+  - ComboBox shows "-- Select Department (Required) --" for new faculty
+
+---
+
+#### Foreign Key Constraint Resolution
+**Bug Fix:** Resolved foreign key constraint issues with NULL department assignments
+
+**Problem:**
+- Error: "Cannot add or update a child row: a foreign key constraint fails"
+- ODBC driver not properly handling `DBNull.Value` parameters for nullable foreign keys
+- Departments couldn't be created without head teacher assignment
+
+**Solution:**
+- **Explicit NULL Handling in SQL:**
+  - Split queries into conditional branches for NULL vs non-NULL values
+  - Use explicit `NULL` in SQL instead of parameterized NULL values
+  - Enhanced DepartmentRepository with proper NULL handling
+
+**Technical Implementation:**
+```vb
+' Before (Problematic):
+query = "INSERT INTO departments (..., head_teacher_id, ...) VALUES (?, ?, ?, ?, ?)"
+parameters.Add(If(department.HeadTeacherId.HasValue, department.HeadTeacherId.Value, DBNull.Value))
+
+' After (Fixed):
+If department.HeadTeacherId.HasValue Then
+    query = "INSERT INTO departments (..., head_teacher_id, ...) VALUES (?, ?, ?, ?, ?)"
+    ' Pass actual teacher ID as parameter
+Else
+    query = "INSERT INTO departments (..., head_teacher_id, ...) VALUES (?, ?, ?, NULL, ?)"
+    ' Use explicit NULL in SQL, no parameter needed
+End If
+```
+
+---
+
+#### Department Sorting and Filtering
+**Feature:** Implemented comprehensive department-based sorting and filtering
+
+**Implementation:**
+- **Faculty Department Filter:**
+  - Department ComboBox in FormFaculty header
+  - "All Departments" option (default) shows all faculty
+  - Department-specific options show only faculty from that department
+  - Real-time filtering updates faculty list immediately
+
+- **Combined Search and Filter:**
+  - Search functionality works within selected department
+  - Department filter persists during search operations
+  - Clear visual feedback showing applied filters
+  - Result counts logged for debugging
+
+- **Department Column Display:**
+  - Added "DEPARTMENT" column to faculty DataGridView
+  - Shows department code for each faculty member
+  - Displays "No Dept" for faculty without department assignment
+  - Auto-sizing column based on content
+
+**User Experience:**
+- **Default View:** Shows all faculty with their departments
+- **Department Filter:** Select "ENG - English Department" shows only English faculty
+- **Search Integration:** Type "John" while "Math Department" selected shows only Math faculty named John
+- **Visual Indicators:** Department column clearly shows each faculty's assignment
+
+---
+
+### 🔧 Department Management Benefits
+
+#### Administrative Efficiency
+- ✅ **Centralized Department Management** - Single location for all department operations
+- ✅ **Faculty Organization** - Clear department assignments for all faculty
+- ✅ **Quick Filtering** - Instantly view faculty by department
+- ✅ **Department Head Tracking** - Optional assignment of department heads
+
+#### Data Integrity
+- ✅ **Referential Integrity** - Proper foreign key relationships
+- ✅ **Unique Constraints** - No duplicate department codes
+- ✅ **Soft Deletes** - Preserve historical data while hiding inactive departments
+- ✅ **Required Assignments** - All new faculty must have department
+
+#### User Experience
+- ✅ **Intuitive Interface** - Familiar CRUD operations with clear navigation
+- ✅ **Real-time Filtering** - Immediate results when changing department filter
+- ✅ **Clear Validation** - Specific error messages guide users to correct issues
+- ✅ **Visual Indicators** - Department column shows assignments at a glance
+
+---
+
+### 📊 Department Management Statistics
+
+#### Files Created/Modified
+- **New Files Created:** 7 department management files
+- **Files Modified:** 4 existing faculty management files
+- **New Methods Added:** 15+ new methods across service and repository layers
+- **Lines of Code Added:** 800+ lines of clean, documented code
+
+#### Features Delivered
+- ✅ **Complete CRUD Operations** for departments
+- ✅ **Department-Faculty Integration** with assignment tracking
+- ✅ **Advanced Filtering and Sorting** by department
+- ✅ **Required Department Selection** for new faculty
+- ✅ **Foreign Key Constraint Resolution** for NULL handling
+- ✅ **Comprehensive Validation** with user-friendly messages
+- ✅ **Full Audit Trail** with detailed logging
+
+---
+
+*Last Updated: 2025-10-13 21:00:00*
+*System Version: 2.1.0 - Department Management System*

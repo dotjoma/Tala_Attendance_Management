@@ -94,11 +94,33 @@
   <ItemGroup>
     <Compile Include="common\Helpers\NameFormatter.vb" />
     <Compile Include="common\Helpers\ValidationHelper.vb" />
+    <Compile Include="Core\Entities\Department.vb" />
+    <Compile Include="Core\Interfaces\IDepartmentService.vb" />
+    <Compile Include="Core\Services\DepartmentService.vb" />
     <Compile Include="infrastructure\Data\Context\DatabaseContext.vb" />
+    <Compile Include="infrastructure\Data\Repositories\DepartmentRepository.vb" />
     <Compile Include="Presentation\Forms\Announcements\AddAnnouncement.Designer.vb">
       <DependentUpon>AddAnnouncement.vb</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Forms\Announcements\AddAnnouncement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Departments\AddDepartment.Designer.vb">
+      <DependentUpon>AddDepartment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Departments\AddDepartment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Departments\DepartmentSelector.Designer.vb">
+      <DependentUpon>DepartmentSelector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Departments\DepartmentSelector.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Forms\Departments\FormDepartments.Designer.vb">
+      <DependentUpon>FormDepartments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Departments\FormDepartments.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentation\Forms\Faculty\AddFaculty.Designer.vb">
@@ -362,6 +384,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Presentation\Forms\Announcements\AddAnnouncement.resx">
       <DependentUpon>AddAnnouncement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Departments\AddDepartment.resx">
+      <DependentUpon>AddDepartment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Departments\DepartmentSelector.resx">
+      <DependentUpon>DepartmentSelector.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Departments\FormDepartments.resx">
+      <DependentUpon>FormDepartments.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Forms\Faculty\AddFaculty.resx">
       <DependentUpon>AddFaculty.vb</DependentUpon>

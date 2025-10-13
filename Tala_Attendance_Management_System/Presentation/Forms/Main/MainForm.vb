@@ -108,7 +108,39 @@ Public Class MainForm
     End Sub
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Timer1.Enabled = True
+        Try
+            Timer1.Enabled = True
+
+            ' Apply role-based access control
+            ApplyRoleBasedAccess()
+
+            _logger.LogInfo($"MainForm loaded for user role: {currentUserRole}")
+        Catch ex As Exception
+            _logger.LogError($"Error in MainForm_Load: {ex.Message}")
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Applies role-based access control to menu items and UI elements
+    ''' </summary>
+    Private Sub ApplyRoleBasedAccess()
+        Try
+            _logger.LogInfo($"Applying role-based access control for role: {currentUserRole}")
+
+            ' Hide Administration menu for non-admin users
+            If currentUserRole.ToLower() <> "admin" Then
+                AdministrationToolStripMenuItem.Visible = False
+                tsManageAccounts.Visible = False ' Hide Manage Accounts toolbar button for HR users
+                _logger.LogInfo($"Administration menu hidden for role: {currentUserRole}")
+            Else
+                AdministrationToolStripMenuItem.Visible = True
+                tsManageAccounts.Visible = True
+                _logger.LogInfo($"Administration menu visible for admin role")
+            End If
+
+        Catch ex As Exception
+            _logger.LogError($"Error applying role-based access control: {ex.Message}")
+        End Try
     End Sub
     Function FacultyCount() As Integer
         Dim sql As String = "SELECT COUNT(*) FROM teacherinformation WHERE isActive > 0"
@@ -191,7 +223,7 @@ Public Class MainForm
             End If
 
             _logger.LogInfo("MainForm closed successfully - Application exiting")
-            
+
             ' Exit the application completely
             Application.Exit()
         Catch ex As Exception
@@ -490,6 +522,51 @@ Public Class MainForm
             _logger.LogError("Error during application exit", ex)
             MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Application.Exit()
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Opens the Department Management form (Admin only)
+    ''' </summary>
+    Private Sub ManageDepartmentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManageDepartmentToolStripMenuItem.Click
+        Try
+            _logger.LogInfo($"ManageDepartment menu clicked by user role: {currentUserRole}")
+
+            ' Double-check admin access (should be hidden for non-admins, but extra security)
+            If currentUserRole.ToLower() <> "admin" Then
+                _logger.LogWarning($"Unauthorized access attempt to Department Management by role: {currentUserRole}")
+                MessageBox.Show("Access denied. Only administrators can manage departments.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            ' Open FormDepartments as modal dialog
+            Using deptForm As New FormDepartments()
+                _logger.LogInfo("Opening Department Management form")
+                deptForm.ShowDialog(Me)
+                _logger.LogInfo("Department Management form closed")
+            End Using
+
+        Catch ex As Exception
+            _logger.LogError($"Error opening Department Management form: {ex.Message}")
+            MessageBox.Show("Error opening Department Management. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Public method to set user role and apply access control
+    ''' Called from LoginForm after successful login
+    ''' </summary>
+    Public Sub SetUserRole(role As String)
+        Try
+            currentUserRole = role
+            _logger.LogInfo($"User role set to: {role}")
+
+            ' Apply role-based access control if form is loaded
+            If Me.IsHandleCreated Then
+                ApplyRoleBasedAccess()
+            End If
+        Catch ex As Exception
+            _logger.LogError($"Error setting user role: {ex.Message}")
         End Try
     End Sub
 End Class

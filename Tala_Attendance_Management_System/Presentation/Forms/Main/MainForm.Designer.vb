@@ -29,6 +29,7 @@ Partial Class MainForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.labelCurrentUser = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.lblUser = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.toolStripNav = New System.Windows.Forms.ToolStrip()
         Me.tsBtnFaculty = New System.Windows.Forms.ToolStripButton()
@@ -47,10 +48,11 @@ Partial Class MainForm
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.msLogout = New System.Windows.Forms.ToolStripMenuItem()
         Me.msExit = New System.Windows.Forms.ToolStripMenuItem()
-        Me.lblUser = New System.Windows.Forms.Label()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AdministrationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ManageDepartmentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel5.SuspendLayout()
         Me.toolStripNav.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -107,6 +109,18 @@ Partial Class MainForm
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(1444, 45)
         Me.Panel5.TabIndex = 18
+        '
+        'lblUser
+        '
+        Me.lblUser.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.lblUser.AutoSize = True
+        Me.lblUser.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUser.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.lblUser.Location = New System.Drawing.Point(1, 14)
+        Me.lblUser.Name = "lblUser"
+        Me.lblUser.Size = New System.Drawing.Size(221, 16)
+        Me.lblUser.TabIndex = 16
+        Me.lblUser.Text = "Logged in as: Mark Eliot (Admin)"
         '
         'Label6
         '
@@ -216,14 +230,14 @@ Partial Class MainForm
         '
         Me.tsLogs.Image = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_elective_30
         Me.tsLogs.Name = "tsLogs"
-        Me.tsLogs.Size = New System.Drawing.Size(180, 28)
+        Me.tsLogs.Size = New System.Drawing.Size(167, 28)
         Me.tsLogs.Text = "LOGS"
         '
         'tsFaculty
         '
         Me.tsFaculty.Image = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_cog_48
         Me.tsFaculty.Name = "tsFaculty"
-        Me.tsFaculty.Size = New System.Drawing.Size(180, 28)
+        Me.tsFaculty.Size = New System.Drawing.Size(167, 28)
         Me.tsFaculty.Text = "FACULTY"
         '
         'TableLayoutPanel1
@@ -237,7 +251,7 @@ Partial Class MainForm
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 607.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 596.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(1444, 596)
         Me.TableLayoutPanel1.TabIndex = 32
         '
@@ -265,7 +279,7 @@ Partial Class MainForm
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.AdministrationToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1444, 24)
@@ -280,13 +294,6 @@ Partial Class MainForm
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
-        'HelpToolStripMenuItem
-        '
-        Me.HelpToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!)
-        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
-        Me.HelpToolStripMenuItem.Text = "Help"
-        '
         'msLogout
         '
         Me.msLogout.Name = "msLogout"
@@ -299,17 +306,26 @@ Partial Class MainForm
         Me.msExit.Size = New System.Drawing.Size(180, 22)
         Me.msExit.Text = "Exit"
         '
-        'lblUser
+        'HelpToolStripMenuItem
         '
-        Me.lblUser.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.lblUser.AutoSize = True
-        Me.lblUser.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUser.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.lblUser.Location = New System.Drawing.Point(1, 14)
-        Me.lblUser.Name = "lblUser"
-        Me.lblUser.Size = New System.Drawing.Size(221, 16)
-        Me.lblUser.TabIndex = 16
-        Me.lblUser.Text = "Logged in as: Mark Eliot (Admin)"
+        Me.HelpToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!)
+        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
+        Me.HelpToolStripMenuItem.Text = "Help"
+        '
+        'AdministrationToolStripMenuItem
+        '
+        Me.AdministrationToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManageDepartmentToolStripMenuItem})
+        Me.AdministrationToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!)
+        Me.AdministrationToolStripMenuItem.Name = "AdministrationToolStripMenuItem"
+        Me.AdministrationToolStripMenuItem.Size = New System.Drawing.Size(112, 20)
+        Me.AdministrationToolStripMenuItem.Text = "Administration"
+        '
+        'ManageDepartmentToolStripMenuItem
+        '
+        Me.ManageDepartmentToolStripMenuItem.Name = "ManageDepartmentToolStripMenuItem"
+        Me.ManageDepartmentToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.ManageDepartmentToolStripMenuItem.Text = "Manage Department"
         '
         'MainForm
         '
@@ -374,4 +390,6 @@ Partial Class MainForm
     Friend WithEvents msLogout As ToolStripMenuItem
     Friend WithEvents msExit As ToolStripMenuItem
     Friend WithEvents lblUser As Label
+    Friend WithEvents AdministrationToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ManageDepartmentToolStripMenuItem As ToolStripMenuItem
 End Class
