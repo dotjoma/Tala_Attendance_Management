@@ -6,48 +6,33 @@ Public Class AddUser
 
     ' Function to get the maximum user ID
     Function GetUserID() As Integer
-        Dim cmd As Odbc.OdbcCommand
-        Dim maxLoginID As Integer = 0 ' Variable to store the max login_id
-
         Try
-            connectDB()
-            cmd = New Odbc.OdbcCommand("SELECT MAX(login_id) FROM logins", con)
-
-            ' Execute the command and store the result in maxLoginID
-            Dim result = cmd.ExecuteScalar()
-
-            ' Check if result is not null and assign it to maxLoginID
-            If Not IsDBNull(result) Then
-                maxLoginID = Convert.ToInt32(result)
+            Dim dbContext As New DatabaseContext()
+            Dim result = dbContext.ExecuteScalar("SELECT MAX(login_id) FROM logins")
+            
+            ' Check if result is not null and return it
+            If Not IsDBNull(result) AndAlso result IsNot Nothing Then
+                Return Convert.ToInt32(result)
+            Else
+                Return 0
             End If
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
-        Finally
-            GC.Collect()
-            con.Close()
+            Return 0
         End Try
-
-        Return maxLoginID
     End Function
 
     ' Function to check if the username is unique, with an optional userID to exclude from the check
     Private Function IsUsernameUnique(username As String, Optional excludeUserID As Integer = 0) As Boolean
         Try
-            connectDB()
+            Dim dbContext As New DatabaseContext()
             ' Modify the query to check for uniqueness while excluding the current user's username (if updating)
             Dim query As String = "SELECT COUNT(*) FROM logins WHERE username = ? AND login_id <> ? AND isActive=1"
-            Dim command As New Odbc.OdbcCommand(query, con)
-            command.Parameters.AddWithValue("?", username)
-            command.Parameters.AddWithValue("?", excludeUserID) ' Exclude the current user's login_id when updating
-
-            Dim result As Integer = Convert.ToInt32(command.ExecuteScalar())
+            Dim result As Integer = Convert.ToInt32(dbContext.ExecuteScalar(query, username, excludeUserID))
             Return result = 0 ' If count is 0, the username is unique
         Catch ex As Exception
             MessageBox.Show("Error checking for duplicate username: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
-        Finally
-            con.Close()
-            GC.Collect()
         End Try
     End Function
 

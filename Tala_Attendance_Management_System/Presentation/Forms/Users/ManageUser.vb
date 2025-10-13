@@ -25,7 +25,7 @@ Public Class ManageUser
         dgvManageUser.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.ColumnHeader)
         dgvManageUser.AutoGenerateColumns = False
 
-        loadDGV("SELECT login_id, fullname AS full_name, email, address, created_at, role, 
+        FormHelper.LoadDataGridView("SELECT login_id, fullname AS full_name, email, address, created_at, role, 
                  username, REPEAT('*', CHAR_LENGTH(password)) AS password  
                  FROM logins
                  WHERE isActive=1", dgvManageUser)

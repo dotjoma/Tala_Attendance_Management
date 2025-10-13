@@ -13,7 +13,7 @@ Public Class FormFaculty
             connectDB()
 
             ' Load Region ComboBox first
-            loadCBO("SELECT * FROM refregion ORDER BY regDesc", "id", "regDesc", AddFaculty.cbRegion)
+            FormHelper.LoadComboBox("SELECT * FROM refregion ORDER BY regDesc", "id", "regDesc", AddFaculty.cbRegion)
             AddFaculty.cbRegion.SelectedValue = regionId
 
             ' Load Province ComboBox based on selected region
@@ -24,7 +24,7 @@ Public Class FormFaculty
                 Dim regionCode As String = regionCmd.ExecuteScalar()?.ToString()
 
                 If Not String.IsNullOrEmpty(regionCode) Then
-                    loadCBO($"SELECT * FROM refprovince WHERE regCode = {regionCode} ORDER BY provdesc", "id", "provdesc", AddFaculty.cbProvince)
+                    FormHelper.LoadComboBox($"SELECT * FROM refprovince WHERE regCode = {regionCode} ORDER BY provdesc", "id", "provdesc", AddFaculty.cbProvince)
                     AddFaculty.cbProvince.SelectedValue = provinceId
                 End If
             End If
@@ -37,7 +37,7 @@ Public Class FormFaculty
                 Dim provinceCode As String = provinceCmd.ExecuteScalar()?.ToString()
 
                 If Not String.IsNullOrEmpty(provinceCode) Then
-                    loadCBO($"SELECT * FROM refcitymun WHERE provcode = {provinceCode} ORDER BY citymundesc", "id", "citymundesc", AddFaculty.cbCity)
+                    FormHelper.LoadComboBox($"SELECT * FROM refcitymun WHERE provcode = {provinceCode} ORDER BY citymundesc", "id", "citymundesc", AddFaculty.cbCity)
                     AddFaculty.cbCity.SelectedValue = cityId
                 End If
             End If

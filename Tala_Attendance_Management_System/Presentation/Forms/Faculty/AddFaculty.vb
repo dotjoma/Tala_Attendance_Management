@@ -20,7 +20,7 @@ Public Class AddFaculty
             If teacher IsNot Nothing Then
                 teacher.DefaultSettings()
             End If
-            ClearFields(panelContainer)
+            FormHelper.ClearFields(panelContainer)
             txtID.Text = "0"
         Catch ex As Exception
             _logger.LogError("Error in AddFaculty_FormClosing", ex)
@@ -39,10 +39,10 @@ Public Class AddFaculty
 
         Dim tmpString = "--"
         Dim ms As New MemoryStream
-        
+
         ' Format faculty name for logging
-        Dim facultyName As String = FormatFullName(Trim(txtFirstName.Text), Trim(txtMiddleName.Text), Trim(txtLastName.Text), Trim(txtExtName.Text))
-        
+        Dim facultyName As String = NameFormatter.FormatFullName(Trim(txtFirstName.Text), Trim(txtMiddleName.Text), Trim(txtLastName.Text), Trim(txtExtName.Text))
+
         _logger.LogInfo($"Faculty save initiated - Name: '{facultyName}', Employee ID: '{Trim(txtEmployeeID.Text)}', Mode: {If(Val(txtID.Text) > 0, "Update", "Create")}")
 
         If Trim(txtExtName.TextLength) <= 0 Then
@@ -51,90 +51,87 @@ Public Class AddFaculty
         If txtTagID.TextLength <= 0 Then
             txtTagID.Text = tmpString
         End If
-        
+
         ' Prepare middle name value (NULL if empty, otherwise the actual value)
         Dim middleNameValue As Object = If(String.IsNullOrWhiteSpace(txtMiddleName.Text), DBNull.Value, Trim(txtMiddleName.Text))
-        
+
         ' Validate required fields
-        If fieldChecker(panelContainer) = False Then
+        If Not ValidationHelper.ValidateRequiredFields(panelContainer) Then
             _logger.LogWarning($"Faculty save validation failed - Required fields missing for '{facultyName}'")
             Return
         End If
-        
-        If fieldChecker(panelContainer) = True Then
-            Try
-                Call connectDB()
-                pbProfile.Image.Save(ms, pbProfile.Image.RawFormat)
-                If pbProfile.Image IsNot Nothing Then
-                    If Val(txtID.Text) > 0 Then
-                        _logger.LogInfo($"Updating faculty record - ID: {txtID.Text}, Name: '{facultyName}'")
-                        cmd = New System.Data.Odbc.OdbcCommand(updateTeacher, con)
-                        With cmd.Parameters
-                            .AddWithValue("@", Trim(txtEmployeeID.Text))
-                            .AddWithValue("@", ms.ToArray)
-                            .AddWithValue("@", Trim(txtTagID.Text))
-                            .AddWithValue("@", Trim(txtLastName.Text))
-                            .AddWithValue("@", Trim(txtFirstName.Text))
-                            .AddWithValue("@", middleNameValue)
-                            .AddWithValue("@", Trim(txtExtName.Text))
-                            .AddWithValue("@", Trim(txtEmail.Text))
-                            .AddWithValue("@", Trim(cbGender.Text))
-                            .AddWithValue("@", dtpBirthdate.Text)
-                            .AddWithValue("@", Trim(txtContactNo.Text))
-                            .AddWithValue("@", Trim(txtHome.Text))
-                            .AddWithValue("@", cbBrgy.SelectedValue)
-                            .AddWithValue("@", cbCity.SelectedValue)
-                            .AddWithValue("@", cbProvince.SelectedValue)
-                            .AddWithValue("@", cbRegion.SelectedValue)
-                            .AddWithValue("@", Trim(txtEmergencyContact.Text))
-                            .AddWithValue("@", cbRelationship.Text)
-                            .AddWithValue("@", txtID.Text)
-                        End With
-                        cmd.ExecuteNonQuery()
-                        _logger.LogInfo($"Faculty record updated successfully - ID: {txtID.Text}, Name: '{facultyName}', Employee ID: '{Trim(txtEmployeeID.Text)}'")
-                        MsgBox("Record has been updated.", vbInformation, "Updated")
-                        Me.Close()
-                    Else
-                        _logger.LogInfo($"Creating new faculty record - Name: '{facultyName}', Employee ID: '{Trim(txtEmployeeID.Text)}'")
-                        cmd = New System.Data.Odbc.OdbcCommand(insertTeacher, con)
-                        With cmd.Parameters
-                            .AddWithValue("@", Trim(txtEmployeeID.Text))
-                            .AddWithValue("@", ms.ToArray)
-                            .AddWithValue("@", Trim(txtTagID.Text))
-                            .AddWithValue("@", Trim(txtLastName.Text))
-                            .AddWithValue("@", Trim(txtFirstName.Text))
-                            .AddWithValue("@", middleNameValue)
-                            .AddWithValue("@", Trim(txtExtName.Text))
-                            .AddWithValue("@", Trim(txtEmail.Text))
-                            .AddWithValue("@", Trim(cbGender.Text))
-                            .AddWithValue("@", dtpBirthdate.Text)
-                            .AddWithValue("@", Trim(txtContactNo.Text))
-                            .AddWithValue("@", Trim(txtHome.Text))
-                            .AddWithValue("@", cbBrgy.SelectedValue)
-                            .AddWithValue("@", cbCity.SelectedValue)
-                            .AddWithValue("@", cbProvince.SelectedValue)
-                            .AddWithValue("@", cbRegion.SelectedValue)
-                            .AddWithValue("@", Trim(txtEmergencyContact.Text))
-                            .AddWithValue("@", cbRelationship.Text)
-                        End With
-                        cmd.ExecuteNonQuery()
-                        _logger.LogInfo($"Faculty record created successfully - Name: '{facultyName}', Employee ID: '{Trim(txtEmployeeID.Text)}', RFID: '{Trim(txtTagID.Text)}'")
-                        MsgBox("New record added successfully", vbInformation, "Success")
-                        Me.Close()
-                    End If
-                    ClearFields(panelContainer)
+        Try
+            Call connectDB()
+            pbProfile.Image.Save(ms, pbProfile.Image.RawFormat)
+            If pbProfile.Image IsNot Nothing Then
+                If Val(txtID.Text) > 0 Then
+                    _logger.LogInfo($"Updating faculty record - ID: {txtID.Text}, Name: '{facultyName}'")
+                    cmd = New System.Data.Odbc.OdbcCommand(updateTeacher, con)
+                    With cmd.Parameters
+                        .AddWithValue("@", Trim(txtEmployeeID.Text))
+                        .AddWithValue("@", ms.ToArray)
+                        .AddWithValue("@", Trim(txtTagID.Text))
+                        .AddWithValue("@", Trim(txtLastName.Text))
+                        .AddWithValue("@", Trim(txtFirstName.Text))
+                        .AddWithValue("@", middleNameValue)
+                        .AddWithValue("@", Trim(txtExtName.Text))
+                        .AddWithValue("@", Trim(txtEmail.Text))
+                        .AddWithValue("@", Trim(cbGender.Text))
+                        .AddWithValue("@", dtpBirthdate.Text)
+                        .AddWithValue("@", Trim(txtContactNo.Text))
+                        .AddWithValue("@", Trim(txtHome.Text))
+                        .AddWithValue("@", cbBrgy.SelectedValue)
+                        .AddWithValue("@", cbCity.SelectedValue)
+                        .AddWithValue("@", cbProvince.SelectedValue)
+                        .AddWithValue("@", cbRegion.SelectedValue)
+                        .AddWithValue("@", Trim(txtEmergencyContact.Text))
+                        .AddWithValue("@", cbRelationship.Text)
+                        .AddWithValue("@", txtID.Text)
+                    End With
+                    cmd.ExecuteNonQuery()
+                    _logger.LogInfo($"Faculty record updated successfully - ID: {txtID.Text}, Name: '{facultyName}', Employee ID: '{Trim(txtEmployeeID.Text)}'")
+                    MsgBox("Record has been updated.", vbInformation, "Updated")
+                    Me.Close()
                 Else
-                    _logger.LogWarning($"Faculty save failed - Profile picture missing for '{facultyName}'")
-                    MessageBox.Show("Profile picture should not be empty. Please select a picture.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    _logger.LogInfo($"Creating new faculty record - Name: '{facultyName}', Employee ID: '{Trim(txtEmployeeID.Text)}'")
+                    cmd = New System.Data.Odbc.OdbcCommand(insertTeacher, con)
+                    With cmd.Parameters
+                        .AddWithValue("@", Trim(txtEmployeeID.Text))
+                        .AddWithValue("@", ms.ToArray)
+                        .AddWithValue("@", Trim(txtTagID.Text))
+                        .AddWithValue("@", Trim(txtLastName.Text))
+                        .AddWithValue("@", Trim(txtFirstName.Text))
+                        .AddWithValue("@", middleNameValue)
+                        .AddWithValue("@", Trim(txtExtName.Text))
+                        .AddWithValue("@", Trim(txtEmail.Text))
+                        .AddWithValue("@", Trim(cbGender.Text))
+                        .AddWithValue("@", dtpBirthdate.Text)
+                        .AddWithValue("@", Trim(txtContactNo.Text))
+                        .AddWithValue("@", Trim(txtHome.Text))
+                        .AddWithValue("@", cbBrgy.SelectedValue)
+                        .AddWithValue("@", cbCity.SelectedValue)
+                        .AddWithValue("@", cbProvince.SelectedValue)
+                        .AddWithValue("@", cbRegion.SelectedValue)
+                        .AddWithValue("@", Trim(txtEmergencyContact.Text))
+                        .AddWithValue("@", cbRelationship.Text)
+                    End With
+                    cmd.ExecuteNonQuery()
+                    _logger.LogInfo($"Faculty record created successfully - Name: '{facultyName}', Employee ID: '{Trim(txtEmployeeID.Text)}', RFID: '{Trim(txtTagID.Text)}'")
+                    MsgBox("New record added successfully", vbInformation, "Success")
+                    Me.Close()
                 End If
-            Catch ex As Exception
-                _logger.LogError($"Error saving faculty record - Name: '{facultyName}', Employee ID: '{Trim(txtEmployeeID.Text)}'", ex)
-                MsgBox(ex.Message.ToString)
-            Finally
-                con.Close()
-                GC.Collect()
-            End Try
-        End If
+                FormHelper.ClearFields(panelContainer)
+            Else
+                _logger.LogWarning($"Faculty save failed - Profile picture missing for '{facultyName}'")
+                MessageBox.Show("Profile picture should not be empty. Please select a picture.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            _logger.LogError($"Error saving faculty record - Name: '{facultyName}', Employee ID: '{Trim(txtEmployeeID.Text)}'", ex)
+            MsgBox(ex.Message.ToString)
+        Finally
+            con.Close()
+            GC.Collect()
+        End Try
     End Sub
 
     Private Sub cbProvince_Click(sender As Object, e As EventArgs) Handles cbProvince.Click
@@ -148,7 +145,7 @@ Public Class AddFaculty
             Dim myreader As OdbcDataReader = cmd.ExecuteReader
             If myreader.Read Then
                 code = myreader("regCode")
-                loadCBO("SELECT * FROM refprovince WHERE regCode= " & code & " ORDER BY provdesc", "id", "provdesc", cbProvince)
+                FormHelper.LoadComboBox("SELECT * FROM refprovince WHERE regCode= " & code & " ORDER BY provdesc", "id", "provdesc", cbProvince)
             End If
         Catch ex As Exception
 
@@ -167,7 +164,7 @@ Public Class AddFaculty
     End Sub
 
     Private Sub cbRegion_Click(sender As Object, e As EventArgs) Handles cbRegion.Click
-        loadCBO("SELECT * FROM refregion ORDER BY regDesc", "id", "regDesc", cbRegion)
+        FormHelper.LoadComboBox("SELECT * FROM refregion ORDER BY regDesc", "id", "regDesc", cbRegion)
     End Sub
 
     Private Sub cbCity_Click(sender As Object, e As EventArgs) Handles cbCity.Click
@@ -182,7 +179,7 @@ Public Class AddFaculty
             Dim myreader As OdbcDataReader = cmd.ExecuteReader
             If myreader.Read Then
                 code = myreader("provCode")
-                loadCBO("SELECT * FROM refcitymun WHERE provcode = " & code & " ORDER BY citymundesc", "id", "citymundesc", cbCity)
+                FormHelper.LoadComboBox("SELECT * FROM refcitymun WHERE provcode = " & code & " ORDER BY citymundesc", "id", "citymundesc", cbCity)
             End If
         Catch ex As Exception
 
@@ -204,7 +201,7 @@ Public Class AddFaculty
             Dim myreader As OdbcDataReader = cmd.ExecuteReader
             If myreader.Read Then
                 code = myreader("citymuncode")
-                loadCBO("SELECT * FROM refbrgy WHERE citymuncode = " & code & " ORDER BY brgyDesc", "id", "brgyDesc", cbBrgy)
+                FormHelper.LoadComboBox("SELECT * FROM refbrgy WHERE citymuncode = " & code & " ORDER BY brgyDesc", "id", "brgyDesc", cbBrgy)
             End If
         Catch ex As Exception
 

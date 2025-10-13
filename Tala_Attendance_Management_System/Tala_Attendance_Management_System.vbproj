@@ -92,6 +92,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="common\Helpers\NameFormatter.vb" />
+    <Compile Include="common\Helpers\ValidationHelper.vb" />
+    <Compile Include="infrastructure\Data\Context\DatabaseContext.vb" />
     <Compile Include="Presentation\Forms\Announcements\AddAnnouncement.Designer.vb">
       <DependentUpon>AddAnnouncement.vb</DependentUpon>
     </Compile>
@@ -347,13 +350,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="myModule.vb" />
+    <Compile Include="Legacy\myModule.vb" />
     <Compile Include="Presentation\Forms\Students\StudentCard.Designer.vb">
       <DependentUpon>StudentCard.vb</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Forms\Students\StudentCard.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Presentation\Helpers\FormHelper.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Presentation\Forms\Announcements\AddAnnouncement.resx">
@@ -615,7 +619,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Presentation\Controls\" />
-    <Folder Include="Presentation\Helpers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
