@@ -690,7 +690,7 @@ Partial Class AddFaculty
         Me.Label15.BackColor = System.Drawing.Color.Transparent
         Me.Label15.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.ForeColor = System.Drawing.Color.Red
-        Me.Label15.Location = New System.Drawing.Point(134, 53)
+        Me.Label15.Location = New System.Drawing.Point(134, 56)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(24, 24)
         Me.Label15.TabIndex = 85
@@ -702,7 +702,7 @@ Partial Class AddFaculty
         Me.Label9.BackColor = System.Drawing.Color.Transparent
         Me.Label9.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.Red
-        Me.Label9.Location = New System.Drawing.Point(122, 108)
+        Me.Label9.Location = New System.Drawing.Point(122, 111)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(24, 24)
         Me.Label9.TabIndex = 274
@@ -714,7 +714,7 @@ Partial Class AddFaculty
         Me.Label18.BackColor = System.Drawing.Color.Transparent
         Me.Label18.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.ForeColor = System.Drawing.Color.Red
-        Me.Label18.Location = New System.Drawing.Point(118, 161)
+        Me.Label18.Location = New System.Drawing.Point(118, 164)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(24, 24)
         Me.Label18.TabIndex = 275
@@ -726,7 +726,7 @@ Partial Class AddFaculty
         Me.Label35.BackColor = System.Drawing.Color.Transparent
         Me.Label35.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label35.ForeColor = System.Drawing.Color.Red
-        Me.Label35.Location = New System.Drawing.Point(139, 216)
+        Me.Label35.Location = New System.Drawing.Point(139, 219)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(24, 24)
         Me.Label35.TabIndex = 276
@@ -738,7 +738,7 @@ Partial Class AddFaculty
         Me.Label20.BackColor = System.Drawing.Color.Transparent
         Me.Label20.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.ForeColor = System.Drawing.Color.Red
-        Me.Label20.Location = New System.Drawing.Point(448, 166)
+        Me.Label20.Location = New System.Drawing.Point(448, 169)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(24, 24)
         Me.Label20.TabIndex = 277
@@ -750,7 +750,7 @@ Partial Class AddFaculty
         Me.Label17.BackColor = System.Drawing.Color.Transparent
         Me.Label17.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.Color.Red
-        Me.Label17.Location = New System.Drawing.Point(415, 219)
+        Me.Label17.Location = New System.Drawing.Point(415, 222)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(24, 24)
         Me.Label17.TabIndex = 278
@@ -762,7 +762,7 @@ Partial Class AddFaculty
         Me.Label40.BackColor = System.Drawing.Color.Transparent
         Me.Label40.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label40.ForeColor = System.Drawing.Color.Red
-        Me.Label40.Location = New System.Drawing.Point(470, 272)
+        Me.Label40.Location = New System.Drawing.Point(470, 275)
         Me.Label40.Name = "Label40"
         Me.Label40.Size = New System.Drawing.Size(24, 24)
         Me.Label40.TabIndex = 279
@@ -774,7 +774,7 @@ Partial Class AddFaculty
         Me.Label26.BackColor = System.Drawing.Color.Transparent
         Me.Label26.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label26.ForeColor = System.Drawing.Color.Red
-        Me.Label26.Location = New System.Drawing.Point(92, 368)
+        Me.Label26.Location = New System.Drawing.Point(92, 371)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(24, 24)
         Me.Label26.TabIndex = 280
@@ -786,7 +786,7 @@ Partial Class AddFaculty
         Me.Label32.BackColor = System.Drawing.Color.Transparent
         Me.Label32.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label32.ForeColor = System.Drawing.Color.Red
-        Me.Label32.Location = New System.Drawing.Point(73, 421)
+        Me.Label32.Location = New System.Drawing.Point(73, 424)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(24, 24)
         Me.Label32.TabIndex = 281
@@ -798,7 +798,7 @@ Partial Class AddFaculty
         Me.Label23.BackColor = System.Drawing.Color.Transparent
         Me.Label23.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.ForeColor = System.Drawing.Color.Red
-        Me.Label23.Location = New System.Drawing.Point(108, 474)
+        Me.Label23.Location = New System.Drawing.Point(108, 477)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(24, 24)
         Me.Label23.TabIndex = 282
@@ -810,7 +810,7 @@ Partial Class AddFaculty
         Me.Label31.BackColor = System.Drawing.Color.Transparent
         Me.Label31.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label31.ForeColor = System.Drawing.Color.Red
-        Me.Label31.Location = New System.Drawing.Point(444, 368)
+        Me.Label31.Location = New System.Drawing.Point(444, 371)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(24, 24)
         Me.Label31.TabIndex = 283
@@ -822,7 +822,7 @@ Partial Class AddFaculty
         Me.Label33.BackColor = System.Drawing.Color.Transparent
         Me.Label33.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label33.ForeColor = System.Drawing.Color.Red
-        Me.Label33.Location = New System.Drawing.Point(488, 423)
+        Me.Label33.Location = New System.Drawing.Point(488, 426)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(24, 24)
         Me.Label33.TabIndex = 284
@@ -834,7 +834,7 @@ Partial Class AddFaculty
         Me.Label27.BackColor = System.Drawing.Color.Transparent
         Me.Label27.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label27.ForeColor = System.Drawing.Color.Red
-        Me.Label27.Location = New System.Drawing.Point(142, 30)
+        Me.Label27.Location = New System.Drawing.Point(142, 33)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(24, 24)
         Me.Label27.TabIndex = 276
@@ -846,7 +846,7 @@ Partial Class AddFaculty
         Me.Label28.BackColor = System.Drawing.Color.Transparent
         Me.Label28.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label28.ForeColor = System.Drawing.Color.Red
-        Me.Label28.Location = New System.Drawing.Point(154, 91)
+        Me.Label28.Location = New System.Drawing.Point(154, 94)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(24, 24)
         Me.Label28.TabIndex = 277
@@ -858,7 +858,7 @@ Partial Class AddFaculty
         Me.Label30.BackColor = System.Drawing.Color.Transparent
         Me.Label30.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label30.ForeColor = System.Drawing.Color.Red
-        Me.Label30.Location = New System.Drawing.Point(477, 29)
+        Me.Label30.Location = New System.Drawing.Point(477, 32)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(24, 24)
         Me.Label30.TabIndex = 278

@@ -58,7 +58,7 @@
                 query = "
                     INSERT INTO departments (department_code, department_name, description, head_teacher_id, is_active)
                     VALUES (?, ?, ?, ?, ?)"
-                
+
                 result = _dbContext.ExecuteNonQuery(query,
                     department.DepartmentCode,
                     department.DepartmentName,
@@ -69,7 +69,7 @@
                 query = "
                     INSERT INTO departments (department_code, department_name, description, head_teacher_id, is_active)
                     VALUES (?, ?, ?, NULL, ?)"
-                
+
                 result = _dbContext.ExecuteNonQuery(query,
                     department.DepartmentCode,
                     department.DepartmentName,

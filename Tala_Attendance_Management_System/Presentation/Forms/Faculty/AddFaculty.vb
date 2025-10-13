@@ -34,7 +34,7 @@ Public Class AddFaculty
             ' Add "No Department" option first (required selection)
             Dim noDataRow As DataRow = dt.NewRow()
             noDataRow("department_id") = DBNull.Value
-            noDataRow("department_display") = "-- Select Department (Required) --"
+            noDataRow("department_display") = "-- Select Department --"
             dt.Rows.Add(noDataRow)
 
             ' Get departments from service
