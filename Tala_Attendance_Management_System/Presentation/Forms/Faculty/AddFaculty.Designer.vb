@@ -325,7 +325,7 @@ Partial Class AddFaculty
         Me.cbRelationship.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbRelationship.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbRelationship.FormattingEnabled = True
-        Me.cbRelationship.Items.AddRange(New Object() {"Father", "Mother", "Brother", "Sister", "Cousin"})
+        Me.cbRelationship.Items.AddRange(New Object() {"Father", "Mother", "Brother", "Sister", "Cousin", "Spouse"})
         Me.cbRelationship.Location = New System.Drawing.Point(385, 57)
         Me.cbRelationship.Name = "cbRelationship"
         Me.cbRelationship.Size = New System.Drawing.Size(202, 29)
@@ -738,7 +738,7 @@ Partial Class AddFaculty
         Me.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbGender.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbGender.FormattingEnabled = True
-        Me.cbGender.Items.AddRange(New Object() {"Male", "Female"})
+        Me.cbGender.Items.AddRange(New Object() {"Male", "Female", "Others"})
         Me.cbGender.Location = New System.Drawing.Point(384, 243)
         Me.cbGender.Name = "cbGender"
         Me.cbGender.Size = New System.Drawing.Size(202, 29)

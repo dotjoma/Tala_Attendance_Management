@@ -98,10 +98,10 @@
     <Compile Include="AddAnnouncement.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddFaculty.Designer.vb">
+    <Compile Include="Presentation\Forms\Faculty\AddFaculty.Designer.vb">
       <DependentUpon>AddFaculty.vb</DependentUpon>
     </Compile>
-    <Compile Include="AddFaculty.vb">
+    <Compile Include="Presentation\Forms\Faculty\AddFaculty.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddStudents.Designer.vb">
@@ -255,22 +255,22 @@
     <Compile Include="FormAnnouncement.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAttendance.Designer.vb">
+    <Compile Include="Presentation\Forms\Attendance\FormAttendance.Designer.vb">
       <DependentUpon>FormAttendance.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormAttendance.vb">
+    <Compile Include="Presentation\Forms\Attendance\FormAttendance.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAttendanceScanner.Designer.vb">
+    <Compile Include="Presentation\Forms\Attendance\FormAttendanceScanner.Designer.vb">
       <DependentUpon>FormAttendanceScanner.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormAttendanceScanner.vb">
+    <Compile Include="Presentation\Forms\Attendance\FormAttendanceScanner.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormFaculty.Designer.vb">
+    <Compile Include="Presentation\Forms\Faculty\FormFaculty.Designer.vb">
       <DependentUpon>FormFaculty.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormFaculty.vb">
+    <Compile Include="Presentation\Forms\Faculty\FormFaculty.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormIDScanner.Designer.vb">
@@ -293,29 +293,29 @@
     </Compile>
     <Compile Include="infrastructure\Logging\FileLogger.vb" />
     <Compile Include="infrastructure\Logging\LoggerFactory.vb" />
-    <Compile Include="LoginForm.Designer.vb">
+    <Compile Include="Presentation\Forms\Authentication\LoginForm.Designer.vb">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.vb">
+    <Compile Include="Presentation\Forms\Authentication\LoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.vb">
+    <Compile Include="Presentation\Forms\Main\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.vb">
+    <Compile Include="Presentation\Forms\Main\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="manage_user\AddUser.Designer.vb">
+    <Compile Include="Presentation\Forms\Users\AddUser.Designer.vb">
       <DependentUpon>AddUser.vb</DependentUpon>
     </Compile>
-    <Compile Include="manage_user\AddUser.vb">
+    <Compile Include="Presentation\Forms\Users\AddUser.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="manage_user\AddUserButton.Designer.vb">
+    <Compile Include="Presentation\Forms\Users\AddUserButton.Designer.vb">
       <DependentUpon>AddUserButton.vb</DependentUpon>
     </Compile>
-    <Compile Include="manage_user\AddUserButton.vb">
+    <Compile Include="Presentation\Forms\Users\AddUserButton.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="manage_user\BatchGenerate.Designer.vb">
@@ -324,16 +324,16 @@
     <Compile Include="manage_user\BatchGenerate.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="manage_user\ManageUser.Designer.vb">
+    <Compile Include="Presentation\Forms\Users\ManageUser.Designer.vb">
       <DependentUpon>ManageUser.vb</DependentUpon>
     </Compile>
-    <Compile Include="manage_user\ManageUser.vb">
+    <Compile Include="Presentation\Forms\Users\ManageUser.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="manage_user\UserSettings.Designer.vb">
+    <Compile Include="Presentation\Forms\Users\UserSettings.Designer.vb">
       <DependentUpon>UserSettings.vb</DependentUpon>
     </Compile>
-    <Compile Include="manage_user\UserSettings.vb">
+    <Compile Include="Presentation\Forms\Users\UserSettings.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -359,7 +359,7 @@
     <EmbeddedResource Include="AddAnnouncement.resx">
       <DependentUpon>AddAnnouncement.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddFaculty.resx">
+    <EmbeddedResource Include="Presentation\Forms\Faculty\AddFaculty.resx">
       <DependentUpon>AddFaculty.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddStudents.resx">
@@ -431,13 +431,13 @@
     <EmbeddedResource Include="FormAnnouncement.resx">
       <DependentUpon>FormAnnouncement.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAttendance.resx">
+    <EmbeddedResource Include="Presentation\Forms\Attendance\FormAttendance.resx">
       <DependentUpon>FormAttendance.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAttendanceScanner.resx">
+    <EmbeddedResource Include="Presentation\Forms\Attendance\FormAttendanceScanner.resx">
       <DependentUpon>FormAttendanceScanner.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormFaculty.resx">
+    <EmbeddedResource Include="Presentation\Forms\Faculty\FormFaculty.resx">
       <DependentUpon>FormFaculty.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormIDScanner.resx">
@@ -449,25 +449,25 @@
     <EmbeddedResource Include="FormStudents.resx">
       <DependentUpon>FormStudents.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Presentation\Forms\Authentication\LoginForm.resx">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Presentation\Forms\Main\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="manage_user\AddUser.resx">
+    <EmbeddedResource Include="Presentation\Forms\Users\AddUser.resx">
       <DependentUpon>AddUser.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="manage_user\AddUserButton.resx">
+    <EmbeddedResource Include="Presentation\Forms\Users\AddUserButton.resx">
       <DependentUpon>AddUserButton.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="manage_user\BatchGenerate.resx">
       <DependentUpon>BatchGenerate.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="manage_user\ManageUser.resx">
+    <EmbeddedResource Include="Presentation\Forms\Users\ManageUser.resx">
       <DependentUpon>ManageUser.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="manage_user\UserSettings.resx">
+    <EmbeddedResource Include="Presentation\Forms\Users\UserSettings.resx">
       <DependentUpon>UserSettings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
