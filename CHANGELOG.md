@@ -1,5 +1,276 @@
 # Changelog - Tala Attendance Management System
 
+## [Version 2.2.0] - [2025-10-14] - Auto-Update System Implementation
+
+### 🚀 **NEW FEATURE: Automatic Update System**
+
+#### **Complete Auto-Update Infrastructure**
+
+**Feature:** Implemented comprehensive automatic update system with Google Drive integration
+
+**Key Components:**
+
+1. **Update Detection System**
+
+   - Automatic version checking on application startup
+   - Only checks in Development environment (safety feature)
+   - Internet connectivity validation before attempting updates
+   - Compares local version with remote version from Google Drive
+
+2. **Update Download & Installation**
+
+   - Downloads updates to `Update/update(version).zip` folder
+   - Extracts to timestamped temp folders: `TalaUpdate(version)_yyyyMMdd_HHmmss`
+   - Safe file replacement with process termination
+   - Automatic application restart after update
+   - Preserves update history (no cleanup - files kept for rollback)
+
+3. **User Interface**
+
+   - Professional update dialog with version information and changelog
+   - Progress bar showing download progress
+   - User-friendly prompts with clear options
+   - Non-intrusive startup checking
+
+4. **Safety Features**
+   - Environment-restricted (Development only by default)
+   - Internet connectivity validation
+   - Graceful application exit with force-kill backup
+   - Comprehensive error handling and logging
+   - Update history preservation for rollback capability
+
+**Files Created:**
+
+- `Core/Models/VersionInfo.vb` - Version information model
+- `Core/Services/UpdateService.vb` - Core update functionality
+- `Core/Services/UpdateManager.vb` - Update management and UI coordination
+- `Common/Helpers/NetworkHelper.vb` - Network connectivity and download helpers
+- `Presentation/Forms/Update/UpdateDialog.vb` - Update prompt dialog
+- `Presentation/Forms/Update/UpdateDialog.Designer.vb` - Dialog layout
+- `Presentation/Forms/Update/UpdateDialog.resx` - Dialog resources
+
+**Files Modified:**
+
+- `Common/AppConfig.vb` - Added update configuration properties
+- `Config/config.dev.json` - Added update URL configuration
+- `Config/config.staging.json` - Added update URL configuration
+- `Config/config.prod.json` - Added update URL configuration
+- `Presentation/Forms/Main/MainForm.vb` - Integrated startup update check
+- `Tala_Attendance_Management_System.vbproj` - Added new files and copy rules
+
+**Configuration:**
+
+```json
+{
+  "UpdateCheckUrl": "https://drive.google.com/uc?export=download&id=1nNmJTgYLgitxNY73MEKur5AFQ-w3H_N8"
+}
+```
+
+**Update Process Flow:**
+
+1. **Startup Check** → Automatic version comparison (Development environment only)
+2. **User Prompt** → Shows update dialog with changelog if update available
+3. **Download** → Downloads to `Update/update(1.0.1).zip`
+4. **Extract** → Extracts to `TalaUpdate(1.0.1)_20251014_162530`
+5. **Install** → Copies files to application directory (overwrites existing)
+6. **Restart** → Automatically restarts application
+7. **Preserve** → Keeps update files for rollback capability
+
+**Google Drive Integration:**
+
+- Uses `version.json` file hosted on Google Drive
+- Format: `{"version": "1.0.1", "downloadUrl": "...", "changeLog": "..."}`
+- Proper HTTP headers to bypass Google Drive blocking
+- Error handling for network issues
+
+**Version Management:**
+
+- Single source of truth: `Constants.APP_VERSION`
+- All other version references read from Constants
+- Scalable version management - change in one place updates everywhere
+- Automatic version detection and comparison
+
+**Benefits:**
+
+- ✅ **Seamless Updates** - Users get latest features automatically
+- ✅ **Safe Deployment** - Environment restrictions prevent accidental updates
+- ✅ **User Control** - Users can decline updates
+- ✅ **Rollback Capability** - Previous versions preserved
+- ✅ **Audit Trail** - Complete logging of all update operations
+- ✅ **Professional UX** - Clean, informative update dialogs
+
+---
+
+### 🔧 **Build System Improvements**
+
+#### **Executable Name Changed**
+
+**Change:** Application executable renamed from `Tala_Attendance_Management_System.exe` to `TalaAMS.exe`
+
+**Benefits:**
+
+- Shorter, cleaner filename
+- Easier to reference in scripts and documentation
+- Professional appearance
+
+**Files Modified:**
+
+- `Tala_Attendance_Management_System.vbproj` - Updated AssemblyName
+- `BuildScripts/EmbedDlls.bat` - Updated target name
+- Update system automatically adapts to new name
+
+#### **Configuration File Management**
+
+**Enhancement:** Config files now automatically copy to output directory
+
+**Problem Fixed:**
+
+- Config folder wasn't being copied during build
+- Application used default values instead of JSON configuration
+- Update system couldn't find proper configuration
+
+**Solution:**
+
+- Added `CopyToOutputDirectory` property to all config files
+- Ensures `Config/` folder exists in `bin/Release/` and `bin/Debug/`
+- Update system now reads correct configuration values
+
+**Files Modified:**
+
+- `Tala_Attendance_Management_System.vbproj` - Added copy rules for config files
+
+---
+
+### 🏗️ **Architecture Improvements**
+
+#### **Centralized Version Management**
+
+**Enhancement:** Implemented single source of truth for version information
+
+**Before:**
+
+- Version scattered across multiple files
+- Constants.vb: "2.2.0"
+- config.dev.json: "1.0.0"
+- AppConfig defaults: "1.0.0"
+- Inconsistent version reporting
+
+**After:**
+
+- Single source: `Constants.APP_VERSION = "2.2.0"`
+- AppConfig reads from Constants: `Return Constants.APP_VERSION`
+- All version references use Constants
+- Update system uses centralized version
+
+**Benefits:**
+
+- ✅ **Consistency** - Same version everywhere
+- ✅ **Maintainability** - Change version in one place
+- ✅ **Scalability** - Easy to add version-dependent features
+- ✅ **Accuracy** - No version mismatches
+
+**Files Modified:**
+
+- `Common/Constants.vb` - Added version management comments
+- `Common/AppConfig.vb` - Changed to read-only property using Constants
+- `Config/*.json` - Removed ApplicationVersion (now uses Constants)
+
+---
+
+### 🛡️ **Security & Reliability**
+
+#### **Network Security**
+
+**Enhancement:** Added proper HTTP headers for Google Drive compatibility
+
+**Problem:**
+
+- Google Drive blocked requests without proper browser headers
+- Downloads failed with 404 errors even with valid URLs
+
+**Solution:**
+
+- Added User-Agent headers to mimic browser requests
+- Simplified header set to avoid encoding issues
+- Proper error handling and logging for network issues
+
+#### **Process Safety**
+
+**Enhancement:** Safe application termination during updates
+
+**Features:**
+
+- Graceful application exit first
+- Force-kill backup for stuck processes
+- 5-second timeout for safe shutdown
+- Comprehensive error handling
+
+---
+
+### 📊 **Logging & Monitoring**
+
+#### **Update Operation Logging**
+
+**Enhancement:** Comprehensive logging for all update operations
+
+**What's Logged:**
+
+- Update check initiation and results
+- Version comparison details
+- Download progress and completion
+- Installation steps and results
+- Error conditions and recovery attempts
+- User actions (accept/decline updates)
+
+**Log Examples:**
+
+```
+[2025-10-14 16:11:55.657] [INFO] Starting update check on application startup
+[2025-10-14 16:11:57.680] [INFO] Checking for application updates...
+[2025-10-14 16:11:58.100] [INFO] Downloading version info from: https://drive.google.com/uc?export=download&id=...
+[2025-10-14 16:11:58.437] [INFO] Update available: 2.2.0 -> 2.3.0
+[2025-10-14 16:12:15.123] [INFO] User accepted update to version 2.3.0
+[2025-10-14 16:12:45.789] [INFO] Update downloaded successfully to Update/update(2.3.0).zip
+[2025-10-14 16:12:46.012] [INFO] Update process initiated. Application will close and restart.
+```
+
+---
+
+### 📋 **Documentation**
+
+#### **Comprehensive Update Documentation**
+
+**Created Documentation:**
+
+- `UPDATE_SYSTEM_IMPLEMENTATION.md` - Complete implementation guide
+- `UPDATE_PROCESS_FLOW.md` - Detailed process flow documentation
+- `Infrastructure/Update/README.md` - Setup and usage instructions
+- `Infrastructure/Update/MenuIntegration.md` - Optional menu integration guide
+- `CONFIG_FILES_FIX.md` - Configuration troubleshooting
+- `FODY_REMOVAL_COMPLETE.md` - Build system cleanup documentation
+
+---
+
+### 🎯 **Next Steps & Future Enhancements**
+
+#### **Immediate Actions**
+
+1. ✅ Update Google Drive file ID in configuration
+2. ✅ Test update system with actual version.json
+3. ✅ Verify config files copy correctly during build
+4. ✅ Test executable name change
+
+#### **Future Enhancements**
+
+- [ ] Add manual "Check for Updates" menu option
+- [ ] Implement update scheduling (daily/weekly checks)
+- [ ] Add update size information in dialog
+- [ ] Implement delta updates for smaller downloads
+- [ ] Add rollback functionality through UI
+- [ ] Extend to other environments (Staging/Production)
+
+---
+
 ## [Version 1.1.0.0] - [2025-10-14] - Faculty Management System Fixes & Optimizations
 
 ### 🚀 Major Faculty System Improvements
