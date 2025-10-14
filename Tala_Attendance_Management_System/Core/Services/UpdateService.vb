@@ -85,7 +85,7 @@ Public Class UpdateService
                                 End If
 
                                 ' Download the update file to Update folder with version in filename
-                                Dim downloadPath = Path.Combine(updateDir, $"update({versionInfo.Version}).zip")
+                                Dim downloadPath = Path.Combine(updateDir, $"update{versionInfo.Version}.zip")
                                 _logger.LogInfo($"Downloading update to: {downloadPath}")
                                 statusCallback?.Invoke($"Downloading update v{versionInfo.Version}...")
 

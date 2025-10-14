@@ -517,6 +517,9 @@
     <EmbeddedResource Include="Presentation\Forms\Main\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Forms\Update\UpdateDialog.resx">
+      <DependentUpon>UpdateDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Forms\Users\AddUser.resx">
       <DependentUpon>AddUser.vb</DependentUpon>
     </EmbeddedResource>

@@ -39,7 +39,7 @@ Partial Class UpdateDialog
         Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.lblTitle.Location = New System.Drawing.Point(15, 15)
         Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(165, 25)
+        Me.lblTitle.Size = New System.Drawing.Size(162, 25)
         Me.lblTitle.TabIndex = 0
         Me.lblTitle.Text = "Update Available"
         '
@@ -50,7 +50,7 @@ Partial Class UpdateDialog
         Me.lblMessage.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblMessage.Location = New System.Drawing.Point(17, 50)
         Me.lblMessage.Name = "lblMessage"
-        Me.lblMessage.Size = New System.Drawing.Size(350, 17)
+        Me.lblMessage.Size = New System.Drawing.Size(353, 17)
         Me.lblMessage.TabIndex = 1
         Me.lblMessage.Text = "A new version of Tala Attendance Management is available."
         '
@@ -117,7 +117,7 @@ Partial Class UpdateDialog
         '
         Me.lblProgress.AutoSize = True
         Me.lblProgress.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblProgress.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.lblProgress.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.lblProgress.Location = New System.Drawing.Point(17, 213)
         Me.lblProgress.Name = "lblProgress"
         Me.lblProgress.Size = New System.Drawing.Size(0, 15)

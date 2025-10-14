@@ -47,7 +47,7 @@ Public Class UpdateDialog
             btnNo.Enabled = False
             progressBar.Visible = True
             lblProgress.Visible = True
-            lblProgress.ForeColor = Color.Green
+            lblProgress.ForeColor = Color.FromArgb(64, 64, 64)
             lblProgress.Text = "Starting download..."
             
             ' Start update process with progress and status callbacks
@@ -108,8 +108,8 @@ Public Class UpdateDialog
                 Me.Invoke(New Action(Of String)(AddressOf UpdateStatus), message)
                 Return
             End If
-            
-            lblProgress.ForeColor = Color.Green
+
+            lblProgress.ForeColor = Color.FromArgb(64, 64, 64)
             lblProgress.Text = message
             
         Catch ex As Exception
