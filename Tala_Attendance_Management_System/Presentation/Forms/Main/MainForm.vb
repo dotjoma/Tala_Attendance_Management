@@ -3,7 +3,6 @@ Imports System.Windows.Forms.DataVisualization.Charting
 
 Public Class MainForm
     Private ReadOnly _logger As ILogger = LoggerFactory.Instance
-    Private ReadOnly _appVersion = APP_VERSION
     Public currentChild As Form
     Public currentButton As Button
     Public currentUserRole As String = "" ' Store the user's role
@@ -110,7 +109,7 @@ Public Class MainForm
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            Me.Text = $"Tala Attendance Monitoring v{_appVersion}"
+            Me.Text = $"{APP_NAME} v{APP_VERSION}"
 
             Timer1.Enabled = True
 
