@@ -1,0 +1,12 @@
+{
+  "ConnectionString": "Data Source=prod-server;Initial Catalog=TalaAttendance;User ID=prod_user;Password=prod_password;Connection Timeout=30;Encrypt=True;",
+  "LogLevel": "Warning",
+  "LogFilePath": "Logs\\prod_app.log",
+  "DatabaseTimeout": 30,
+  "EnableDebugMode": false,
+  "MaxLoginAttempts": 3,
+  "SessionTimeoutMinutes": 30,
+  "ApiBaseUrl": "",
+  "EnableDetailedLogging": false,
+  "CacheExpirationMinutes": 30
+}

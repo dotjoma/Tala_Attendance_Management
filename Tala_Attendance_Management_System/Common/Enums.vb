@@ -26,3 +26,12 @@ Public Enum RecordStatus
     Inactive = 0
     Deleted = -1
 End Enum
+
+''' <summary>
+''' Environment types for configuration
+''' </summary>
+Public Enum EnvironmentType
+    Development = 1
+    Staging = 2
+    Production = 3
+End Enum

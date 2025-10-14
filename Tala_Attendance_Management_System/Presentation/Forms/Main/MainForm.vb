@@ -108,8 +108,9 @@ Public Class MainForm
     End Sub
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim config = AppConfig.Instance
         Try
-            Me.Text = $"{APP_NAME} v{APP_VERSION}"
+            Me.Text = $"{APP_NAME} v{APP_VERSION} - {config.Environment}"
 
             Timer1.Enabled = True
 
