@@ -331,4 +331,169 @@ Public Class ValidationHelper
             Return ValidateRequiredFields(panel, logErrors, excludeFields)
         End Try
     End Function
+
+    ''' <summary>
+    ''' Validates RFID tag uniqueness in the database
+    ''' </summary>
+    ''' <param name="rfidTag">RFID tag to check for uniqueness</param>
+    ''' <param name="excludeFacultyId">Faculty ID to exclude from check (for editing existing faculty)</param>
+    ''' <param name="logErrors">Whether to log validation errors</param>
+    ''' <returns>True if RFID tag is unique or empty, False if duplicate found</returns>
+    Public Shared Function IsRfidTagUnique(rfidTag As String, Optional excludeFacultyId As Integer? = Nothing, Optional logErrors As Boolean = True) As Boolean
+        Try
+            ' Skip validation if RFID tag is empty or default placeholder
+            If String.IsNullOrWhiteSpace(rfidTag) OrElse rfidTag.Trim() = "--" Then
+                If logErrors Then
+                    _logger.LogInfo("RFID validation skipped - Empty or placeholder tag")
+                End If
+                Return True ' Allow empty RFID tags
+            End If
+
+            Dim trimmedTag As String = rfidTag.Trim()
+
+            ' Build query to check for existing RFID tag
+            Dim query As String = "SELECT COUNT(*) FROM teacherinformation WHERE tagID = ? AND isActive = 1"
+            Dim parameters As New List(Of Object)
+            parameters.Add(trimmedTag)
+
+            ' Exclude current faculty when editing
+            If excludeFacultyId.HasValue Then
+                query &= " AND teacherID != ?"
+                parameters.Add(excludeFacultyId.Value)
+                If logErrors Then
+                    _logger.LogInfo($"RFID validation - Excluding faculty ID {excludeFacultyId.Value} from check")
+                End If
+            End If
+
+            ' Execute query
+            connectDB()
+            Dim cmd As New System.Data.Odbc.OdbcCommand(query, con)
+            
+            ' Add parameters
+            For i As Integer = 0 To parameters.Count - 1
+                cmd.Parameters.Add("?", System.Data.Odbc.OdbcType.VarChar).Value = parameters(i)
+            Next
+
+            Dim result As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+            con.Close()
+
+            Dim isUnique As Boolean = (result = 0)
+
+            If logErrors Then
+                If isUnique Then
+                    _logger.LogInfo($"RFID validation passed - Tag '{trimmedTag}' is unique")
+                Else
+                    _logger.LogWarning($"RFID validation failed - Tag '{trimmedTag}' already exists (found {result} matches)")
+                End If
+            End If
+
+            ' Show error message if duplicate found
+            If Not isUnique Then
+                MessageBox.Show("This RFID tag is already in use by another faculty member. Please use a different RFID tag or scan a new one.", 
+                              "Duplicate RFID Tag", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+
+            Return isUnique
+
+        Catch ex As Exception
+            If logErrors Then
+                _logger.LogError($"Error validating RFID tag uniqueness for '{rfidTag}': {ex.Message}")
+            End If
+            
+            ' Close connection if still open
+            Try
+                If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+                    con.Close()
+                End If
+            Catch
+                ' Ignore connection close errors
+            End Try
+
+            MessageBox.Show("Error checking RFID tag uniqueness. Please try again.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False ' Fail safe - don't allow save if we can't validate
+        End Try
+    End Function
+
+    ''' <summary>
+    ''' Validates employee ID uniqueness in the database
+    ''' </summary>
+    ''' <param name="employeeId">Employee ID to check for uniqueness</param>
+    ''' <param name="excludeFacultyId">Faculty ID to exclude from check (for editing existing faculty)</param>
+    ''' <param name="logErrors">Whether to log validation errors</param>
+    ''' <returns>True if employee ID is unique, False if duplicate found</returns>
+    Public Shared Function IsEmployeeIdUnique(employeeId As String, Optional excludeFacultyId As Integer? = Nothing, Optional logErrors As Boolean = True) As Boolean
+        Try
+            ' Employee ID is required, so check for empty
+            If String.IsNullOrWhiteSpace(employeeId) Then
+                If logErrors Then
+                    _logger.LogWarning("Employee ID validation failed - Empty employee ID")
+                    MessageBox.Show("Employee ID is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+                Return False
+            End If
+
+            Dim trimmedId As String = employeeId.Trim()
+
+            ' Build query to check for existing employee ID
+            Dim query As String = "SELECT COUNT(*) FROM teacherinformation WHERE employeeID = ? AND isActive = 1"
+            Dim parameters As New List(Of Object)
+            parameters.Add(trimmedId)
+
+            ' Exclude current faculty when editing
+            If excludeFacultyId.HasValue Then
+                query &= " AND teacherID != ?"
+                parameters.Add(excludeFacultyId.Value)
+                If logErrors Then
+                    _logger.LogInfo($"Employee ID validation - Excluding faculty ID {excludeFacultyId.Value} from check")
+                End If
+            End If
+
+            ' Execute query
+            connectDB()
+            Dim cmd As New System.Data.Odbc.OdbcCommand(query, con)
+            
+            ' Add parameters
+            For i As Integer = 0 To parameters.Count - 1
+                cmd.Parameters.Add("?", System.Data.Odbc.OdbcType.VarChar).Value = parameters(i)
+            Next
+
+            Dim result As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+            con.Close()
+
+            Dim isUnique As Boolean = (result = 0)
+
+            If logErrors Then
+                If isUnique Then
+                    _logger.LogInfo($"Employee ID validation passed - ID '{trimmedId}' is unique")
+                Else
+                    _logger.LogWarning($"Employee ID validation failed - ID '{trimmedId}' already exists (found {result} matches)")
+                End If
+            End If
+
+            ' Show error message if duplicate found
+            If Not isUnique Then
+                MessageBox.Show("This Employee ID is already in use by another faculty member. Please use a different Employee ID.", 
+                              "Duplicate Employee ID", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+
+            Return isUnique
+
+        Catch ex As Exception
+            If logErrors Then
+                _logger.LogError($"Error validating Employee ID uniqueness for '{employeeId}': {ex.Message}")
+            End If
+            
+            ' Close connection if still open
+            Try
+                If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+                    con.Close()
+                End If
+            Catch
+                ' Ignore connection close errors
+            End Try
+
+            MessageBox.Show("Error checking Employee ID uniqueness. Please try again.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False ' Fail safe - don't allow save if we can't validate
+        End Try
+    End Function
 End Class

@@ -22,23 +22,19 @@ Partial Class FormFaculty
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormFaculty))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.cboStatusFilter = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cboDepartment = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnDeleteRecord = New System.Windows.Forms.Button()
-        Me.btnEditRecord = New System.Windows.Forms.Button()
-        Me.btnAdd = New System.Windows.Forms.Button()
         Me.dgvTeachers = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -50,16 +46,24 @@ Partial Class FormFaculty
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnDepartment = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnEditRecord = New System.Windows.Forms.Button()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.btnToggleStat = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.dgvTeachers, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.SteelBlue
+        Me.Panel2.Controls.Add(Me.Label5)
+        Me.Panel2.Controls.Add(Me.cboStatusFilter)
         Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Controls.Add(Me.cboDepartment)
         Me.Panel2.Controls.Add(Me.Label3)
@@ -73,6 +77,29 @@ Partial Class FormFaculty
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1444, 60)
         Me.Panel2.TabIndex = 15
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(650, 20)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(57, 20)
+        Me.Label5.TabIndex = 23
+        Me.Label5.Text = "Status:"
+        '
+        'cboStatusFilter
+        '
+        Me.cboStatusFilter.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cboStatusFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboStatusFilter.FormattingEnabled = True
+        Me.cboStatusFilter.Items.AddRange(New Object() {"All", "Active", "Inactive"})
+        Me.cboStatusFilter.Location = New System.Drawing.Point(712, 17)
+        Me.cboStatusFilter.Name = "cboStatusFilter"
+        Me.cboStatusFilter.Size = New System.Drawing.Size(100, 27)
+        Me.cboStatusFilter.TabIndex = 22
         '
         'Label4
         '
@@ -107,26 +134,6 @@ Partial Class FormFaculty
         Me.Label3.Size = New System.Drawing.Size(59, 20)
         Me.Label3.TabIndex = 19
         Me.Label3.Text = "Search:"
-        '
-        'PictureBox5
-        '
-        Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
-        Me.PictureBox5.Location = New System.Drawing.Point(8, 13)
-        Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(50, 41)
-        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox5.TabIndex = 18
-        Me.PictureBox5.TabStop = False
-        '
-        'PictureBox4
-        '
-        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(1591, 12)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(41, 36)
-        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox4.TabIndex = 18
-        Me.PictureBox4.TabStop = False
         '
         'Label1
         '
@@ -165,7 +172,7 @@ Partial Class FormFaculty
         '
         Me.Panel1.BackColor = System.Drawing.Color.SteelBlue
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.btnDeleteRecord)
+        Me.Panel1.Controls.Add(Me.btnToggleStat)
         Me.Panel1.Controls.Add(Me.btnEditRecord)
         Me.Panel1.Controls.Add(Me.btnAdd)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -174,87 +181,36 @@ Partial Class FormFaculty
         Me.Panel1.Size = New System.Drawing.Size(1444, 69)
         Me.Panel1.TabIndex = 16
         '
-        'btnDeleteRecord
-        '
-        Me.btnDeleteRecord.AutoSize = True
-        Me.btnDeleteRecord.BackColor = System.Drawing.Color.White
-        Me.btnDeleteRecord.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_delete_40
-        Me.btnDeleteRecord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnDeleteRecord.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnDeleteRecord.FlatAppearance.BorderSize = 0
-        Me.btnDeleteRecord.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDeleteRecord.ForeColor = System.Drawing.Color.Red
-        Me.btnDeleteRecord.Location = New System.Drawing.Point(1042, 10)
-        Me.btnDeleteRecord.Name = "btnDeleteRecord"
-        Me.btnDeleteRecord.Size = New System.Drawing.Size(160, 50)
-        Me.btnDeleteRecord.TabIndex = 2
-        Me.btnDeleteRecord.Text = "&Delete Record"
-        Me.btnDeleteRecord.UseVisualStyleBackColor = False
-        '
-        'btnEditRecord
-        '
-        Me.btnEditRecord.AutoSize = True
-        Me.btnEditRecord.BackColor = System.Drawing.Color.White
-        Me.btnEditRecord.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_edit_40
-        Me.btnEditRecord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnEditRecord.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnEditRecord.FlatAppearance.BorderSize = 0
-        Me.btnEditRecord.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEditRecord.ForeColor = System.Drawing.Color.SteelBlue
-        Me.btnEditRecord.Location = New System.Drawing.Point(865, 10)
-        Me.btnEditRecord.Name = "btnEditRecord"
-        Me.btnEditRecord.Size = New System.Drawing.Size(160, 50)
-        Me.btnEditRecord.TabIndex = 1
-        Me.btnEditRecord.Text = "&Edit Record"
-        Me.btnEditRecord.UseVisualStyleBackColor = False
-        '
-        'btnAdd
-        '
-        Me.btnAdd.AutoSize = True
-        Me.btnAdd.BackColor = System.Drawing.Color.White
-        Me.btnAdd.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_plus_40
-        Me.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnAdd.FlatAppearance.BorderSize = 0
-        Me.btnAdd.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.ForeColor = System.Drawing.Color.Green
-        Me.btnAdd.Location = New System.Drawing.Point(687, 10)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(160, 50)
-        Me.btnAdd.TabIndex = 0
-        Me.btnAdd.Text = "&Add New"
-        Me.btnAdd.UseVisualStyleBackColor = False
-        '
         'dgvTeachers
         '
         Me.dgvTeachers.AllowUserToAddRows = False
         Me.dgvTeachers.AllowUserToDeleteRows = False
         Me.dgvTeachers.AllowUserToResizeColumns = False
         Me.dgvTeachers.AllowUserToResizeRows = False
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgvTeachers.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvTeachers.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
         Me.dgvTeachers.BackgroundColor = System.Drawing.Color.White
         Me.dgvTeachers.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvTeachers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvTeachers.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvTeachers.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.dgvTeachers.ColumnHeadersHeight = 45
         Me.dgvTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvTeachers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.email, Me.Column4, Me.Column5, Me.Column6, Me.Column9, Me.Column7, Me.ColumnDepartment})
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DeepSkyBlue
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvTeachers.DefaultCellStyle = DataGridViewCellStyle6
+        Me.dgvTeachers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.email, Me.Column4, Me.Column5, Me.Column6, Me.Column9, Me.Column7, Me.ColumnDepartment, Me.ColumnStatus})
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DeepSkyBlue
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvTeachers.DefaultCellStyle = DataGridViewCellStyle12
         Me.dgvTeachers.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvTeachers.EnableHeadersVisualStyles = False
         Me.dgvTeachers.Location = New System.Drawing.Point(0, 60)
@@ -365,6 +321,85 @@ Partial Class FormFaculty
         Me.ColumnDepartment.ReadOnly = True
         Me.ColumnDepartment.Width = 116
         '
+        'ColumnStatus
+        '
+        Me.ColumnStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.ColumnStatus.DataPropertyName = "status_text"
+        Me.ColumnStatus.HeaderText = "STATUS"
+        Me.ColumnStatus.MinimumWidth = 6
+        Me.ColumnStatus.Name = "ColumnStatus"
+        Me.ColumnStatus.ReadOnly = True
+        Me.ColumnStatus.Width = 77
+        '
+        'btnEditRecord
+        '
+        Me.btnEditRecord.AutoSize = True
+        Me.btnEditRecord.BackColor = System.Drawing.Color.White
+        Me.btnEditRecord.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_edit_40
+        Me.btnEditRecord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnEditRecord.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnEditRecord.FlatAppearance.BorderSize = 0
+        Me.btnEditRecord.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEditRecord.ForeColor = System.Drawing.Color.SteelBlue
+        Me.btnEditRecord.Location = New System.Drawing.Point(865, 10)
+        Me.btnEditRecord.Name = "btnEditRecord"
+        Me.btnEditRecord.Size = New System.Drawing.Size(160, 50)
+        Me.btnEditRecord.TabIndex = 1
+        Me.btnEditRecord.Text = "&Edit Record"
+        Me.btnEditRecord.UseVisualStyleBackColor = False
+        '
+        'btnAdd
+        '
+        Me.btnAdd.AutoSize = True
+        Me.btnAdd.BackColor = System.Drawing.Color.White
+        Me.btnAdd.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_plus_40
+        Me.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnAdd.FlatAppearance.BorderSize = 0
+        Me.btnAdd.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAdd.ForeColor = System.Drawing.Color.Green
+        Me.btnAdd.Location = New System.Drawing.Point(687, 10)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(160, 50)
+        Me.btnAdd.TabIndex = 0
+        Me.btnAdd.Text = "&Add New"
+        Me.btnAdd.UseVisualStyleBackColor = False
+        '
+        'PictureBox5
+        '
+        Me.PictureBox5.Location = New System.Drawing.Point(8, 13)
+        Me.PictureBox5.Name = "PictureBox5"
+        Me.PictureBox5.Size = New System.Drawing.Size(50, 41)
+        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox5.TabIndex = 18
+        Me.PictureBox5.TabStop = False
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.Location = New System.Drawing.Point(1591, 12)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(41, 36)
+        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox4.TabIndex = 18
+        Me.PictureBox4.TabStop = False
+        '
+        'btnToggleStat
+        '
+        Me.btnToggleStat.AutoSize = True
+        Me.btnToggleStat.BackColor = System.Drawing.Color.White
+        Me.btnToggleStat.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.enable_default_40x40
+        Me.btnToggleStat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnToggleStat.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnToggleStat.FlatAppearance.BorderSize = 0
+        Me.btnToggleStat.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnToggleStat.ForeColor = System.Drawing.Color.SteelBlue
+        Me.btnToggleStat.Location = New System.Drawing.Point(1043, 10)
+        Me.btnToggleStat.Name = "btnToggleStat"
+        Me.btnToggleStat.Size = New System.Drawing.Size(176, 50)
+        Me.btnToggleStat.TabIndex = 3
+        Me.btnToggleStat.Text = "&Toggle Status"
+        Me.btnToggleStat.UseVisualStyleBackColor = False
+        '
         'FormFaculty
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 19.0!)
@@ -383,11 +418,11 @@ Partial Class FormFaculty
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.dgvTeachers, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -397,7 +432,6 @@ Partial Class FormFaculty
     Friend WithEvents Label2 As Label
     Friend WithEvents txtSearch As TextBox
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents btnDeleteRecord As Button
     Friend WithEvents btnEditRecord As Button
     Friend WithEvents btnAdd As Button
     Friend WithEvents PictureBox4 As PictureBox
@@ -412,8 +446,12 @@ Partial Class FormFaculty
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents Label5 As Label
+    Friend WithEvents cboStatusFilter As ComboBox
     Friend WithEvents Label4 As Label
     Friend WithEvents cboDepartment As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents ColumnDepartment As DataGridViewTextBoxColumn
+    Friend WithEvents ColumnStatus As DataGridViewTextBoxColumn
+    Friend WithEvents btnToggleStat As Button
 End Class

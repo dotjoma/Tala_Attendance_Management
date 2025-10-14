@@ -99,6 +99,11 @@
     <Compile Include="Core\Services\DepartmentService.vb" />
     <Compile Include="infrastructure\Data\Context\DatabaseContext.vb" />
     <Compile Include="infrastructure\Data\Repositories\DepartmentRepository.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Forms\Announcements\AddAnnouncement.Designer.vb">
       <DependentUpon>AddAnnouncement.vb</DependentUpon>
     </Compile>
@@ -362,11 +367,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -507,9 +507,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Forms\Students\StudentCard.resx">
       <DependentUpon>StudentCard.vb</DependentUpon>
@@ -633,6 +633,11 @@
     <None Include="Resources\icons8-person-female-skin-type-1-and-2-30.png" />
     <None Include="Resources\announcements.jpg" />
     <None Include="Resources\icons8-person-female-skin-type-1-and-2-301.png" />
+    <None Include="Resources\disable.png" />
+    <None Include="Resources\enable.png" />
+    <None Include="Resources\disable_40x40.png" />
+    <None Include="Resources\block_40x40.png" />
+    <None Include="Resources\enable_default_40x40.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

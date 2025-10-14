@@ -159,6 +159,26 @@ Public Class AddFaculty
             _logger.LogWarning($"Faculty save validation failed - Invalid date of birth for '{facultyName}': {dtpBirthdate.Value:yyyy-MM-dd}")
             Return
         End If
+
+        ' Get current faculty ID for edit mode (to exclude from uniqueness checks)
+        Dim currentFacultyId As Integer? = Nothing
+        If Val(txtID.Text) > 0 Then
+            currentFacultyId = Val(txtID.Text)
+        End If
+
+        ' Validate Employee ID uniqueness
+        If Not ValidationHelper.IsEmployeeIdUnique(Trim(txtEmployeeID.Text), currentFacultyId) Then
+            _logger.LogWarning($"Faculty save validation failed - Duplicate Employee ID '{Trim(txtEmployeeID.Text)}' for '{facultyName}'")
+            txtEmployeeID.Focus()
+            Return
+        End If
+
+        ' Validate RFID tag uniqueness (only if not empty or placeholder)
+        If Not ValidationHelper.IsRfidTagUnique(Trim(txtTagID.Text), currentFacultyId) Then
+            _logger.LogWarning($"Faculty save validation failed - Duplicate RFID tag '{Trim(txtTagID.Text)}' for '{facultyName}'")
+            txtTagID.Focus()
+            Return
+        End If
         Try
             Call connectDB()
             pbProfile.Image.Save(ms, pbProfile.Image.RawFormat)
@@ -661,5 +681,65 @@ Public Class AddFaculty
         Catch ex As Exception
             _logger.LogWarning($"AddFaculty - Error in dtpBirthdate_ValueChanged: {ex.Message}")
         End Try
+    End Sub
+
+    Private Sub txtEmployeeID_Leave(sender As Object, e As EventArgs) Handles txtEmployeeID.Leave
+        Try
+            ' Validate Employee ID uniqueness when user leaves the field
+            If Not String.IsNullOrWhiteSpace(txtEmployeeID.Text) Then
+                Dim currentFacultyId As Integer? = Nothing
+                If Val(txtID.Text) > 0 Then
+                    currentFacultyId = Val(txtID.Text)
+                End If
+
+                ' Quick validation without detailed logging to avoid spam
+                If Not ValidationHelper.IsEmployeeIdUnique(Trim(txtEmployeeID.Text), currentFacultyId, logErrors:=False) Then
+                    txtEmployeeID.BackColor = Color.LightPink
+                    _logger.LogInfo($"AddFaculty - Duplicate Employee ID detected: '{Trim(txtEmployeeID.Text)}'")
+                Else
+                    txtEmployeeID.BackColor = Color.White
+                End If
+            Else
+                txtEmployeeID.BackColor = Color.White
+            End If
+        Catch ex As Exception
+            _logger.LogWarning($"AddFaculty - Error in txtEmployeeID_Leave: {ex.Message}")
+            txtEmployeeID.BackColor = Color.White
+        End Try
+    End Sub
+
+    Private Sub txtTagID_Leave(sender As Object, e As EventArgs) Handles txtTagID.Leave
+        Try
+            ' Validate RFID tag uniqueness when user leaves the field
+            If Not String.IsNullOrWhiteSpace(txtTagID.Text) AndAlso Trim(txtTagID.Text) <> "--" Then
+                Dim currentFacultyId As Integer? = Nothing
+                If Val(txtID.Text) > 0 Then
+                    currentFacultyId = Val(txtID.Text)
+                End If
+
+                ' Quick validation without detailed logging to avoid spam
+                If Not ValidationHelper.IsRfidTagUnique(Trim(txtTagID.Text), currentFacultyId, logErrors:=False) Then
+                    txtTagID.BackColor = Color.LightPink
+                    _logger.LogInfo($"AddFaculty - Duplicate RFID tag detected: '{Trim(txtTagID.Text)}'")
+                Else
+                    txtTagID.BackColor = Color.White
+                End If
+            Else
+                txtTagID.BackColor = Color.White
+            End If
+        Catch ex As Exception
+            _logger.LogWarning($"AddFaculty - Error in txtTagID_Leave: {ex.Message}")
+            txtTagID.BackColor = Color.White
+        End Try
+    End Sub
+
+    Private Sub txtEmployeeID_Enter(sender As Object, e As EventArgs) Handles txtEmployeeID.Enter
+        ' Reset background color when user enters the field
+        txtEmployeeID.BackColor = Color.White
+    End Sub
+
+    Private Sub txtTagID_Enter(sender As Object, e As EventArgs) Handles txtTagID.Enter
+        ' Reset background color when user enters the field
+        txtTagID.BackColor = Color.White
     End Sub
 End Class

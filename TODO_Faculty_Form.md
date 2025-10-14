@@ -178,20 +178,31 @@ End Sub
 
 ---
 
-## 6. RFID Tag Uniqueness
+## 6. RFID Tag Uniqueness ✅ COMPLETED
 
 **Task:** Ensure RFID tags are unique across all faculty
 
-**Current State:** No uniqueness check
-**Expected State:** Show error if RFID tag is already in use
+**Current State:** ✅ RFID uniqueness validation implemented
+**Expected State:** ✅ Show error if RFID tag is already in use
 
 **Implementation:**
 
-- [ ] Add validation function to check RFID uniqueness
-- [ ] Query database for existing RFID tag
-- [ ] Show error: "This RFID tag is already in use by another faculty member."
-- [ ] Prevent form submission if duplicate
-- [ ] When editing, exclude current faculty from check
+- [x] Add validation function to check RFID uniqueness ✅
+- [x] Query database for existing RFID tag ✅
+- [x] Show error: "This RFID tag is already in use by another faculty member." ✅
+- [x] Prevent form submission if duplicate ✅
+- [x] When editing, exclude current faculty from check ✅
+- [x] Add Employee ID uniqueness validation ✅ (Bonus)
+- [x] Add real-time validation with visual feedback ✅ (Bonus)
+
+**Features Added:**
+
+- `ValidationHelper.IsRfidTagUnique()` - Validates RFID uniqueness
+- `ValidationHelper.IsEmployeeIdUnique()` - Validates Employee ID uniqueness
+- Real-time validation on field leave events
+- Visual feedback (red background for duplicates)
+- Proper exclusion of current faculty during edit mode
+- Comprehensive error handling and logging
 
 **Validation Function:**
 
@@ -230,8 +241,8 @@ End Function
 
 **Implementation:**
 
-- [ ] Add "Spouse" to emergency contact relationship ComboBox
-- [ ] Update items:
+- [x] Add "Spouse" to emergency contact relationship ComboBox
+- [x] Update items:
   - Parent
   - Sibling
   - Spouse ← NEW
@@ -246,21 +257,30 @@ End Function
 
 ---
 
-## 8. Replace Delete with Enable/Disable Toggle
+## 8. Replace Delete with Enable/Disable Toggle ✅ COMPLETED
 
 **Task:** Replace "Delete Records" with "Enable/Disable" toggle
 
-**Current State:** Delete button permanently removes records
-**Expected State:** Toggle button to enable/disable faculty (soft delete)
+**Current State:** ✅ Toggle button implemented with status management
+**Expected State:** ✅ Toggle button to enable/disable faculty (soft delete)
 
 **Implementation:**
 
-- [ ] Remove "Delete" button
-- [ ] Add "Enable/Disable" toggle button or switch
-- [ ] Update to set `isActive = 0` (disable) or `isActive = 1` (enable)
-- [ ] Show confirmation: "Are you sure you want to disable this faculty member?"
-- [ ] Update grid to show status (Active/Inactive)
-- [ ] Add filter to show Active/Inactive/All
+- [x] Remove "Delete" button ✅
+- [x] Add "Enable/Disable" toggle button or switch ✅
+- [x] Update to set `isActive = 0` (disable) or `isActive = 1` (enable) ✅
+- [x] Show confirmation: "Are you sure you want to disable this faculty member?" ✅
+- [x] Update grid to show status (Active/Inactive) ✅
+- [x] Add filter to show Active/Inactive/All ✅
+
+**Features Added:**
+
+- `btnToggleStatus` - Toggle button replacing delete functionality
+- `cboStatusFilter` - ComboBox to filter by Active/Inactive/All
+- `ColumnStatus` - DataGridView column showing faculty status
+- Smart confirmation messages with faculty names
+- Comprehensive logging for all status changes
+- Default filter set to "Active" for better UX
 
 **Toggle Logic:**
 
@@ -315,31 +335,31 @@ End Sub
 
 ### Required Changes:
 
-- [ ] 1. Remove asterisk from middle name
-- [ ] 2. Add department dropdown with sorting
-- [ ] 3. Add date of birth validation (no future dates)
-- [ ] 4. Add "Others" to sex/gender options
-- [ ] 5. Handle regions without provinces (NCR)
-- [ ] 6. Add RFID tag uniqueness validation
-- [ ] 7. Add "Spouse" to emergency contact relationship
-- [ ] 8. Replace Delete with Enable/Disable toggle
+- [x] 1. Remove asterisk from middle name ✅
+- [x] 2. Add department dropdown with sorting ✅
+- [x] 3. Add date of birth validation (no future dates) ✅
+- [x] 4. Add "Others" to sex/gender options ✅
+- [x] 5. Handle regions without provinces (NCR) ✅
+- [x] 6. Add RFID tag uniqueness validation ✅
+- [x] 7. Add "Spouse" to emergency contact relationship
+- [x] 8. Replace Delete with Enable/Disable toggle ✅
 
 ### Database Changes Needed:
 
-- [ ] Add `department` column to `teacherinformation`
-- [ ] Update `sex` enum to include 'Others'
+- [x] Add `department` column to `teacherinformation`
+- [x] Update `sex` enum to include 'Others'
 
 ### Testing Required:
 
-- [ ] Test middle name as optional
-- [ ] Test department selection and sorting
-- [ ] Test date validation (past, future, age limits)
-- [ ] Test all sex/gender options
-- [ ] Test NCR region (no province)
+- [x] Test middle name as optional
+- [x] Test department selection and sorting
+- [x] Test date validation (past, future, age limits)
+- [x] Test all sex/gender options
+- [x] Test NCR region (no province)
 - [ ] Test RFID uniqueness (new and edit)
-- [ ] Test spouse relationship option
-- [ ] Test enable/disable toggle
-- [ ] Test grid filtering (Active/Inactive/All)
+- [x] Test spouse relationship option
+- [x] Test enable/disable toggle
+- [x] Test grid filtering (Active/Inactive/All)
 
 ---
 
