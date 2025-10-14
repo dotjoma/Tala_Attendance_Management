@@ -42,7 +42,7 @@ Partial Class FormClassroom
         Me.dgvClassrooms = New System.Windows.Forms.DataGridView()
         Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.classroom_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.location = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.locationColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.classroom_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.editBtn = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.deleteBtn = New System.Windows.Forms.DataGridViewButtonColumn()
@@ -194,7 +194,7 @@ Partial Class FormClassroom
         Me.dgvClassrooms.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dgvClassrooms.ColumnHeadersHeight = 70
         Me.dgvClassrooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvClassrooms.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id, Me.classroom_id, Me.location, Me.classroom_name, Me.editBtn, Me.deleteBtn})
+        Me.dgvClassrooms.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id, Me.classroom_id, Me.locationColumn, Me.classroom_name, Me.editBtn, Me.deleteBtn})
         DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -233,13 +233,13 @@ Partial Class FormClassroom
         Me.classroom_id.ReadOnly = True
         Me.classroom_id.Width = 90
         '
-        'location
+        'locationColumn
         '
-        Me.location.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.location.DataPropertyName = "location"
-        Me.location.HeaderText = "Location"
-        Me.location.Name = "location"
-        Me.location.ReadOnly = True
+        Me.locationColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.locationColumn.DataPropertyName = "location"
+        Me.locationColumn.HeaderText = "Location"
+        Me.locationColumn.Name = "location"
+        Me.locationColumn.ReadOnly = True
         '
         'classroom_name
         '
@@ -332,7 +332,7 @@ Partial Class FormClassroom
     Friend WithEvents txtSearch As TextBox
     Friend WithEvents id As DataGridViewTextBoxColumn
     Friend WithEvents classroom_id As DataGridViewTextBoxColumn
-    Friend WithEvents location As DataGridViewTextBoxColumn
+    Friend WithEvents locationColumn As DataGridViewTextBoxColumn
     Friend WithEvents classroom_name As DataGridViewTextBoxColumn
     Friend WithEvents editBtn As DataGridViewButtonColumn
     Friend WithEvents deleteBtn As DataGridViewButtonColumn

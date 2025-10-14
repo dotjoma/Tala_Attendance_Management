@@ -74,11 +74,11 @@ ADD COLUMN `department` VARCHAR(100) DEFAULT NULL;
 
 **Implementation:**
 
-- [ ] Add validation: `dateOfBirth <= DateTime.Today`
-- [ ] Add validation: Minimum age (e.g., 18 years old for faculty)
-- [ ] Add validation: Maximum age (e.g., not older than 100 years)
-- [ ] Show error message: "Invalid date of birth. Please enter a valid past date."
-- [ ] Prevent form submission if date is invalid
+- [x] Add validation: `dateOfBirth <= DateTime.Today`
+- [x] Add validation: Minimum age (e.g., 18 years old for faculty)
+- [x] Add validation: Maximum age (e.g., not older than 100 years)
+- [x] Show error message: "Invalid date of birth. Please enter a valid past date."
+- [x] Prevent form submission if date is invalid
 
 **Validation Rules:**
 
@@ -111,12 +111,12 @@ End If
 
 **Implementation:**
 
-- [ ] Update ComboBox items:
+- [x] Update ComboBox items:
   - Male
   - Female
   - Others
-- [ ] Update database enum if needed
-- [ ] Test all three options
+- [x] Update database enum if needed
+- [x] Test all three options
 
 **Database Changes (if using ENUM):**
 
@@ -144,12 +144,12 @@ MODIFY `sex` ENUM('Male', 'Female', 'Others') NOT NULL;
 
 **Implementation:**
 
-- [ ] Add region ComboBox change event
-- [ ] Check if selected region has provinces
-- [ ] If NCR or similar: Hide/disable province dropdown
-- [ ] If regular region: Show/enable province dropdown
-- [ ] Remove asterisk from province label
-- [ ] Update validation logic
+- [x] Add region ComboBox change event
+- [x] Check if selected region has provinces
+- [x] If NCR or similar: Hide/disable province dropdown
+- [x] If regular region: Show/enable province dropdown
+- [x] Remove asterisk from province label
+- [x] Update validation logic
 
 **Regions without Provinces:**
 

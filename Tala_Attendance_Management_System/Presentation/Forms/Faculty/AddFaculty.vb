@@ -97,12 +97,15 @@ Public Class AddFaculty
     Private Sub AddFaculty_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Try
             _logger.LogInfo("AddFaculty form closing")
+            
+            ' Clear all fields comprehensively
+            ClearAllFields()
+            
+            ' Refresh parent form
             Dim teacher As FormFaculty = TryCast(Application.OpenForms("FormFaculty"), FormFaculty)
             If teacher IsNot Nothing Then
                 teacher.DefaultSettings()
             End If
-            FormHelper.ClearFields(panelContainer)
-            txtID.Text = "0"
         Catch ex As Exception
             _logger.LogError("Error in AddFaculty_FormClosing", ex)
         End Try
@@ -139,8 +142,8 @@ Public Class AddFaculty
         ' Prepare middle name value (NULL if empty, otherwise the actual value)
         Dim middleNameValue As Object = If(String.IsNullOrWhiteSpace(txtMiddleName.Text), DBNull.Value, Trim(txtMiddleName.Text))
 
-        ' Validate required fields
-        If Not ValidationHelper.ValidateRequiredFields(panelContainer) Then
+        ' Validate required fields (with dynamic province validation based on region)
+        If Not ValidationHelper.ValidateRequiredFieldsWithDynamicProvince(panelContainer, cbRegion) Then
             _logger.LogWarning($"Faculty save validation failed - Required fields missing for '{facultyName}'")
             Return
         End If
@@ -164,61 +167,62 @@ Public Class AddFaculty
                     _logger.LogInfo($"Updating faculty record - ID: {txtID.Text}, Name: '{facultyName}'")
                     cmd = New System.Data.Odbc.OdbcCommand(updateTeacher, con)
                     With cmd.Parameters
-                        .AddWithValue("@", Trim(txtEmployeeID.Text))
-                        .AddWithValue("@", ms.ToArray)
-                        .AddWithValue("@", Trim(txtTagID.Text))
-                        .AddWithValue("@", Trim(txtLastName.Text))
-                        .AddWithValue("@", Trim(txtFirstName.Text))
-                        .AddWithValue("@", middleNameValue)
-                        .AddWithValue("@", Trim(txtExtName.Text))
-                        .AddWithValue("@", Trim(txtEmail.Text))
-                        .AddWithValue("@", Trim(cbGender.Text))
-                        .AddWithValue("@", dtpBirthdate.Text)
-                        .AddWithValue("@", Trim(txtContactNo.Text))
-                        .AddWithValue("@", Trim(txtHome.Text))
-                        .AddWithValue("@", cbBrgy.SelectedValue)
-                        .AddWithValue("@", cbCity.SelectedValue)
-                        .AddWithValue("@", cbProvince.SelectedValue)
-                        .AddWithValue("@", cbRegion.SelectedValue)
-                        .AddWithValue("@", Trim(txtEmergencyContact.Text))
-                        .AddWithValue("@", cbRelationship.Text)
-                        .AddWithValue("@", If(selectedDepartmentId.HasValue, selectedDepartmentId.Value, DBNull.Value))
-                        .AddWithValue("@", txtID.Text)
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtEmployeeID.Text)
+                        .Add("?", OdbcType.Image).Value = ms.ToArray
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtTagID.Text)
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtLastName.Text)
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtFirstName.Text)
+                        .Add("?", OdbcType.VarChar).Value = middleNameValue
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtExtName.Text)
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtEmail.Text)
+                        .Add("?", OdbcType.VarChar).Value = Trim(cbGender.Text)
+                        .Add("?", OdbcType.Date).Value = dtpBirthdate.Value.Date
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtContactNo.Text)
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtHome.Text)
+                        .Add("?", OdbcType.Int).Value = cbBrgy.SelectedValue
+                        .Add("?", OdbcType.Int).Value = cbCity.SelectedValue
+                        .Add("?", OdbcType.Int).Value = cbProvince.SelectedValue
+                        .Add("?", OdbcType.Int).Value = cbRegion.SelectedValue
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtEmergencyContact.Text)
+                        .Add("?", OdbcType.VarChar).Value = cbRelationship.Text
+                        .Add("?", OdbcType.Int).Value = If(selectedDepartmentId.HasValue, selectedDepartmentId.Value, DBNull.Value)
+                        .Add("?", OdbcType.Int).Value = txtID.Text
                     End With
                     cmd.ExecuteNonQuery()
                     _logger.LogInfo($"Faculty record updated successfully - ID: {txtID.Text}, Name: '{facultyName}', Employee ID: '{Trim(txtEmployeeID.Text)}'")
                     MsgBox("Record has been updated.", vbInformation, "Updated")
+                    ClearAllFields()
                     Me.Close()
                 Else
                     _logger.LogInfo($"Creating new faculty record - Name: '{facultyName}', Employee ID: '{Trim(txtEmployeeID.Text)}'")
                     cmd = New System.Data.Odbc.OdbcCommand(insertTeacher, con)
                     With cmd.Parameters
-                        .AddWithValue("@", Trim(txtEmployeeID.Text))
-                        .AddWithValue("@", ms.ToArray)
-                        .AddWithValue("@", Trim(txtTagID.Text))
-                        .AddWithValue("@", Trim(txtLastName.Text))
-                        .AddWithValue("@", Trim(txtFirstName.Text))
-                        .AddWithValue("@", middleNameValue)
-                        .AddWithValue("@", Trim(txtExtName.Text))
-                        .AddWithValue("@", Trim(txtEmail.Text))
-                        .AddWithValue("@", Trim(cbGender.Text))
-                        .AddWithValue("@", dtpBirthdate.Text)
-                        .AddWithValue("@", Trim(txtContactNo.Text))
-                        .AddWithValue("@", Trim(txtHome.Text))
-                        .AddWithValue("@", cbBrgy.SelectedValue)
-                        .AddWithValue("@", cbCity.SelectedValue)
-                        .AddWithValue("@", cbProvince.SelectedValue)
-                        .AddWithValue("@", cbRegion.SelectedValue)
-                        .AddWithValue("@", Trim(txtEmergencyContact.Text))
-                        .AddWithValue("@", cbRelationship.Text)
-                        .AddWithValue("@", If(selectedDepartmentId.HasValue, selectedDepartmentId.Value, DBNull.Value))
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtEmployeeID.Text)
+                        .Add("?", OdbcType.Image).Value = ms.ToArray
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtTagID.Text)
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtLastName.Text)
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtFirstName.Text)
+                        .Add("?", OdbcType.VarChar).Value = middleNameValue
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtExtName.Text)
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtEmail.Text)
+                        .Add("?", OdbcType.VarChar).Value = Trim(cbGender.Text)
+                        .Add("?", OdbcType.Date).Value = dtpBirthdate.Value.Date
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtContactNo.Text)
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtHome.Text)
+                        .Add("?", OdbcType.Int).Value = cbBrgy.SelectedValue
+                        .Add("?", OdbcType.Int).Value = cbCity.SelectedValue
+                        .Add("?", OdbcType.Int).Value = cbProvince.SelectedValue
+                        .Add("?", OdbcType.Int).Value = cbRegion.SelectedValue
+                        .Add("?", OdbcType.VarChar).Value = Trim(txtEmergencyContact.Text)
+                        .Add("?", OdbcType.VarChar).Value = cbRelationship.Text
+                        .Add("?", OdbcType.Int).Value = If(selectedDepartmentId.HasValue, selectedDepartmentId.Value, DBNull.Value)
                     End With
                     cmd.ExecuteNonQuery()
                     _logger.LogInfo($"Faculty record created successfully - Name: '{facultyName}', Employee ID: '{Trim(txtEmployeeID.Text)}', RFID: '{Trim(txtTagID.Text)}'")
                     MsgBox("New record added successfully", vbInformation, "Success")
+                    ClearAllFields()
                     Me.Close()
                 End If
-                FormHelper.ClearFields(panelContainer)
             Else
                 _logger.LogWarning($"Faculty save failed - Profile picture missing for '{facultyName}'")
                 MessageBox.Show("Profile picture should not be empty. Please select a picture.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -256,9 +260,30 @@ Public Class AddFaculty
     End Sub
 
     Private Sub cbRegion_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRegion.SelectedIndexChanged
-        cbProvince.SelectedIndex = -1
-        cbCity.SelectedIndex = -1
-        cbBrgy.SelectedIndex = -1
+        Try
+            ' Skip if no valid selection
+            If cbRegion.SelectedIndex < 0 OrElse cbRegion.SelectedItem Is Nothing Then
+                Return
+            End If
+
+            ' Clear dependent ComboBoxes
+            cbProvince.SelectedIndex = -1
+            cbCity.SelectedIndex = -1
+            cbBrgy.SelectedIndex = -1
+
+            Dim regionName As String = cbRegion.Text
+            If Not String.IsNullOrWhiteSpace(regionName) Then
+                Dim hasProvinces As Boolean = ValidationHelper.RegionHasProvinces(regionName)
+
+                ' Configure province controls based on region type
+                ConfigureProvinceControls(hasProvinces, regionName)
+
+                _logger.LogInfo($"AddFaculty - Region changed to: '{regionName}', Has provinces: {hasProvinces}")
+            End If
+
+        Catch ex As Exception
+            _logger.LogError($"AddFaculty - Error in cbRegion_SelectedIndexChanged: {ex.Message}")
+        End Try
     End Sub
 
     Private Sub cbRegion_Click(sender As Object, e As EventArgs) Handles cbRegion.Click
@@ -427,16 +452,88 @@ Public Class AddFaculty
     ' Method to set department selection (useful when editing faculty)
     Public Sub SetDepartmentSelection(departmentId As Integer?)
         Try
-            If departmentId.HasValue Then
-                cboDepartment.SelectedValue = departmentId.Value
-                _logger.LogInfo($"AddFaculty - Department selection set to ID: {departmentId.Value}")
+            If departmentId.HasValue AndAlso cboDepartment.Items.Count > 0 Then
+                ' Try to find and select the department
+                Dim found As Boolean = False
+                For i As Integer = 0 To cboDepartment.Items.Count - 1
+                    cboDepartment.SelectedIndex = i
+                    If cboDepartment.SelectedValue IsNot Nothing AndAlso 
+                       Not IsDBNull(cboDepartment.SelectedValue) AndAlso
+                       Convert.ToInt32(cboDepartment.SelectedValue) = departmentId.Value Then
+                        found = True
+                        Exit For
+                    End If
+                Next
+
+                If found Then
+                    _logger.LogInfo($"AddFaculty - Department selection set to ID: {departmentId.Value}")
+                Else
+                    cboDepartment.SelectedIndex = 0
+                    _logger.LogWarning($"AddFaculty - Department ID {departmentId.Value} not found, defaulting to first item")
+                End If
             Else
-                cboDepartment.SelectedIndex = 0 ' Select "-- Select Department (Required) --"
+                ' Clear selection safely
+                If cboDepartment.Items.Count > 0 Then
+                    cboDepartment.SelectedIndex = 0
+                Else
+                    cboDepartment.SelectedIndex = -1
+                End If
                 _logger.LogInfo("AddFaculty - Department selection cleared")
             End If
         Catch ex As Exception
             _logger.LogWarning($"AddFaculty - Error setting department selection: {ex.Message}")
-            cboDepartment.SelectedIndex = 0
+            If cboDepartment.Items.Count > 0 Then
+                cboDepartment.SelectedIndex = 0
+            End If
+        End Try
+    End Sub
+
+    Private Sub ConfigureProvinceControls(hasProvinces As Boolean, regionName As String)
+        Try
+            If hasProvinces Then
+                ' Region has provinces - show and enable province controls
+                If Not cbProvince.Visible Then
+                    cbProvince.Visible = True
+                    cbProvince.Enabled = True
+                    If lblProvince IsNot Nothing Then lblProvince.Visible = True
+                    If lblProvinceAsterisk IsNot Nothing Then lblProvinceAsterisk.Visible = True
+                    _logger.LogInfo($"AddFaculty - Province controls enabled for region: {regionName}")
+                End If
+            Else
+                ' Region doesn't have provinces (e.g., NCR) - hide/disable province controls
+                If cbProvince.Visible Then
+                    cbProvince.Visible = False
+                    cbProvince.Enabled = False
+                    cbProvince.SelectedIndex = -1
+                    If lblProvince IsNot Nothing Then lblProvince.Visible = False
+                    If lblProvinceAsterisk IsNot Nothing Then lblProvinceAsterisk.Visible = False
+                    _logger.LogInfo($"AddFaculty - Province controls disabled for region: {regionName}")
+                End If
+
+                ' For NCR, directly load cities without province selection (only if not already loaded)
+                If (regionName.ToUpper().Contains("NCR") OrElse regionName.ToUpper().Contains("NATIONAL CAPITAL REGION")) AndAlso
+                   cbCity.Items.Count <= 1 Then
+                    LoadNCRCities()
+                End If
+            End If
+
+        Catch ex As Exception
+            _logger.LogError($"AddFaculty - Error configuring province controls: {ex.Message}")
+        End Try
+    End Sub
+
+    Private Sub LoadNCRCities()
+        Try
+            _logger.LogInfo("AddFaculty - Loading NCR cities directly")
+
+            ' Load cities for NCR (region code 130000000)
+            Dim query As String = "SELECT * FROM refcitymun WHERE LEFT(citymuncode, 2) = '13' ORDER BY citymundesc"
+            FormHelper.LoadComboBox(query, "id", "citymundesc", cbCity)
+
+            _logger.LogInfo($"AddFaculty - NCR cities loaded successfully")
+
+        Catch ex As Exception
+            _logger.LogError($"AddFaculty - Error loading NCR cities: {ex.Message}")
         End Try
     End Sub
 
@@ -457,6 +554,84 @@ Public Class AddFaculty
 
         Catch ex As Exception
             _logger.LogError($"AddFaculty - Error configuring DateTimePicker: {ex.Message}")
+        End Try
+    End Sub
+
+    Private Sub ClearAllFields()
+        Try
+            _logger.LogInfo("AddFaculty - Clearing all form fields")
+
+            ' Reset ID to 0 for new record mode
+            txtID.Text = "0"
+
+            ' Clear ALL text fields explicitly
+            ClearTextFieldSafely(txtEmployeeID)
+            ClearTextFieldSafely(txtTagID)
+            ClearTextFieldSafely(txtFirstName)
+            ClearTextFieldSafely(txtMiddleName)
+            ClearTextFieldSafely(txtLastName)
+            ClearTextFieldSafely(txtExtName)
+            ClearTextFieldSafely(txtEmail)
+            ClearTextFieldSafely(txtContactNo)
+            ClearTextFieldSafely(txtHome)
+            ClearTextFieldSafely(txtEmergencyContact)
+
+            ' Reset ComboBoxes to default selections safely
+            ResetComboBoxSafely(cboDepartment, 0) ' "-- Select Department --"
+            ResetComboBoxSafely(cbGender, -1)
+            ResetComboBoxSafely(cbRelationship, -1)
+            ResetComboBoxSafely(cbRegion, -1)
+            ResetComboBoxSafely(cbProvince, -1)
+            ResetComboBoxSafely(cbCity, -1)
+            ResetComboBoxSafely(cbBrgy, -1)
+
+            ' Reset DateTimePicker to default
+            ConfigureDateTimePicker()
+
+            ' Clear profile picture
+            If pbProfile IsNot Nothing Then
+                pbProfile.Image = Nothing
+            End If
+
+            ' Show province controls (default state)
+            cbProvince.Visible = True
+            cbProvince.Enabled = True
+            If lblProvince IsNot Nothing Then lblProvince.Visible = True
+            If lblProvinceAsterisk IsNot Nothing Then lblProvinceAsterisk.Visible = True
+
+            ' Also use FormHelper as backup for any missed fields
+            FormHelper.ClearFields(panelContainer)
+
+            _logger.LogInfo("AddFaculty - All form fields cleared successfully")
+
+        Catch ex As Exception
+            _logger.LogError($"AddFaculty - Error clearing form fields: {ex.Message}")
+        End Try
+    End Sub
+
+    Private Sub ClearTextFieldSafely(textBox As TextBox)
+        Try
+            If textBox IsNot Nothing Then
+                textBox.Text = String.Empty
+            End If
+        Catch ex As Exception
+            _logger.LogWarning($"AddFaculty - Error clearing TextBox {textBox?.Name}: {ex.Message}")
+        End Try
+    End Sub
+
+    Private Sub ResetComboBoxSafely(comboBox As ComboBox, selectedIndex As Integer)
+        Try
+            If comboBox IsNot Nothing AndAlso comboBox.Items.Count > 0 Then
+                If selectedIndex >= 0 AndAlso selectedIndex < comboBox.Items.Count Then
+                    comboBox.SelectedIndex = selectedIndex
+                Else
+                    comboBox.SelectedIndex = -1
+                End If
+            ElseIf comboBox IsNot Nothing Then
+                comboBox.SelectedIndex = -1
+            End If
+        Catch ex As Exception
+            _logger.LogWarning($"AddFaculty - Error resetting ComboBox {comboBox?.Name}: {ex.Message}")
         End Try
     End Sub
 

@@ -28,7 +28,11 @@ Partial Class AddFaculty
         Me.txtID = New System.Windows.Forms.Label()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
         Me.panelContainer = New System.Windows.Forms.Panel()
+        Me.btnAddDepartment = New System.Windows.Forms.Button()
+        Me.lblProvinceAsterisk = New System.Windows.Forms.Label()
         Me.Label36 = New System.Windows.Forms.Label()
         Me.cboDepartment = New System.Windows.Forms.ComboBox()
         Me.Label39 = New System.Windows.Forms.Label()
@@ -40,6 +44,9 @@ Partial Class AddFaculty
         Me.txtContactNo = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -49,16 +56,18 @@ Partial Class AddFaculty
         Me.txtExtName = New System.Windows.Forms.TextBox()
         Me.Label34 = New System.Windows.Forms.Label()
         Me.cbBrgy = New System.Windows.Forms.ComboBox()
-        Me.Label13 = New System.Windows.Forms.Label()
+        Me.lblBarangay = New System.Windows.Forms.Label()
+        Me.pbProfile = New System.Windows.Forms.PictureBox()
         Me.Label29 = New System.Windows.Forms.Label()
+        Me.btnBrowse = New System.Windows.Forms.Button()
         Me.txtHome = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.cbRegion = New System.Windows.Forms.ComboBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblRegion = New System.Windows.Forms.Label()
+        Me.lblProvince = New System.Windows.Forms.Label()
         Me.cbProvince = New System.Windows.Forms.ComboBox()
         Me.cbCity = New System.Windows.Forms.ComboBox()
-        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lblCity = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.dtpBirthdate = New System.Windows.Forms.DateTimePicker()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -72,26 +81,17 @@ Partial Class AddFaculty
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtEmployeeID = New System.Windows.Forms.TextBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label40 = New System.Windows.Forms.Label()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.Label31 = New System.Windows.Forms.Label()
+        Me.lblRegionAsterisk = New System.Windows.Forms.Label()
+        Me.lblCityAsterisk = New System.Windows.Forms.Label()
+        Me.lblBarangayAsterisk = New System.Windows.Forms.Label()
         Me.Label33 = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.btnAddDepartment = New System.Windows.Forms.Button()
-        Me.pbProfile = New System.Windows.Forms.PictureBox()
-        Me.btnBrowse = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
         Me.panelHeader.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.panelContainer.SuspendLayout()
@@ -170,11 +170,50 @@ Partial Class AddFaculty
         Me.Panel1.Size = New System.Drawing.Size(873, 56)
         Me.Panel1.TabIndex = 76
         '
+        'btnCancel
+        '
+        Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCancel.AutoSize = True
+        Me.btnCancel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnCancel.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_delete_40__1_
+        Me.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnCancel.Font = New System.Drawing.Font("Segoe UI Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancel.ForeColor = System.Drawing.Color.Red
+        Me.btnCancel.Location = New System.Drawing.Point(194, 9)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(150, 42)
+        Me.btnCancel.TabIndex = 72
+        Me.btnCancel.TabStop = False
+        Me.btnCancel.Text = "&Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = False
+        '
+        'btnSave
+        '
+        Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSave.AutoSize = True
+        Me.btnSave.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnSave.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_plus_401
+        Me.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnSave.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSave.FlatAppearance.BorderSize = 0
+        Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnSave.Font = New System.Drawing.Font("Segoe UI Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSave.ForeColor = System.Drawing.Color.Green
+        Me.btnSave.Location = New System.Drawing.Point(24, 9)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(150, 40)
+        Me.btnSave.TabIndex = 71
+        Me.btnSave.TabStop = False
+        Me.btnSave.Text = "&Save"
+        Me.btnSave.UseVisualStyleBackColor = False
+        '
         'panelContainer
         '
         Me.panelContainer.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.panelContainer.Controls.Add(Me.btnAddDepartment)
-        Me.panelContainer.Controls.Add(Me.Label31)
+        Me.panelContainer.Controls.Add(Me.lblProvinceAsterisk)
         Me.panelContainer.Controls.Add(Me.Label36)
         Me.panelContainer.Controls.Add(Me.cboDepartment)
         Me.panelContainer.Controls.Add(Me.Label39)
@@ -185,18 +224,18 @@ Partial Class AddFaculty
         Me.panelContainer.Controls.Add(Me.txtExtName)
         Me.panelContainer.Controls.Add(Me.Label34)
         Me.panelContainer.Controls.Add(Me.cbBrgy)
-        Me.panelContainer.Controls.Add(Me.Label13)
+        Me.panelContainer.Controls.Add(Me.lblBarangay)
         Me.panelContainer.Controls.Add(Me.pbProfile)
         Me.panelContainer.Controls.Add(Me.Label29)
         Me.panelContainer.Controls.Add(Me.btnBrowse)
         Me.panelContainer.Controls.Add(Me.txtHome)
         Me.panelContainer.Controls.Add(Me.Label14)
         Me.panelContainer.Controls.Add(Me.cbRegion)
-        Me.panelContainer.Controls.Add(Me.Label10)
-        Me.panelContainer.Controls.Add(Me.Label11)
+        Me.panelContainer.Controls.Add(Me.lblRegion)
+        Me.panelContainer.Controls.Add(Me.lblProvince)
         Me.panelContainer.Controls.Add(Me.cbProvince)
         Me.panelContainer.Controls.Add(Me.cbCity)
-        Me.panelContainer.Controls.Add(Me.Label12)
+        Me.panelContainer.Controls.Add(Me.lblCity)
         Me.panelContainer.Controls.Add(Me.Label7)
         Me.panelContainer.Controls.Add(Me.dtpBirthdate)
         Me.panelContainer.Controls.Add(Me.Label6)
@@ -217,9 +256,9 @@ Partial Class AddFaculty
         Me.panelContainer.Controls.Add(Me.Label20)
         Me.panelContainer.Controls.Add(Me.Label17)
         Me.panelContainer.Controls.Add(Me.Label40)
-        Me.panelContainer.Controls.Add(Me.Label26)
-        Me.panelContainer.Controls.Add(Me.Label32)
-        Me.panelContainer.Controls.Add(Me.Label23)
+        Me.panelContainer.Controls.Add(Me.lblRegionAsterisk)
+        Me.panelContainer.Controls.Add(Me.lblCityAsterisk)
+        Me.panelContainer.Controls.Add(Me.lblBarangayAsterisk)
         Me.panelContainer.Controls.Add(Me.Label33)
         Me.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelContainer.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -227,6 +266,27 @@ Partial Class AddFaculty
         Me.panelContainer.Name = "panelContainer"
         Me.panelContainer.Size = New System.Drawing.Size(873, 712)
         Me.panelContainer.TabIndex = 77
+        '
+        'btnAddDepartment
+        '
+        Me.btnAddDepartment.Image = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_plus_402
+        Me.btnAddDepartment.Location = New System.Drawing.Point(592, 297)
+        Me.btnAddDepartment.Name = "btnAddDepartment"
+        Me.btnAddDepartment.Size = New System.Drawing.Size(29, 30)
+        Me.btnAddDepartment.TabIndex = 285
+        Me.btnAddDepartment.UseVisualStyleBackColor = True
+        '
+        'lblProvinceAsterisk
+        '
+        Me.lblProvinceAsterisk.BackColor = System.Drawing.Color.Transparent
+        Me.lblProvinceAsterisk.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblProvinceAsterisk.ForeColor = System.Drawing.Color.Red
+        Me.lblProvinceAsterisk.Location = New System.Drawing.Point(444, 371)
+        Me.lblProvinceAsterisk.Name = "lblProvinceAsterisk"
+        Me.lblProvinceAsterisk.Size = New System.Drawing.Size(24, 24)
+        Me.lblProvinceAsterisk.TabIndex = 283
+        Me.lblProvinceAsterisk.Text = "*"
+        Me.lblProvinceAsterisk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label36
         '
@@ -354,6 +414,42 @@ Partial Class AddFaculty
         Me.Label37.Text = "Note: * Required Field"
         Me.Label37.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
+        'Label27
+        '
+        Me.Label27.BackColor = System.Drawing.Color.Transparent
+        Me.Label27.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.ForeColor = System.Drawing.Color.Red
+        Me.Label27.Location = New System.Drawing.Point(142, 33)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(24, 24)
+        Me.Label27.TabIndex = 276
+        Me.Label27.Text = "*"
+        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label28
+        '
+        Me.Label28.BackColor = System.Drawing.Color.Transparent
+        Me.Label28.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.ForeColor = System.Drawing.Color.Red
+        Me.Label28.Location = New System.Drawing.Point(154, 94)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(24, 24)
+        Me.Label28.TabIndex = 277
+        Me.Label28.Text = "*"
+        Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label30
+        '
+        Me.Label30.BackColor = System.Drawing.Color.Transparent
+        Me.Label30.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.ForeColor = System.Drawing.Color.Red
+        Me.Label30.Location = New System.Drawing.Point(477, 32)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(24, 24)
+        Me.Label30.TabIndex = 278
+        Me.Label30.Text = "*"
+        Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'txtEmail
         '
         Me.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -454,15 +550,27 @@ Partial Class AddFaculty
         Me.cbBrgy.Size = New System.Drawing.Size(312, 29)
         Me.cbBrgy.TabIndex = 11
         '
-        'Label13
+        'lblBarangay
         '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(39, 478)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(74, 20)
-        Me.Label13.TabIndex = 56
-        Me.Label13.Text = "Barangay:"
+        Me.lblBarangay.AutoSize = True
+        Me.lblBarangay.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBarangay.Location = New System.Drawing.Point(39, 478)
+        Me.lblBarangay.Name = "lblBarangay"
+        Me.lblBarangay.Size = New System.Drawing.Size(74, 20)
+        Me.lblBarangay.TabIndex = 56
+        Me.lblBarangay.Text = "Barangay:"
+        '
+        'pbProfile
+        '
+        Me.pbProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pbProfile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pbProfile.Image = Global.Tala_Attendance_Management_System.My.Resources.Resources.default_image
+        Me.pbProfile.Location = New System.Drawing.Point(638, 87)
+        Me.pbProfile.Name = "pbProfile"
+        Me.pbProfile.Size = New System.Drawing.Size(212, 159)
+        Me.pbProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbProfile.TabIndex = 73
+        Me.pbProfile.TabStop = False
         '
         'Label29
         '
@@ -475,6 +583,21 @@ Partial Class AddFaculty
         Me.Label29.Size = New System.Drawing.Size(23, 30)
         Me.Label29.TabIndex = 87
         Me.Label29.Text = "*"
+        '
+        'btnBrowse
+        '
+        Me.btnBrowse.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.btnBrowse.Font = New System.Drawing.Font("Segoe UI Light", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBrowse.ForeColor = System.Drawing.Color.SteelBlue
+        Me.btnBrowse.Image = Global.Tala_Attendance_Management_System.My.Resources.Resources.gallery__3_
+        Me.btnBrowse.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.btnBrowse.Location = New System.Drawing.Point(638, 268)
+        Me.btnBrowse.Name = "btnBrowse"
+        Me.btnBrowse.Size = New System.Drawing.Size(212, 42)
+        Me.btnBrowse.TabIndex = 74
+        Me.btnBrowse.TabStop = False
+        Me.btnBrowse.Text = "    Browse Image"
+        Me.btnBrowse.UseVisualStyleBackColor = False
         '
         'txtHome
         '
@@ -505,25 +628,25 @@ Partial Class AddFaculty
         Me.cbRegion.Size = New System.Drawing.Size(314, 29)
         Me.cbRegion.TabIndex = 8
         '
-        'Label10
+        'lblRegion
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(38, 372)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(59, 20)
-        Me.Label10.TabIndex = 49
-        Me.Label10.Text = "Region:"
+        Me.lblRegion.AutoSize = True
+        Me.lblRegion.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRegion.Location = New System.Drawing.Point(38, 372)
+        Me.lblRegion.Name = "lblRegion"
+        Me.lblRegion.Size = New System.Drawing.Size(59, 20)
+        Me.lblRegion.TabIndex = 49
+        Me.lblRegion.Text = "Region:"
         '
-        'Label11
+        'lblProvince
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(380, 372)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(68, 20)
-        Me.Label11.TabIndex = 52
-        Me.Label11.Text = "Province:"
+        Me.lblProvince.AutoSize = True
+        Me.lblProvince.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblProvince.Location = New System.Drawing.Point(380, 372)
+        Me.lblProvince.Name = "lblProvince"
+        Me.lblProvince.Size = New System.Drawing.Size(68, 20)
+        Me.lblProvince.TabIndex = 52
+        Me.lblProvince.Text = "Province:"
         '
         'cbProvince
         '
@@ -545,15 +668,15 @@ Partial Class AddFaculty
         Me.cbCity.Size = New System.Drawing.Size(312, 29)
         Me.cbCity.TabIndex = 10
         '
-        'Label12
+        'lblCity
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(38, 425)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(41, 20)
-        Me.Label12.TabIndex = 54
-        Me.Label12.Text = "City :"
+        Me.lblCity.AutoSize = True
+        Me.lblCity.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCity.Location = New System.Drawing.Point(38, 425)
+        Me.lblCity.Name = "lblCity"
+        Me.lblCity.Size = New System.Drawing.Size(41, 20)
+        Me.lblCity.TabIndex = 54
+        Me.lblCity.Text = "City :"
         '
         'Label7
         '
@@ -685,17 +808,17 @@ Partial Class AddFaculty
         Me.txtEmployeeID.Size = New System.Drawing.Size(311, 29)
         Me.txtEmployeeID.TabIndex = 1
         '
-        'Label15
+        'Label18
         '
-        Me.Label15.BackColor = System.Drawing.Color.Transparent
-        Me.Label15.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.ForeColor = System.Drawing.Color.Red
-        Me.Label15.Location = New System.Drawing.Point(134, 56)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(24, 24)
-        Me.Label15.TabIndex = 85
-        Me.Label15.Text = "*"
-        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label18.BackColor = System.Drawing.Color.Transparent
+        Me.Label18.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.Color.Red
+        Me.Label18.Location = New System.Drawing.Point(118, 164)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(24, 24)
+        Me.Label18.TabIndex = 275
+        Me.Label18.Text = "*"
+        Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label9
         '
@@ -709,17 +832,17 @@ Partial Class AddFaculty
         Me.Label9.Text = "*"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label18
+        'Label15
         '
-        Me.Label18.BackColor = System.Drawing.Color.Transparent
-        Me.Label18.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.ForeColor = System.Drawing.Color.Red
-        Me.Label18.Location = New System.Drawing.Point(118, 164)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(24, 24)
-        Me.Label18.TabIndex = 275
-        Me.Label18.Text = "*"
-        Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label15.BackColor = System.Drawing.Color.Transparent
+        Me.Label15.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.ForeColor = System.Drawing.Color.Red
+        Me.Label15.Location = New System.Drawing.Point(134, 56)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(24, 24)
+        Me.Label15.TabIndex = 85
+        Me.Label15.Text = "*"
+        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label35
         '
@@ -769,53 +892,41 @@ Partial Class AddFaculty
         Me.Label40.Text = "*"
         Me.Label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label26
+        'lblRegionAsterisk
         '
-        Me.Label26.BackColor = System.Drawing.Color.Transparent
-        Me.Label26.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label26.ForeColor = System.Drawing.Color.Red
-        Me.Label26.Location = New System.Drawing.Point(92, 371)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(24, 24)
-        Me.Label26.TabIndex = 280
-        Me.Label26.Text = "*"
-        Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblRegionAsterisk.BackColor = System.Drawing.Color.Transparent
+        Me.lblRegionAsterisk.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRegionAsterisk.ForeColor = System.Drawing.Color.Red
+        Me.lblRegionAsterisk.Location = New System.Drawing.Point(92, 371)
+        Me.lblRegionAsterisk.Name = "lblRegionAsterisk"
+        Me.lblRegionAsterisk.Size = New System.Drawing.Size(24, 24)
+        Me.lblRegionAsterisk.TabIndex = 280
+        Me.lblRegionAsterisk.Text = "*"
+        Me.lblRegionAsterisk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label32
+        'lblCityAsterisk
         '
-        Me.Label32.BackColor = System.Drawing.Color.Transparent
-        Me.Label32.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label32.ForeColor = System.Drawing.Color.Red
-        Me.Label32.Location = New System.Drawing.Point(73, 424)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(24, 24)
-        Me.Label32.TabIndex = 281
-        Me.Label32.Text = "*"
-        Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblCityAsterisk.BackColor = System.Drawing.Color.Transparent
+        Me.lblCityAsterisk.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCityAsterisk.ForeColor = System.Drawing.Color.Red
+        Me.lblCityAsterisk.Location = New System.Drawing.Point(73, 424)
+        Me.lblCityAsterisk.Name = "lblCityAsterisk"
+        Me.lblCityAsterisk.Size = New System.Drawing.Size(24, 24)
+        Me.lblCityAsterisk.TabIndex = 281
+        Me.lblCityAsterisk.Text = "*"
+        Me.lblCityAsterisk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label23
+        'lblBarangayAsterisk
         '
-        Me.Label23.BackColor = System.Drawing.Color.Transparent
-        Me.Label23.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.ForeColor = System.Drawing.Color.Red
-        Me.Label23.Location = New System.Drawing.Point(108, 477)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(24, 24)
-        Me.Label23.TabIndex = 282
-        Me.Label23.Text = "*"
-        Me.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label31
-        '
-        Me.Label31.BackColor = System.Drawing.Color.Transparent
-        Me.Label31.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.ForeColor = System.Drawing.Color.Red
-        Me.Label31.Location = New System.Drawing.Point(444, 371)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(24, 24)
-        Me.Label31.TabIndex = 283
-        Me.Label31.Text = "*"
-        Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblBarangayAsterisk.BackColor = System.Drawing.Color.Transparent
+        Me.lblBarangayAsterisk.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBarangayAsterisk.ForeColor = System.Drawing.Color.Red
+        Me.lblBarangayAsterisk.Location = New System.Drawing.Point(108, 477)
+        Me.lblBarangayAsterisk.Name = "lblBarangayAsterisk"
+        Me.lblBarangayAsterisk.Size = New System.Drawing.Size(24, 24)
+        Me.lblBarangayAsterisk.TabIndex = 282
+        Me.lblBarangayAsterisk.Text = "*"
+        Me.lblBarangayAsterisk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label33
         '
@@ -828,117 +939,6 @@ Partial Class AddFaculty
         Me.Label33.TabIndex = 284
         Me.Label33.Text = "*"
         Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label27
-        '
-        Me.Label27.BackColor = System.Drawing.Color.Transparent
-        Me.Label27.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.ForeColor = System.Drawing.Color.Red
-        Me.Label27.Location = New System.Drawing.Point(142, 33)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(24, 24)
-        Me.Label27.TabIndex = 276
-        Me.Label27.Text = "*"
-        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label28
-        '
-        Me.Label28.BackColor = System.Drawing.Color.Transparent
-        Me.Label28.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.ForeColor = System.Drawing.Color.Red
-        Me.Label28.Location = New System.Drawing.Point(154, 94)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(24, 24)
-        Me.Label28.TabIndex = 277
-        Me.Label28.Text = "*"
-        Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label30
-        '
-        Me.Label30.BackColor = System.Drawing.Color.Transparent
-        Me.Label30.Font = New System.Drawing.Font("Segoe UI Semibold", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.ForeColor = System.Drawing.Color.Red
-        Me.Label30.Location = New System.Drawing.Point(477, 32)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(24, 24)
-        Me.Label30.TabIndex = 278
-        Me.Label30.Text = "*"
-        Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'btnAddDepartment
-        '
-        Me.btnAddDepartment.Image = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_plus_402
-        Me.btnAddDepartment.Location = New System.Drawing.Point(592, 297)
-        Me.btnAddDepartment.Name = "btnAddDepartment"
-        Me.btnAddDepartment.Size = New System.Drawing.Size(29, 30)
-        Me.btnAddDepartment.TabIndex = 285
-        Me.btnAddDepartment.UseVisualStyleBackColor = True
-        '
-        'pbProfile
-        '
-        Me.pbProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.pbProfile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pbProfile.Image = Global.Tala_Attendance_Management_System.My.Resources.Resources.default_image
-        Me.pbProfile.Location = New System.Drawing.Point(638, 87)
-        Me.pbProfile.Name = "pbProfile"
-        Me.pbProfile.Size = New System.Drawing.Size(212, 159)
-        Me.pbProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pbProfile.TabIndex = 73
-        Me.pbProfile.TabStop = False
-        '
-        'btnBrowse
-        '
-        Me.btnBrowse.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.btnBrowse.Font = New System.Drawing.Font("Segoe UI Light", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBrowse.ForeColor = System.Drawing.Color.SteelBlue
-        Me.btnBrowse.Image = Global.Tala_Attendance_Management_System.My.Resources.Resources.gallery__3_
-        Me.btnBrowse.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.btnBrowse.Location = New System.Drawing.Point(638, 268)
-        Me.btnBrowse.Name = "btnBrowse"
-        Me.btnBrowse.Size = New System.Drawing.Size(212, 42)
-        Me.btnBrowse.TabIndex = 74
-        Me.btnBrowse.TabStop = False
-        Me.btnBrowse.Text = "    Browse Image"
-        Me.btnBrowse.UseVisualStyleBackColor = False
-        '
-        'btnCancel
-        '
-        Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCancel.AutoSize = True
-        Me.btnCancel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.btnCancel.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_delete_40__1_
-        Me.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnCancel.Font = New System.Drawing.Font("Segoe UI Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.ForeColor = System.Drawing.Color.Red
-        Me.btnCancel.Location = New System.Drawing.Point(194, 9)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(150, 42)
-        Me.btnCancel.TabIndex = 72
-        Me.btnCancel.TabStop = False
-        Me.btnCancel.Text = "&Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = False
-        '
-        'btnSave
-        '
-        Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSave.AutoSize = True
-        Me.btnSave.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.btnSave.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_plus_401
-        Me.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnSave.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSave.FlatAppearance.BorderSize = 0
-        Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnSave.Font = New System.Drawing.Font("Segoe UI Light", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.ForeColor = System.Drawing.Color.Green
-        Me.btnSave.Location = New System.Drawing.Point(24, 9)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(150, 40)
-        Me.btnSave.TabIndex = 71
-        Me.btnSave.TabStop = False
-        Me.btnSave.Text = "&Save"
-        Me.btnSave.UseVisualStyleBackColor = False
         '
         'AddFaculty
         '
@@ -987,14 +987,14 @@ Partial Class AddFaculty
     Friend WithEvents cbRelationship As ComboBox
     Friend WithEvents txtHome As TextBox
     Friend WithEvents Label14 As Label
-    Friend WithEvents Label13 As Label
+    Friend WithEvents lblBarangay As Label
     Friend WithEvents cbBrgy As ComboBox
     Friend WithEvents cbRegion As ComboBox
-    Friend WithEvents Label10 As Label
-    Public WithEvents Label11 As Label
+    Friend WithEvents lblRegion As Label
+    Public WithEvents lblProvince As Label
     Friend WithEvents cbProvince As ComboBox
     Friend WithEvents cbCity As ComboBox
-    Friend WithEvents Label12 As Label
+    Friend WithEvents lblCity As Label
     Friend WithEvents txtContactNo As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
@@ -1030,14 +1030,14 @@ Partial Class AddFaculty
     Friend WithEvents Label35 As Label
     Friend WithEvents Label20 As Label
     Friend WithEvents Label17 As Label
-    Friend WithEvents Label31 As Label
+    Friend WithEvents lblProvinceAsterisk As Label
     Friend WithEvents Label27 As Label
     Friend WithEvents Label28 As Label
     Friend WithEvents Label30 As Label
     Friend WithEvents Label40 As Label
-    Friend WithEvents Label26 As Label
-    Friend WithEvents Label32 As Label
-    Friend WithEvents Label23 As Label
+    Friend WithEvents lblRegionAsterisk As Label
+    Friend WithEvents lblCityAsterisk As Label
+    Friend WithEvents lblBarangayAsterisk As Label
     Friend WithEvents Label33 As Label
     Friend WithEvents btnAddDepartment As Button
 End Class

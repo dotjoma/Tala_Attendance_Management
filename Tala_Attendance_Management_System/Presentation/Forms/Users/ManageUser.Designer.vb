@@ -47,7 +47,7 @@ Partial Class ManageUser
         Me.username = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.password = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.email = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.location = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.locationColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.created_at = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.role = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EditBtn = New System.Windows.Forms.DataGridViewButtonColumn()
@@ -246,7 +246,7 @@ Partial Class ManageUser
         Me.dgvManageUser.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvManageUser.ColumnHeadersHeight = 70
         Me.dgvManageUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvManageUser.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.login_id, Me.full_name, Me.username, Me.password, Me.email, Me.location, Me.created_at, Me.role, Me.EditBtn, Me.deleteBtn})
+        Me.dgvManageUser.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.login_id, Me.full_name, Me.username, Me.password, Me.email, Me.locationColumn, Me.created_at, Me.role, Me.EditBtn, Me.deleteBtn})
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -309,13 +309,13 @@ Partial Class ManageUser
         Me.email.Name = "email"
         Me.email.ReadOnly = True
         '
-        'location
+        'locationColumn
         '
-        Me.location.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.location.DataPropertyName = "address"
-        Me.location.HeaderText = "Location"
-        Me.location.Name = "location"
-        Me.location.ReadOnly = True
+        Me.locationColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.locationColumn.DataPropertyName = "address"
+        Me.locationColumn.HeaderText = "Location"
+        Me.locationColumn.Name = "location"
+        Me.locationColumn.ReadOnly = True
         '
         'created_at
         '
@@ -441,7 +441,7 @@ Partial Class ManageUser
     Friend WithEvents username As DataGridViewTextBoxColumn
     Friend WithEvents password As DataGridViewTextBoxColumn
     Friend WithEvents email As DataGridViewTextBoxColumn
-    Friend WithEvents location As DataGridViewTextBoxColumn
+    Friend WithEvents locationColumn As DataGridViewTextBoxColumn
     Friend WithEvents created_at As DataGridViewTextBoxColumn
     Friend WithEvents role As DataGridViewTextBoxColumn
     Friend WithEvents EditBtn As DataGridViewButtonColumn

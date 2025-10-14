@@ -16,16 +16,33 @@ Public Class FormFaculty
             FormHelper.LoadComboBox("SELECT * FROM refregion ORDER BY regDesc", "id", "regDesc", AddFaculty.cbRegion)
             AddFaculty.cbRegion.SelectedValue = regionId
 
-            ' Load Province ComboBox based on selected region
+            ' Load Province ComboBox based on selected region (if region has provinces)
             If Not String.IsNullOrEmpty(regionId) Then
                 connectDB() ' Ensure fresh connection
-                Dim regionCmd As New OdbcCommand("SELECT regCode FROM refregion WHERE id = ?", con)
+                Dim regionCmd As New OdbcCommand("SELECT regCode, regDesc FROM refregion WHERE id = ?", con)
                 regionCmd.Parameters.AddWithValue("?", regionId)
-                Dim regionCode As String = regionCmd.ExecuteScalar()?.ToString()
-
-                If Not String.IsNullOrEmpty(regionCode) Then
-                    FormHelper.LoadComboBox($"SELECT * FROM refprovince WHERE regCode = {regionCode} ORDER BY provdesc", "id", "provdesc", AddFaculty.cbProvince)
-                    AddFaculty.cbProvince.SelectedValue = provinceId
+                Dim regionReader = regionCmd.ExecuteReader()
+                
+                If regionReader.Read() Then
+                    Dim regionCode As String = regionReader("regCode")?.ToString()
+                    Dim regionName As String = regionReader("regDesc")?.ToString()
+                    regionReader.Close()
+                    
+                    ' Check if region has provinces
+                    If ValidationHelper.RegionHasProvinces(regionName, regionCode) Then
+                        ' Load provinces for regions that have them
+                        If Not String.IsNullOrEmpty(regionCode) Then
+                            FormHelper.LoadComboBox($"SELECT * FROM refprovince WHERE regCode = {regionCode} ORDER BY provdesc", "id", "provdesc", AddFaculty.cbProvince)
+                            AddFaculty.cbProvince.SelectedValue = provinceId
+                        End If
+                    Else
+                        ' For regions without provinces (like NCR), skip province loading
+                        AddFaculty.cbProvince.Visible = False
+                        AddFaculty.cbProvince.Enabled = False
+                        _logger.LogInfo($"FormFaculty - Province controls hidden for region: {regionName}")
+                    End If
+                Else
+                    regionReader.Close()
                 End If
             End If
 
@@ -181,7 +198,19 @@ Public Class FormFaculty
                 AddFaculty.txtExtName.Text = dt.Rows(0)("extName").ToString()
                 AddFaculty.txtEmail.Text = dt.Rows(0)("email").ToString()
                 AddFaculty.cbGender.Text = dt.Rows(0)("gender").ToString()
-                AddFaculty.dtpBirthdate.Text = dt.Rows(0)("birthdate").ToString()
+                ' Handle birthdate safely
+                If Not IsDBNull(dt.Rows(0)("birthdate")) Then
+                    Dim birthDate As DateTime
+                    If DateTime.TryParse(dt.Rows(0)("birthdate").ToString(), birthDate) Then
+                        AddFaculty.dtpBirthdate.Value = birthDate
+                    Else
+                        ' Set to default if invalid date
+                        AddFaculty.dtpBirthdate.Value = DateTime.Today.AddYears(-25)
+                        _logger.LogWarning($"FormFaculty - Invalid birthdate for Faculty ID {id}, using default")
+                    End If
+                Else
+                    AddFaculty.dtpBirthdate.Value = DateTime.Today.AddYears(-25)
+                End If
                 AddFaculty.txtHome.Text = dt.Rows(0)("homeadd").ToString()
 
                 ' Load and set address ComboBoxes in proper cascade order
@@ -348,14 +377,14 @@ Public Class FormFaculty
                        ti.gender AS gender, 
                        ti.birthdate AS birthdate, 
                        ti.contactNo AS contactNo, 
-                       CONCAT(ti.homeadd, ' ', rb.brgyDesc, '. ', rc.citymunDesc) AS teacher_address, 
+                       CONCAT(ti.homeadd, ' ', COALESCE(rb.brgyDesc, ''), '. ', COALESCE(rc.citymunDesc, '')) AS teacher_address, 
                        ti.emergencyContact AS emergencyContact,
                        COALESCE(d.department_code, 'No Dept') AS department_code
                 FROM teacherinformation ti 
-                JOIN refregion rg ON ti.regionID = rg.id 
-                JOIN refprovince rp ON ti.provinceID = rp.id 
-                JOIN refcitymun rc ON ti.cityID = rc.id 
-                JOIN refbrgy rb ON ti.brgyID = rb.id 
+                LEFT JOIN refregion rg ON ti.regionID = rg.id 
+                LEFT JOIN refprovince rp ON ti.provinceID = rp.id 
+                LEFT JOIN refcitymun rc ON ti.cityID = rc.id 
+                LEFT JOIN refbrgy rb ON ti.brgyID = rb.id 
                 LEFT JOIN departments d ON ti.department_id = d.department_id
                 WHERE ti.isActive = 1"
 

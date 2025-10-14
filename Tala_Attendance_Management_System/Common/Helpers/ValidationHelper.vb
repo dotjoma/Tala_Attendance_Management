@@ -1,4 +1,6 @@
-﻿Public Class ValidationHelper
+﻿Imports System.Windows.Forms
+
+Public Class ValidationHelper
     Private Shared ReadOnly _logger As ILogger = LoggerFactory.Instance
 
     ''' <summary>
@@ -86,7 +88,7 @@
     Public Shared Function ValidateDateOfBirth(dateOfBirth As DateTime, Optional minimumAge As Integer = Constants.MIN_FACULTY_AGE, Optional maximumAge As Integer = Constants.MAX_FACULTY_AGE, Optional logErrors As Boolean = True) As Boolean
         Try
             Dim today As DateTime = DateTime.Today
-            
+
             ' Check if date is in the future
             If dateOfBirth > today Then
                 If logErrors Then
@@ -150,13 +152,13 @@
     Public Shared Function CalculateAge(dateOfBirth As DateTime, referenceDate As DateTime) As Integer
         Try
             Dim age As Integer = referenceDate.Year - dateOfBirth.Year
-            
+
             ' Adjust if birthday hasn't occurred this year yet
-            If referenceDate.Month < dateOfBirth.Month OrElse 
+            If referenceDate.Month < dateOfBirth.Month OrElse
                (referenceDate.Month = dateOfBirth.Month AndAlso referenceDate.Day < dateOfBirth.Day) Then
                 age -= 1
             End If
-            
+
             Return age
         Catch ex As Exception
             _logger.LogError($"Error calculating age: {ex.Message}")
@@ -179,7 +181,7 @@
             End If
 
             Dim isValid As Boolean = ValidateDateOfBirth(dateTimePicker.Value.Date, minimumAge, maximumAge, logErrors)
-            
+
             If Not isValid Then
                 dateTimePicker.Focus()
             End If
@@ -192,6 +194,38 @@
             End If
             MessageBox.Show("Error validating date of birth control. Please try again.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
+        End Try
+    End Function
+
+    ''' <summary>
+    ''' Checks if a region has provinces (e.g., NCR doesn't have provinces)
+    ''' </summary>
+    ''' <param name="regionName">Name of the region to check</param>
+    ''' <param name="regionCode">Code of the region to check</param>
+    ''' <returns>True if region has provinces, False if it doesn't (like NCR)</returns>
+    Public Shared Function RegionHasProvinces(regionName As String, Optional regionCode As String = "") As Boolean
+        Try
+            If String.IsNullOrWhiteSpace(regionName) Then
+                Return True ' Default to having provinces if region name is empty
+            End If
+
+            ' Check for NCR (National Capital Region) - doesn't have provinces
+            If regionName.ToUpper().Contains("NATIONAL CAPITAL REGION") OrElse
+               regionName.ToUpper().Contains("NCR") OrElse
+               regionCode = Constants.NCR_REGION_CODE Then
+                _logger.LogInfo($"Region '{regionName}' identified as NCR - no provinces")
+                Return False
+            End If
+
+            ' Add other special regions here if needed in the future
+            ' Example: ARMM, BARMM, etc.
+
+            _logger.LogInfo($"Region '{regionName}' has provinces")
+            Return True
+
+        Catch ex As Exception
+            _logger.LogError($"Error checking if region has provinces: {ex.Message}")
+            Return True ' Default to having provinces on error
         End Try
     End Function
 
@@ -251,6 +285,50 @@
             End If
             MessageBox.Show("Error validating department selection. Please try again.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
+        End Try
+    End Function
+
+    ''' <summary>
+    ''' Validates required fields with dynamic province validation based on region
+    ''' </summary>
+    ''' <param name="panel">Panel containing controls to validate</param>
+    ''' <param name="regionComboBox">Region ComboBox to check for province requirement</param>
+    ''' <param name="logErrors">Whether to log validation errors</param>
+    ''' <param name="excludeFields">Array of field names to exclude from validation</param>
+    ''' <returns>True if all required fields are valid</returns>
+    Public Shared Function ValidateRequiredFieldsWithDynamicProvince(panel As Panel, regionComboBox As ComboBox, Optional logErrors As Boolean = True, Optional excludeFields As String() = Nothing) As Boolean
+        Try
+            ' Check if region has provinces
+            Dim regionHasProvinces As Boolean = True
+            If regionComboBox IsNot Nothing AndAlso regionComboBox.SelectedItem IsNot Nothing Then
+                regionHasProvinces = ValidationHelper.RegionHasProvinces(regionComboBox.Text)
+            End If
+
+            ' Default excluded fields (optional fields)
+            Dim defaultExcluded As New List(Of String)({"txtMiddleName", "txtExtName"})
+
+            ' If region doesn't have provinces, exclude province fields from validation
+            If Not regionHasProvinces Then
+                defaultExcluded.AddRange({"cbProvince", "cbprovince"})
+                If logErrors Then
+                    _logger.LogInfo($"Province validation excluded for region: {regionComboBox?.Text}")
+                End If
+            End If
+
+            ' Combine default excluded fields with any additional ones passed in
+            If excludeFields IsNot Nothing Then
+                defaultExcluded.AddRange(excludeFields)
+            End If
+
+            ' Use standard validation with dynamic exclusions
+            Return ValidateRequiredFields(panel, logErrors, defaultExcluded.ToArray())
+
+        Catch ex As Exception
+            If logErrors Then
+                _logger.LogError($"Error in dynamic province validation: {ex.Message}")
+            End If
+            ' Fall back to standard validation
+            Return ValidateRequiredFields(panel, logErrors, excludeFields)
         End Try
     End Function
 End Class

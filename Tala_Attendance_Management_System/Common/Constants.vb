@@ -34,6 +34,10 @@ Public Module Constants
     Public Const MIN_FACULTY_AGE As Integer = 18
     Public Const MAX_FACULTY_AGE As Integer = 100
     Public Const MIN_BIRTH_YEAR As Integer = 1900
+    
+    ' Address Validation - Regions without provinces
+    Public Const NCR_REGION_NAME As String = "NATIONAL CAPITAL REGION (NCR)"
+    Public Const NCR_REGION_CODE As String = "130000000"
 
     ' UI
     Public Const DEFAULT_GRID_ROW_HEIGHT As Integer = 50
