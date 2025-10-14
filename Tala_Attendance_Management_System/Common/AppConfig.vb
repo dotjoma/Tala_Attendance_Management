@@ -1,5 +1,7 @@
-﻿Imports System.IO
+﻿Imports System
+Imports System.IO
 Imports System.Configuration
+Imports System.Windows.Forms
 Imports Newtonsoft.Json
 
 ''' <summary>
@@ -18,6 +20,14 @@ Public Class AppConfig
     Public Property EnableDebugMode As Boolean
     Public Property MaxLoginAttempts As Integer
     Public Property SessionTimeoutMinutes As Integer
+    Public Property UpdateCheckUrl As String
+    
+    ' Version comes from Constants module (single source of truth)
+    Public ReadOnly Property ApplicationVersion As String
+        Get
+            Return Constants.APP_VERSION
+        End Get
+    End Property
 
     ' Singleton pattern
     Public Shared ReadOnly Property Instance As AppConfig
@@ -123,6 +133,10 @@ Public Class AppConfig
         If configData.ContainsKey("SessionTimeoutMinutes") Then
             Integer.TryParse(configData("SessionTimeoutMinutes").ToString(), SessionTimeoutMinutes)
         End If
+
+        If configData.ContainsKey("UpdateCheckUrl") Then
+            UpdateCheckUrl = configData("UpdateCheckUrl").ToString()
+        End If
     End Sub
 
     ''' <summary>
@@ -136,6 +150,8 @@ Public Class AppConfig
         EnableDebugMode = True
         MaxLoginAttempts = 3
         SessionTimeoutMinutes = 30
+        UpdateCheckUrl = "https://drive.google.com/uc?export=download&id=1nNmJTgYLgitxNY73MEKur5AFQ-w3H_N8"
+        ' ApplicationVersion comes from Constants.APP_VERSION
     End Sub
 
     ''' <summary>

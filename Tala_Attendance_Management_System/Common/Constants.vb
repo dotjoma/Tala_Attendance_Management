@@ -1,8 +1,8 @@
 ﻿''' <summary>
-''' Application-wide constants
+''' Application-wide constants - SINGLE SOURCE OF TRUTH
 ''' </summary>
 Public Module Constants
-    ' Application Info
+    ' Application Info - UPDATE VERSION HERE ONLY!
     Public Const APP_NAME As String = "Tala Attendance Management System"
     Public Const APP_VERSION As String = "2.2.0"
 

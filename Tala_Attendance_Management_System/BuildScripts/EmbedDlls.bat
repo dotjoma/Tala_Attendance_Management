@@ -5,7 +5,7 @@ echo =====================================
 set "ProjectDir=%~dp0.."
 set "OutputDir=%ProjectDir%\bin\Release"
 set "SingleFileDir=%ProjectDir%\Project_Release"
-set "TargetName=Tala_Attendance_Management_System"
+set "TargetName=TalaAMS"
 set "ILMergePath=%ProjectDir%\Tools\ILMerge\tools\net452\ILMerge.exe"
 
 echo Project Directory: %ProjectDir%

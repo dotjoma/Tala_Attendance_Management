@@ -8,5 +8,6 @@
   "SessionTimeoutMinutes": 30,
   "ApiBaseUrl": "",
   "EnableDetailedLogging": false,
-  "CacheExpirationMinutes": 30
+  "CacheExpirationMinutes": 30,
+  "UpdateCheckUrl": "https://drive.google.com/uc?export=download&id=1nNmJTgYLgitxNY73MEKur5AFQ-w3H_N8"
 }

@@ -1,11 +1,20 @@
 ﻿Imports System.Data.Odbc
 Imports System.Windows.Forms.DataVisualization.Charting
+Imports System.Windows.Forms
+Imports System.Drawing
+Imports System.Threading.Tasks
 
 Public Class MainForm
     Private ReadOnly _logger As ILogger = LoggerFactory.Instance
+    Private ReadOnly _updateManager As UpdateManager
     Public currentChild As Form
     Public currentButton As Button
     Public currentUserRole As String = "" ' Store the user's role
+    
+    Public Sub New()
+        InitializeComponent()
+        _updateManager = New UpdateManager(_logger)
+    End Sub
     Private Sub OpenForm(ByVal childForm As Form, ByVal isMaximized As Boolean)
         Try
             If currentChild IsNot Nothing Then
@@ -117,6 +126,9 @@ Public Class MainForm
             ' Apply role-based access control
             ApplyRoleBasedAccess()
 
+            ' Check for updates on startup (async, non-blocking)
+            CheckForUpdatesOnStartup()
+
             _logger.LogInfo($"MainForm loaded for user role: {currentUserRole}")
         Catch ex As Exception
             _logger.LogError($"Error in MainForm_Load: {ex.Message}")
@@ -145,6 +157,36 @@ Public Class MainForm
             _logger.LogError($"Error applying role-based access control: {ex.Message}")
         End Try
     End Sub
+
+    ''' <summary>
+    ''' Check for application updates on startup
+    ''' </summary>
+    Private Sub CheckForUpdatesOnStartup()
+        Try
+            _logger.LogInfo("Starting update check on application startup")
+            _updateManager.CheckForUpdatesOnStartup(Me)
+        Catch ex As Exception
+            _logger.LogError($"Error during startup update check: {ex.Message}")
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Manually check for updates (can be called from menu)
+    ''' </summary>
+    Public Async Sub CheckForUpdatesManually()
+        Try
+            _logger.LogInfo("Manual update check initiated")
+            Dim hasUpdate = Await _updateManager.CheckForUpdatesAsync(Me)
+            
+            If Not hasUpdate Then
+                MessageBox.Show("Your application is up to date.", "No Updates Available", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            _logger.LogError($"Error during manual update check: {ex.Message}")
+            MessageBox.Show("Unable to check for updates. Please try again later.", "Update Check Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End Try
+    End Sub
+
     Function FacultyCount() As Integer
         Dim sql As String = "SELECT COUNT(*) FROM teacherinformation WHERE isActive > 0"
 
