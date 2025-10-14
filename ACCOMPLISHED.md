@@ -15,6 +15,10 @@ ito kasali (English, filipino, etc..)
 - [x] Incase of emergency – relationship dadagdagan ng spouse
 - [x] Tanggalin ang delete records – palitan ng enable disable toggle
 
+### **New Feature**
+
+- [x] Dynamic department management
+
 ---
 
 ### 📁 **Clean Architecture Implementation**
