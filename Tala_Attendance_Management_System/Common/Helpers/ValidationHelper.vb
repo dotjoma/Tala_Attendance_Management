@@ -76,6 +76,126 @@
     End Function
 
     ''' <summary>
+    ''' Validates date of birth with comprehensive business rules
+    ''' </summary>
+    ''' <param name="dateOfBirth">Date of birth to validate</param>
+    ''' <param name="minimumAge">Minimum age required (default: from Constants.MIN_FACULTY_AGE)</param>
+    ''' <param name="maximumAge">Maximum age allowed (default: from Constants.MAX_FACULTY_AGE)</param>
+    ''' <param name="logErrors">Whether to log validation errors</param>
+    ''' <returns>True if date of birth is valid</returns>
+    Public Shared Function ValidateDateOfBirth(dateOfBirth As DateTime, Optional minimumAge As Integer = Constants.MIN_FACULTY_AGE, Optional maximumAge As Integer = Constants.MAX_FACULTY_AGE, Optional logErrors As Boolean = True) As Boolean
+        Try
+            Dim today As DateTime = DateTime.Today
+            
+            ' Check if date is in the future
+            If dateOfBirth > today Then
+                If logErrors Then
+                    _logger.LogWarning($"Date of birth validation failed - Future date: {dateOfBirth:yyyy-MM-dd}")
+                End If
+                MessageBox.Show("Invalid date of birth. Please enter a valid past date.", "Invalid Date of Birth", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
+            End If
+
+            ' Calculate age
+            Dim age As Integer = CalculateAge(dateOfBirth, today)
+
+            ' Check minimum age
+            If age < minimumAge Then
+                If logErrors Then
+                    _logger.LogWarning($"Date of birth validation failed - Too young: Age {age}, Minimum required: {minimumAge}")
+                End If
+                MessageBox.Show($"Faculty member must be at least {minimumAge} years old. Current age: {age} years.", "Age Requirement Not Met", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
+            End If
+
+            ' Check maximum age
+            If age > maximumAge Then
+                If logErrors Then
+                    _logger.LogWarning($"Date of birth validation failed - Too old: Age {age}, Maximum allowed: {maximumAge}")
+                End If
+                MessageBox.Show($"Faculty member cannot be older than {maximumAge} years. Current age: {age} years.", "Age Limit Exceeded", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
+            End If
+
+            ' Check for unrealistic dates (e.g., year 1900 or earlier)
+            If dateOfBirth.Year <= Constants.MIN_BIRTH_YEAR Then
+                If logErrors Then
+                    _logger.LogWarning($"Date of birth validation failed - Unrealistic date: {dateOfBirth:yyyy-MM-dd}")
+                End If
+                MessageBox.Show("Invalid date of birth. Please enter a realistic date.", "Invalid Date of Birth", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
+            End If
+
+            If logErrors Then
+                _logger.LogInfo($"Date of birth validation passed - DOB: {dateOfBirth:yyyy-MM-dd}, Age: {age} years")
+            End If
+
+            Return True
+
+        Catch ex As Exception
+            If logErrors Then
+                _logger.LogError($"Error validating date of birth: {ex.Message}")
+            End If
+            MessageBox.Show("Error validating date of birth. Please check the date format and try again.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+    End Function
+
+    ''' <summary>
+    ''' Calculates age based on date of birth and reference date
+    ''' </summary>
+    ''' <param name="dateOfBirth">Date of birth</param>
+    ''' <param name="referenceDate">Reference date (usually today)</param>
+    ''' <returns>Age in years</returns>
+    Public Shared Function CalculateAge(dateOfBirth As DateTime, referenceDate As DateTime) As Integer
+        Try
+            Dim age As Integer = referenceDate.Year - dateOfBirth.Year
+            
+            ' Adjust if birthday hasn't occurred this year yet
+            If referenceDate.Month < dateOfBirth.Month OrElse 
+               (referenceDate.Month = dateOfBirth.Month AndAlso referenceDate.Day < dateOfBirth.Day) Then
+                age -= 1
+            End If
+            
+            Return age
+        Catch ex As Exception
+            _logger.LogError($"Error calculating age: {ex.Message}")
+            Return 0
+        End Try
+    End Function
+
+    ''' <summary>
+    ''' Validates DateTimePicker control for date of birth
+    ''' </summary>
+    ''' <param name="dateTimePicker">DateTimePicker control to validate</param>
+    ''' <param name="minimumAge">Minimum age required (default: from Constants.MIN_FACULTY_AGE)</param>
+    ''' <param name="maximumAge">Maximum age allowed (default: from Constants.MAX_FACULTY_AGE)</param>
+    ''' <param name="logErrors">Whether to log validation errors</param>
+    ''' <returns>True if DateTimePicker value is valid</returns>
+    Public Shared Function ValidateDateOfBirthControl(dateTimePicker As DateTimePicker, Optional minimumAge As Integer = Constants.MIN_FACULTY_AGE, Optional maximumAge As Integer = Constants.MAX_FACULTY_AGE, Optional logErrors As Boolean = True) As Boolean
+        Try
+            If logErrors Then
+                _logger.LogInfo($"Validating DateTimePicker '{dateTimePicker.Name}' - Value: {dateTimePicker.Value:yyyy-MM-dd}")
+            End If
+
+            Dim isValid As Boolean = ValidateDateOfBirth(dateTimePicker.Value.Date, minimumAge, maximumAge, logErrors)
+            
+            If Not isValid Then
+                dateTimePicker.Focus()
+            End If
+
+            Return isValid
+
+        Catch ex As Exception
+            If logErrors Then
+                _logger.LogError($"Error validating DateTimePicker control '{dateTimePicker.Name}': {ex.Message}")
+            End If
+            MessageBox.Show("Error validating date of birth control. Please try again.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+    End Function
+
+    ''' <summary>
     ''' Validates that a department is selected from ComboBox
     ''' </summary>
     ''' <param name="departmentComboBox">Department ComboBox to validate</param>

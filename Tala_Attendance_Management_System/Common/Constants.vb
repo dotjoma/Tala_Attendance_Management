@@ -29,6 +29,11 @@ Public Module Constants
     ' Validation
     Public Const MIN_PASSWORD_LENGTH As Integer = 8
     Public Const MAX_USERNAME_LENGTH As Integer = 50
+    
+    ' Age Validation
+    Public Const MIN_FACULTY_AGE As Integer = 18
+    Public Const MAX_FACULTY_AGE As Integer = 100
+    Public Const MIN_BIRTH_YEAR As Integer = 1900
 
     ' UI
     Public Const DEFAULT_GRID_ROW_HEIGHT As Integer = 50

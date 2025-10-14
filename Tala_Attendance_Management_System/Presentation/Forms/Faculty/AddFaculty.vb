@@ -9,6 +9,9 @@ Public Class AddFaculty
             Dim mode As String = If(Val(txtID.Text) > 0, "Edit", "Add New")
             _logger.LogInfo($"AddFaculty form opened - Mode: {mode}, Faculty ID: {txtID.Text}")
 
+            ' Configure DateTimePicker for date of birth
+            ConfigureDateTimePicker()
+
             ' Load departments when form loads
             LoadDepartments()
 
@@ -145,6 +148,12 @@ Public Class AddFaculty
         ' Validate department selection (required for new faculty)
         If Not ValidationHelper.ValidateDepartmentSelection(cboDepartment, isRequired:=True) Then
             _logger.LogWarning($"Faculty save validation failed - Department not selected for '{facultyName}'")
+            Return
+        End If
+
+        ' Validate date of birth (uses constants for age limits)
+        If Not ValidationHelper.ValidateDateOfBirthControl(dtpBirthdate) Then
+            _logger.LogWarning($"Faculty save validation failed - Invalid date of birth for '{facultyName}': {dtpBirthdate.Value:yyyy-MM-dd}")
             Return
         End If
         Try
@@ -428,6 +437,54 @@ Public Class AddFaculty
         Catch ex As Exception
             _logger.LogWarning($"AddFaculty - Error setting department selection: {ex.Message}")
             cboDepartment.SelectedIndex = 0
+        End Try
+    End Sub
+
+    Private Sub ConfigureDateTimePicker()
+        Try
+            ' Set reasonable default date (25 years old)
+            Dim defaultDate As DateTime = DateTime.Today.AddYears(-25)
+            dtpBirthdate.Value = defaultDate
+
+            ' Set minimum and maximum dates
+            dtpBirthdate.MinDate = New DateTime(Constants.MIN_BIRTH_YEAR + 1, 1, 1)
+            dtpBirthdate.MaxDate = DateTime.Today
+
+            ' Set format for better user experience
+            dtpBirthdate.Format = DateTimePickerFormat.Long
+
+            _logger.LogInfo($"AddFaculty - DateTimePicker configured - Default: {defaultDate:yyyy-MM-dd}, Min: {dtpBirthdate.MinDate:yyyy-MM-dd}, Max: {dtpBirthdate.MaxDate:yyyy-MM-dd}")
+
+        Catch ex As Exception
+            _logger.LogError($"AddFaculty - Error configuring DateTimePicker: {ex.Message}")
+        End Try
+    End Sub
+
+    Private Sub dtpBirthdate_ValueChanged(sender As Object, e As EventArgs) Handles dtpBirthdate.ValueChanged
+        Try
+            ' Provide real-time feedback on date of birth selection
+            Dim selectedDate As DateTime = dtpBirthdate.Value.Date
+            Dim today As DateTime = DateTime.Today
+
+            ' Quick validation without showing message boxes (for real-time feedback)
+            If selectedDate > today Then
+                _logger.LogInfo($"AddFaculty - Future date selected in birthdate: {selectedDate:yyyy-MM-dd}")
+                ' Could add visual indicator here (e.g., change background color)
+            ElseIf selectedDate.Year <= Constants.MIN_BIRTH_YEAR Then
+                _logger.LogInfo($"AddFaculty - Unrealistic birth year selected: {selectedDate.Year}")
+            Else
+                Dim age As Integer = ValidationHelper.CalculateAge(selectedDate, today)
+                _logger.LogInfo($"AddFaculty - Birth date selected: {selectedDate:yyyy-MM-dd}, Age: {age} years")
+
+                If age < Constants.MIN_FACULTY_AGE Then
+                    _logger.LogInfo($"AddFaculty - Selected age ({age}) below minimum ({Constants.MIN_FACULTY_AGE})")
+                ElseIf age > Constants.MAX_FACULTY_AGE Then
+                    _logger.LogInfo($"AddFaculty - Selected age ({age}) above maximum ({Constants.MAX_FACULTY_AGE})")
+                End If
+            End If
+
+        Catch ex As Exception
+            _logger.LogWarning($"AddFaculty - Error in dtpBirthdate_ValueChanged: {ex.Message}")
         End Try
     End Sub
 End Class
