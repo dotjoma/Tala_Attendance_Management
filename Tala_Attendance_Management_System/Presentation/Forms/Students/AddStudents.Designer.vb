@@ -1022,6 +1022,7 @@ Partial Class AddStudents
         Me.Controls.Add(Me.panelHeader)
         Me.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "AddStudents"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

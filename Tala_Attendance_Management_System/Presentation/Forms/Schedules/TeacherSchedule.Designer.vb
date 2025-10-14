@@ -23,6 +23,7 @@ Partial Class TeacherSchedule
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TeacherSchedule))
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -79,7 +80,7 @@ Partial Class TeacherSchedule
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1924, 101)
+        Me.Panel2.Size = New System.Drawing.Size(1444, 101)
         Me.Panel2.TabIndex = 15
         '
         'PictureBox1
@@ -99,7 +100,7 @@ Partial Class TeacherSchedule
         Me.Label2.BackColor = System.Drawing.Color.SteelBlue
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label2.Location = New System.Drawing.Point(143, 33)
+        Me.Label2.Location = New System.Drawing.Point(-97, 33)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(510, 30)
         Me.Label2.TabIndex = 16
@@ -135,7 +136,7 @@ Partial Class TeacherSchedule
         '
         Me.Panel3.BackColor = System.Drawing.Color.SteelBlue
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel3.Location = New System.Drawing.Point(1911, 10)
+        Me.Panel3.Location = New System.Drawing.Point(1431, 10)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(13, 81)
         Me.Panel3.TabIndex = 29
@@ -164,7 +165,7 @@ Partial Class TeacherSchedule
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel7.Location = New System.Drawing.Point(22, 91)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(1902, 10)
+        Me.Panel7.Size = New System.Drawing.Size(1422, 10)
         Me.Panel7.TabIndex = 24
         '
         'Panel6
@@ -173,7 +174,7 @@ Partial Class TeacherSchedule
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel6.Location = New System.Drawing.Point(22, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1902, 10)
+        Me.Panel6.Size = New System.Drawing.Size(1422, 10)
         Me.Panel6.TabIndex = 23
         '
         'Panel5
@@ -191,7 +192,7 @@ Partial Class TeacherSchedule
         Me.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelContainer.Location = New System.Drawing.Point(368, 101)
         Me.panelContainer.Name = "panelContainer"
-        Me.panelContainer.Size = New System.Drawing.Size(1237, 660)
+        Me.panelContainer.Size = New System.Drawing.Size(757, 660)
         Me.panelContainer.TabIndex = 20
         '
         'updateTimer
@@ -205,7 +206,7 @@ Partial Class TeacherSchedule
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.txtDate, Me.ToolStripStatusLabel2, Me.txtTime, Me.ToolStripStatusLabel4, Me.txtDay})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 0)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1922, 67)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1442, 67)
         Me.StatusStrip1.TabIndex = 0
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -265,7 +266,7 @@ Partial Class TeacherSchedule
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 761)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1924, 69)
+        Me.Panel1.Size = New System.Drawing.Size(1444, 69)
         Me.Panel1.TabIndex = 16
         '
         'rightSidePanel
@@ -274,7 +275,7 @@ Partial Class TeacherSchedule
         Me.rightSidePanel.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.Screenshot_2025_01_05_224517
         Me.rightSidePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.rightSidePanel.Dock = System.Windows.Forms.DockStyle.Right
-        Me.rightSidePanel.Location = New System.Drawing.Point(1605, 101)
+        Me.rightSidePanel.Location = New System.Drawing.Point(1125, 101)
         Me.rightSidePanel.Name = "rightSidePanel"
         Me.rightSidePanel.Size = New System.Drawing.Size(319, 660)
         Me.rightSidePanel.TabIndex = 19
@@ -441,7 +442,7 @@ Partial Class TeacherSchedule
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1924, 830)
+        Me.ClientSize = New System.Drawing.Size(1444, 830)
         Me.Controls.Add(Me.panelContainer)
         Me.Controls.Add(Me.rightSidePanel)
         Me.Controls.Add(Me.leftSidePanel)
@@ -449,6 +450,7 @@ Partial Class TeacherSchedule
         Me.Controls.Add(Me.Panel2)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "TeacherSchedule"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

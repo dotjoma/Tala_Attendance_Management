@@ -50,9 +50,9 @@ Partial Class MainForm
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.msLogout = New System.Windows.Forms.ToolStripMenuItem()
         Me.msExit = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdministrationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManageDepartmentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel5.SuspendLayout()
         Me.toolStripNav.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -297,21 +297,14 @@ Partial Class MainForm
         'msLogout
         '
         Me.msLogout.Name = "msLogout"
-        Me.msLogout.Size = New System.Drawing.Size(180, 22)
+        Me.msLogout.Size = New System.Drawing.Size(119, 22)
         Me.msLogout.Text = "Logout"
         '
         'msExit
         '
         Me.msExit.Name = "msExit"
-        Me.msExit.Size = New System.Drawing.Size(180, 22)
+        Me.msExit.Size = New System.Drawing.Size(119, 22)
         Me.msExit.Text = "Exit"
-        '
-        'HelpToolStripMenuItem
-        '
-        Me.HelpToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!)
-        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
-        Me.HelpToolStripMenuItem.Text = "Help"
         '
         'AdministrationToolStripMenuItem
         '
@@ -326,6 +319,13 @@ Partial Class MainForm
         Me.ManageDepartmentToolStripMenuItem.Name = "ManageDepartmentToolStripMenuItem"
         Me.ManageDepartmentToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
         Me.ManageDepartmentToolStripMenuItem.Text = "Manage Department"
+        '
+        'HelpToolStripMenuItem
+        '
+        Me.HelpToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!)
+        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
+        Me.HelpToolStripMenuItem.Text = "Help"
         '
         'MainForm
         '
@@ -344,6 +344,7 @@ Partial Class MainForm
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "MainForm"

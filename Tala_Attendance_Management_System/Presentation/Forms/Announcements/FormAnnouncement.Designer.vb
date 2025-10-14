@@ -27,6 +27,13 @@ Partial Class FormAnnouncement
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormAnnouncement))
         Me.dgvAnnouncement = New System.Windows.Forms.DataGridView()
+        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.header = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.description = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dayInfo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.timeInfo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
@@ -36,13 +43,6 @@ Partial Class FormAnnouncement
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.header = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.description = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dayInfo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.timeInfo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewImageColumn()
         CType(Me.dgvAnnouncement, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,7 +64,7 @@ Partial Class FormAnnouncement
         Me.dgvAnnouncement.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.DimGray
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.DimGray
@@ -89,9 +89,65 @@ Partial Class FormAnnouncement
         Me.dgvAnnouncement.RowHeadersVisible = False
         Me.dgvAnnouncement.RowHeadersWidth = 51
         Me.dgvAnnouncement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvAnnouncement.Size = New System.Drawing.Size(1724, 399)
+        Me.dgvAnnouncement.Size = New System.Drawing.Size(1444, 399)
         Me.dgvAnnouncement.TabIndex = 19
         Me.dgvAnnouncement.TabStop = False
+        '
+        'id
+        '
+        Me.id.DataPropertyName = "id"
+        Me.id.HeaderText = "ID"
+        Me.id.Name = "id"
+        Me.id.ReadOnly = True
+        Me.id.Width = 50
+        '
+        'header
+        '
+        Me.header.DataPropertyName = "Header"
+        Me.header.HeaderText = "Header"
+        Me.header.Name = "header"
+        Me.header.ReadOnly = True
+        Me.header.Width = 200
+        '
+        'description
+        '
+        Me.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.description.DataPropertyName = "description"
+        Me.description.HeaderText = "Description"
+        Me.description.Name = "description"
+        Me.description.ReadOnly = True
+        '
+        'dayInfo
+        '
+        Me.dayInfo.DataPropertyName = "dayInfo"
+        Me.dayInfo.HeaderText = "Date"
+        Me.dayInfo.Name = "dayInfo"
+        Me.dayInfo.ReadOnly = True
+        Me.dayInfo.Width = 150
+        '
+        'timeInfo
+        '
+        Me.timeInfo.DataPropertyName = "timeInfo"
+        Me.timeInfo.HeaderText = "Time"
+        Me.timeInfo.Name = "timeInfo"
+        Me.timeInfo.ReadOnly = True
+        Me.timeInfo.Width = 150
+        '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "lookFor"
+        Me.Column1.HeaderText = "Contact Person"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 150
+        '
+        'Column2
+        '
+        Me.Column2.DataPropertyName = "pictureHeader"
+        Me.Column2.HeaderText = "Background Image"
+        Me.Column2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
         '
         'Panel1
         '
@@ -106,7 +162,7 @@ Partial Class FormAnnouncement
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 459)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1724, 69)
+        Me.Panel1.Size = New System.Drawing.Size(1444, 69)
         Me.Panel1.TabIndex = 18
         '
         'PictureBox1
@@ -196,7 +252,7 @@ Partial Class FormAnnouncement
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1724, 60)
+        Me.Panel2.Size = New System.Drawing.Size(1444, 60)
         Me.Panel2.TabIndex = 17
         '
         'Label2
@@ -210,72 +266,17 @@ Partial Class FormAnnouncement
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "ANNOUNCEMENTS"
         '
-        'id
-        '
-        Me.id.DataPropertyName = "id"
-        Me.id.HeaderText = "ID"
-        Me.id.Name = "id"
-        Me.id.ReadOnly = True
-        Me.id.Width = 50
-        '
-        'header
-        '
-        Me.header.DataPropertyName = "Header"
-        Me.header.HeaderText = "Header"
-        Me.header.Name = "header"
-        Me.header.ReadOnly = True
-        Me.header.Width = 200
-        '
-        'description
-        '
-        Me.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.description.DataPropertyName = "description"
-        Me.description.HeaderText = "Description"
-        Me.description.Name = "description"
-        Me.description.ReadOnly = True
-        '
-        'dayInfo
-        '
-        Me.dayInfo.DataPropertyName = "dayInfo"
-        Me.dayInfo.HeaderText = "Date"
-        Me.dayInfo.Name = "dayInfo"
-        Me.dayInfo.ReadOnly = True
-        Me.dayInfo.Width = 150
-        '
-        'timeInfo
-        '
-        Me.timeInfo.DataPropertyName = "timeInfo"
-        Me.timeInfo.HeaderText = "Time"
-        Me.timeInfo.Name = "timeInfo"
-        Me.timeInfo.ReadOnly = True
-        Me.timeInfo.Width = 150
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "lookFor"
-        Me.Column1.HeaderText = "Contact Person"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 150
-        '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "pictureHeader"
-        Me.Column2.HeaderText = "Background Image"
-        Me.Column2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
         'FormAnnouncement
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1724, 528)
+        Me.ClientSize = New System.Drawing.Size(1444, 528)
         Me.Controls.Add(Me.dgvAnnouncement)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FormAnnouncement"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

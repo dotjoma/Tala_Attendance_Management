@@ -27,7 +27,9 @@ Partial Class FormSections
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormSections))
         Me.leftSidePanel = New System.Windows.Forms.Panel()
+        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.cbYearLevel = New System.Windows.Forms.ComboBox()
@@ -42,12 +44,11 @@ Partial Class FormSections
         Me.section_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnEdit = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.btnDelete = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.leftSidePanel.SuspendLayout()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rightSidePanel.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.dgvSection, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'leftSidePanel
@@ -61,6 +62,16 @@ Partial Class FormSections
         Me.leftSidePanel.Name = "leftSidePanel"
         Me.leftSidePanel.Size = New System.Drawing.Size(429, 698)
         Me.leftSidePanel.TabIndex = 20
+        '
+        'PictureBox6
+        '
+        Me.PictureBox6.Image = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_list_64
+        Me.PictureBox6.Location = New System.Drawing.Point(108, 20)
+        Me.PictureBox6.Name = "PictureBox6"
+        Me.PictureBox6.Size = New System.Drawing.Size(87, 69)
+        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox6.TabIndex = 16
+        Me.PictureBox6.TabStop = False
         '
         'Label1
         '
@@ -107,7 +118,7 @@ Partial Class FormSections
         Me.rightSidePanel.BackColor = System.Drawing.Color.White
         Me.rightSidePanel.Controls.Add(Me.Panel5)
         Me.rightSidePanel.Dock = System.Windows.Forms.DockStyle.Right
-        Me.rightSidePanel.Location = New System.Drawing.Point(1111, 0)
+        Me.rightSidePanel.Location = New System.Drawing.Point(954, 0)
         Me.rightSidePanel.Name = "rightSidePanel"
         Me.rightSidePanel.Size = New System.Drawing.Size(490, 698)
         Me.rightSidePanel.TabIndex = 24
@@ -130,7 +141,7 @@ Partial Class FormSections
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel4.Location = New System.Drawing.Point(490, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(621, 94)
+        Me.Panel4.Size = New System.Drawing.Size(464, 94)
         Me.Panel4.TabIndex = 25
         '
         'btnNew
@@ -141,7 +152,7 @@ Partial Class FormSections
         Me.btnNew.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnNew.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNew.ForeColor = System.Drawing.Color.White
-        Me.btnNew.Location = New System.Drawing.Point(463, 36)
+        Me.btnNew.Location = New System.Drawing.Point(306, 36)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(150, 52)
         Me.btnNew.TabIndex = 17
@@ -186,7 +197,7 @@ Partial Class FormSections
         Me.dgvSection.RowHeadersVisible = False
         Me.dgvSection.RowHeadersWidth = 51
         Me.dgvSection.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvSection.Size = New System.Drawing.Size(621, 604)
+        Me.dgvSection.Size = New System.Drawing.Size(464, 604)
         Me.dgvSection.TabIndex = 26
         Me.dgvSection.TabStop = False
         '
@@ -247,22 +258,12 @@ Partial Class FormSections
         Me.btnDelete.UseColumnTextForButtonValue = True
         Me.btnDelete.Width = 150
         '
-        'PictureBox6
-        '
-        Me.PictureBox6.Image = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_list_64
-        Me.PictureBox6.Location = New System.Drawing.Point(108, 20)
-        Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(87, 69)
-        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox6.TabIndex = 16
-        Me.PictureBox6.TabStop = False
-        '
         'FormSections
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 21.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1601, 698)
+        Me.ClientSize = New System.Drawing.Size(1444, 698)
         Me.Controls.Add(Me.dgvSection)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.rightSidePanel)
@@ -270,17 +271,18 @@ Partial Class FormSections
         Me.Controls.Add(Me.leftSidePanel)
         Me.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.DimGray
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormSections"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FormSections"
         Me.leftSidePanel.ResumeLayout(False)
         Me.leftSidePanel.PerformLayout()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.rightSidePanel.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.dgvSection, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

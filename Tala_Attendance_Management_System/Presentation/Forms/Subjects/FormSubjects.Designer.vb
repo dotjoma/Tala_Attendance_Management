@@ -25,6 +25,7 @@ Partial Class FormSubjects
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormSubjects))
         Me.dgvSubjects = New System.Windows.Forms.DataGridView()
         Me.subject_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.subject_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -84,7 +85,7 @@ Partial Class FormSubjects
         Me.dgvSubjects.RowHeadersVisible = False
         Me.dgvSubjects.RowHeadersWidth = 51
         Me.dgvSubjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvSubjects.Size = New System.Drawing.Size(484, 442)
+        Me.dgvSubjects.Size = New System.Drawing.Size(4, 442)
         Me.dgvSubjects.TabIndex = 18
         Me.dgvSubjects.TabStop = False
         '
@@ -111,7 +112,7 @@ Partial Class FormSubjects
         Me.panelHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelHeader.Location = New System.Drawing.Point(0, 0)
         Me.panelHeader.Name = "panelHeader"
-        Me.panelHeader.Size = New System.Drawing.Size(1924, 72)
+        Me.panelHeader.Size = New System.Drawing.Size(1444, 72)
         Me.panelHeader.TabIndex = 19
         '
         'Label4
@@ -154,14 +155,14 @@ Partial Class FormSubjects
         Me.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelContainer.Location = New System.Drawing.Point(0, 72)
         Me.panelContainer.Name = "panelContainer"
-        Me.panelContainer.Size = New System.Drawing.Size(1924, 511)
+        Me.panelContainer.Size = New System.Drawing.Size(1444, 511)
         Me.panelContainer.TabIndex = 21
         '
         'panelRightSide
         '
         Me.panelRightSide.BackColor = System.Drawing.Color.White
         Me.panelRightSide.Dock = System.Windows.Forms.DockStyle.Right
-        Me.panelRightSide.Location = New System.Drawing.Point(1204, 0)
+        Me.panelRightSide.Location = New System.Drawing.Point(724, 0)
         Me.panelRightSide.Name = "panelRightSide"
         Me.panelRightSide.Size = New System.Drawing.Size(720, 442)
         Me.panelRightSide.TabIndex = 20
@@ -175,7 +176,7 @@ Partial Class FormSubjects
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel2.Location = New System.Drawing.Point(0, 442)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1924, 69)
+        Me.Panel2.Size = New System.Drawing.Size(1444, 69)
         Me.Panel2.TabIndex = 22
         '
         'btnDelete
@@ -186,7 +187,7 @@ Partial Class FormSubjects
         Me.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnDelete.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDelete.ForeColor = System.Drawing.Color.White
-        Me.btnDelete.Location = New System.Drawing.Point(1059, 9)
+        Me.btnDelete.Location = New System.Drawing.Point(819, 9)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(160, 50)
         Me.btnDelete.TabIndex = 14
@@ -201,7 +202,7 @@ Partial Class FormSubjects
         Me.btnAddNew.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAddNew.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAddNew.ForeColor = System.Drawing.Color.White
-        Me.btnAddNew.Location = New System.Drawing.Point(699, 9)
+        Me.btnAddNew.Location = New System.Drawing.Point(459, 9)
         Me.btnAddNew.Name = "btnAddNew"
         Me.btnAddNew.Size = New System.Drawing.Size(160, 50)
         Me.btnAddNew.TabIndex = 16
@@ -216,7 +217,7 @@ Partial Class FormSubjects
         Me.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnEdit.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEdit.ForeColor = System.Drawing.Color.White
-        Me.btnEdit.Location = New System.Drawing.Point(880, 9)
+        Me.btnEdit.Location = New System.Drawing.Point(640, 9)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(160, 50)
         Me.btnEdit.TabIndex = 13
@@ -228,10 +229,11 @@ Partial Class FormSubjects
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1924, 583)
+        Me.ClientSize = New System.Drawing.Size(1444, 583)
         Me.Controls.Add(Me.panelContainer)
         Me.Controls.Add(Me.panelHeader)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FormSubjects"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

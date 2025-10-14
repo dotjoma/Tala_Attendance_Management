@@ -26,9 +26,8 @@ Partial Class FormClassSchedule
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormClassSchedule))
         Me.dgvTeacherSchedule = New System.Windows.Forms.DataGridView()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.updateTimer = New System.Windows.Forms.Timer(Me.components)
         Me.schedule_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.subject_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.section_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -36,6 +35,8 @@ Partial Class FormClassSchedule
         Me.day = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.start_time = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.end_time = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.updateTimer = New System.Windows.Forms.Timer(Me.components)
         CType(Me.dgvTeacherSchedule, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -82,14 +83,6 @@ Partial Class FormClassSchedule
         Me.dgvTeacherSchedule.Size = New System.Drawing.Size(1051, 470)
         Me.dgvTeacherSchedule.TabIndex = 19
         Me.dgvTeacherSchedule.TabStop = False
-        '
-        'Panel1
-        '
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1051, 74)
-        Me.Panel1.TabIndex = 20
         '
         'schedule_id
         '
@@ -151,6 +144,14 @@ Partial Class FormClassSchedule
         Me.end_time.ReadOnly = True
         Me.end_time.Width = 95
         '
+        'Panel1
+        '
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1051, 74)
+        Me.Panel1.TabIndex = 20
+        '
         'FormClassSchedule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -159,6 +160,7 @@ Partial Class FormClassSchedule
         Me.ClientSize = New System.Drawing.Size(1051, 544)
         Me.Controls.Add(Me.dgvTeacherSchedule)
         Me.Controls.Add(Me.Panel1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FormClassSchedule"
         Me.Text = "FormClassSchedule"
         CType(Me.dgvTeacherSchedule, System.ComponentModel.ISupportInitialize).EndInit()

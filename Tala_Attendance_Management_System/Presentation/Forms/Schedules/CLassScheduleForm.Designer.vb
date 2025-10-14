@@ -22,6 +22,7 @@ Partial Class CLassScheduleForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CLassScheduleForm))
         Me.panelButtons = New System.Windows.Forms.Panel()
         Me.btnStudents = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -129,6 +130,7 @@ Partial Class CLassScheduleForm
         Me.Controls.Add(Me.panelButtons)
         Me.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.DimGray
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(6)
         Me.Name = "CLassScheduleForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

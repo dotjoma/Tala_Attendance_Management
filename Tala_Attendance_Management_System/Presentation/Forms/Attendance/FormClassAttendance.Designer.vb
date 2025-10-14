@@ -22,10 +22,12 @@ Partial Class FormClassAttendance
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormClassAttendance))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.chkShowAll = New System.Windows.Forms.CheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cbSubjects = New System.Windows.Forms.ComboBox()
@@ -43,7 +45,6 @@ Partial Class FormClassAttendance
         Me.arrivalTime = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.departureTime = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.remarks = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.dgvAttendanceRecords, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -63,6 +64,17 @@ Partial Class FormClassAttendance
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1185, 107)
         Me.Panel1.TabIndex = 18
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.Label4.Location = New System.Drawing.Point(3, 9)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(232, 25)
+        Me.Label4.TabIndex = 28
+        Me.Label4.Text = "Daily Attendance Records"
         '
         'chkShowAll
         '
@@ -151,30 +163,30 @@ Partial Class FormClassAttendance
         Me.dgvAttendanceRecords.AllowUserToDeleteRows = False
         Me.dgvAttendanceRecords.AllowUserToResizeColumns = False
         Me.dgvAttendanceRecords.AllowUserToResizeRows = False
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgvAttendanceRecords.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvAttendanceRecords.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvAttendanceRecords.BackgroundColor = System.Drawing.Color.White
         Me.dgvAttendanceRecords.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvAttendanceRecords.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Gainsboro
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Gainsboro
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvAttendanceRecords.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Gainsboro
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gainsboro
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvAttendanceRecords.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvAttendanceRecords.ColumnHeadersHeight = 70
         Me.dgvAttendanceRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvAttendanceRecords.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.studID, Me.student_name, Me.logDate, Me.day_of_week, Me.classroom_name, Me.subject, Me.arrivalTime, Me.departureTime, Me.remarks})
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DeepSkyBlue
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvAttendanceRecords.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DeepSkyBlue
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvAttendanceRecords.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvAttendanceRecords.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvAttendanceRecords.EnableHeadersVisualStyles = False
         Me.dgvAttendanceRecords.Location = New System.Drawing.Point(0, 107)
@@ -265,17 +277,6 @@ Partial Class FormClassAttendance
         Me.remarks.ReadOnly = True
         Me.remarks.Width = 81
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.Label4.Location = New System.Drawing.Point(3, 9)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(232, 25)
-        Me.Label4.TabIndex = 28
-        Me.Label4.Text = "Daily Attendance Records"
-        '
         'FormClassAttendance
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -285,6 +286,7 @@ Partial Class FormClassAttendance
         Me.Controls.Add(Me.dgvAttendanceRecords)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FormClassAttendance"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

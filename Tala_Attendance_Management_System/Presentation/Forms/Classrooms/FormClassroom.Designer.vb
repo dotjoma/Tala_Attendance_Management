@@ -23,11 +23,11 @@ Partial Class FormClassroom
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormClassroom))
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panelHeader = New System.Windows.Forms.Panel()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
@@ -42,7 +42,7 @@ Partial Class FormClassroom
         Me.dgvClassrooms = New System.Windows.Forms.DataGridView()
         Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.classroom_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.locationColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.location = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.classroom_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.editBtn = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.deleteBtn = New System.Windows.Forms.DataGridViewButtonColumn()
@@ -65,7 +65,7 @@ Partial Class FormClassroom
         Me.panelHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelHeader.Location = New System.Drawing.Point(0, 0)
         Me.panelHeader.Name = "panelHeader"
-        Me.panelHeader.Size = New System.Drawing.Size(1537, 72)
+        Me.panelHeader.Size = New System.Drawing.Size(1444, 72)
         Me.panelHeader.TabIndex = 20
         '
         'PictureBox5
@@ -105,7 +105,7 @@ Partial Class FormClassroom
         Me.txtSearch.BackColor = System.Drawing.Color.White
         Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSearch.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(954, 30)
+        Me.txtSearch.Location = New System.Drawing.Point(861, 30)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(250, 29)
         Me.txtSearch.TabIndex = 4
@@ -117,7 +117,7 @@ Partial Class FormClassroom
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.SteelBlue
-        Me.Label3.Location = New System.Drawing.Point(878, 34)
+        Me.Label3.Location = New System.Drawing.Point(785, 34)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(70, 20)
         Me.Label3.TabIndex = 18
@@ -160,7 +160,7 @@ Partial Class FormClassroom
         '
         Me.panelRightSide.BackColor = System.Drawing.Color.White
         Me.panelRightSide.Dock = System.Windows.Forms.DockStyle.Right
-        Me.panelRightSide.Location = New System.Drawing.Point(1204, 72)
+        Me.panelRightSide.Location = New System.Drawing.Point(1111, 72)
         Me.panelRightSide.Name = "panelRightSide"
         Me.panelRightSide.Size = New System.Drawing.Size(333, 634)
         Me.panelRightSide.TabIndex = 23
@@ -169,7 +169,7 @@ Partial Class FormClassroom
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel2.Location = New System.Drawing.Point(1093, 72)
+        Me.Panel2.Location = New System.Drawing.Point(1000, 72)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(111, 634)
         Me.Panel2.TabIndex = 24
@@ -180,29 +180,29 @@ Partial Class FormClassroom
         Me.dgvClassrooms.AllowUserToDeleteRows = False
         Me.dgvClassrooms.AllowUserToResizeColumns = False
         Me.dgvClassrooms.AllowUserToResizeRows = False
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgvClassrooms.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvClassrooms.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvClassrooms.BackgroundColor = System.Drawing.Color.White
         Me.dgvClassrooms.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvClassrooms.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvClassrooms.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvClassrooms.ColumnHeadersHeight = 70
         Me.dgvClassrooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvClassrooms.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id, Me.classroom_id, Me.locationColumn, Me.classroom_name, Me.editBtn, Me.deleteBtn})
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DeepSkyBlue
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvClassrooms.DefaultCellStyle = DataGridViewCellStyle10
+        Me.dgvClassrooms.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id, Me.classroom_id, Me.location, Me.classroom_name, Me.editBtn, Me.deleteBtn})
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.DeepSkyBlue
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvClassrooms.DefaultCellStyle = DataGridViewCellStyle5
         Me.dgvClassrooms.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvClassrooms.EnableHeadersVisualStyles = False
         Me.dgvClassrooms.Location = New System.Drawing.Point(444, 72)
@@ -212,7 +212,7 @@ Partial Class FormClassroom
         Me.dgvClassrooms.RowHeadersVisible = False
         Me.dgvClassrooms.RowHeadersWidth = 51
         Me.dgvClassrooms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvClassrooms.Size = New System.Drawing.Size(649, 634)
+        Me.dgvClassrooms.Size = New System.Drawing.Size(556, 634)
         Me.dgvClassrooms.TabIndex = 25
         Me.dgvClassrooms.TabStop = False
         '
@@ -233,13 +233,13 @@ Partial Class FormClassroom
         Me.classroom_id.ReadOnly = True
         Me.classroom_id.Width = 90
         '
-        'locationColumn
+        'location
         '
-        Me.locationColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.locationColumn.DataPropertyName = "location"
-        Me.locationColumn.HeaderText = "Location"
-        Me.locationColumn.Name = "location"
-        Me.locationColumn.ReadOnly = True
+        Me.location.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.location.DataPropertyName = "location"
+        Me.location.HeaderText = "Location"
+        Me.location.Name = "location"
+        Me.location.ReadOnly = True
         '
         'classroom_name
         '
@@ -251,13 +251,13 @@ Partial Class FormClassroom
         '
         'editBtn
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White
-        Me.editBtn.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
+        Me.editBtn.DefaultCellStyle = DataGridViewCellStyle3
         Me.editBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.editBtn.HeaderText = "Actions"
         Me.editBtn.Name = "editBtn"
@@ -267,13 +267,13 @@ Partial Class FormClassroom
         '
         'deleteBtn
         '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Crimson
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White
-        Me.deleteBtn.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Crimson
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
+        Me.deleteBtn.DefaultCellStyle = DataGridViewCellStyle4
         Me.deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.deleteBtn.HeaderText = ""
         Me.deleteBtn.Name = "deleteBtn"
@@ -288,7 +288,7 @@ Partial Class FormClassroom
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel3.Location = New System.Drawing.Point(0, 706)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1537, 73)
+        Me.Panel3.Size = New System.Drawing.Size(1444, 73)
         Me.Panel3.TabIndex = 27
         '
         'FormClassroom
@@ -296,7 +296,7 @@ Partial Class FormClassroom
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 21.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1537, 779)
+        Me.ClientSize = New System.Drawing.Size(1444, 779)
         Me.Controls.Add(Me.dgvClassrooms)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.panelRightSide)
@@ -306,6 +306,7 @@ Partial Class FormClassroom
         Me.Controls.Add(Me.panelHeader)
         Me.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.DimGray
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormClassroom"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -340,4 +341,5 @@ Partial Class FormClassroom
     Friend WithEvents Panel3 As Panel
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents PictureBox5 As PictureBox
+    Friend WithEvents location As DataGridViewTextBoxColumn
 End Class

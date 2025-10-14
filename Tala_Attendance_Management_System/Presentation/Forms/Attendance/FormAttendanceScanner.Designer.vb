@@ -76,7 +76,7 @@ Partial Class FormAttendanceScanner
         Me.panelHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelHeader.Location = New System.Drawing.Point(0, 0)
         Me.panelHeader.Name = "panelHeader"
-        Me.panelHeader.Size = New System.Drawing.Size(1580, 92)
+        Me.panelHeader.Size = New System.Drawing.Size(1444, 92)
         Me.panelHeader.TabIndex = 2
         '
         'Label1
@@ -151,7 +151,7 @@ Partial Class FormAttendanceScanner
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel6.Location = New System.Drawing.Point(0, 92)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1580, 10)
+        Me.Panel6.Size = New System.Drawing.Size(1444, 10)
         Me.Panel6.TabIndex = 11
         '
         'Panel7
@@ -161,7 +161,7 @@ Partial Class FormAttendanceScanner
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel7.Location = New System.Drawing.Point(0, 798)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(1580, 33)
+        Me.Panel7.Size = New System.Drawing.Size(1444, 33)
         Me.Panel7.TabIndex = 12
         '
         'Label5
@@ -194,7 +194,7 @@ Partial Class FormAttendanceScanner
         Me.panelThisAnnouncement.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panelThisAnnouncement.Location = New System.Drawing.Point(920, 102)
         Me.panelThisAnnouncement.Name = "panelThisAnnouncement"
-        Me.panelThisAnnouncement.Size = New System.Drawing.Size(660, 696)
+        Me.panelThisAnnouncement.Size = New System.Drawing.Size(524, 696)
         Me.panelThisAnnouncement.TabIndex = 6
         '
         'AnnouncementCard1
@@ -318,7 +318,7 @@ Partial Class FormAttendanceScanner
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1580, 831)
+        Me.ClientSize = New System.Drawing.Size(1444, 831)
         Me.Controls.Add(Me.panelThisAnnouncement)
         Me.Controls.Add(Me.pnlFacultyCard)
         Me.Controls.Add(Me.Label3)
@@ -329,6 +329,7 @@ Partial Class FormAttendanceScanner
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MaximizeBox = False
         Me.Name = "FormAttendanceScanner"

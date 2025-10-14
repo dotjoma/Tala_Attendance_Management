@@ -23,9 +23,9 @@ Partial Class AddTeacherClassSchedule
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddTeacherClassSchedule))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.LabelHome = New System.Windows.Forms.Label()
         Me.btnNew = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
@@ -75,7 +75,7 @@ Partial Class AddTeacherClassSchedule
         Me.btnNew.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnNew.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNew.ForeColor = System.Drawing.Color.White
-        Me.btnNew.Location = New System.Drawing.Point(508, 7)
+        Me.btnNew.Location = New System.Drawing.Point(447, 7)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(160, 50)
         Me.btnNew.TabIndex = 16
@@ -90,7 +90,7 @@ Partial Class AddTeacherClassSchedule
         Me.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnEdit.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEdit.ForeColor = System.Drawing.Color.White
-        Me.btnEdit.Location = New System.Drawing.Point(688, 6)
+        Me.btnEdit.Location = New System.Drawing.Point(627, 6)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(160, 50)
         Me.btnEdit.TabIndex = 14
@@ -105,7 +105,7 @@ Partial Class AddTeacherClassSchedule
         Me.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnDelete.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDelete.ForeColor = System.Drawing.Color.White
-        Me.btnDelete.Location = New System.Drawing.Point(865, 7)
+        Me.btnDelete.Location = New System.Drawing.Point(804, 7)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(160, 50)
         Me.btnDelete.TabIndex = 13
@@ -123,7 +123,7 @@ Partial Class AddTeacherClassSchedule
         Me.panelHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelHeader.Location = New System.Drawing.Point(0, 0)
         Me.panelHeader.Name = "panelHeader"
-        Me.panelHeader.Size = New System.Drawing.Size(1566, 82)
+        Me.panelHeader.Size = New System.Drawing.Size(1444, 82)
         Me.panelHeader.TabIndex = 2
         '
         'PictureBox4
@@ -154,7 +154,7 @@ Partial Class AddTeacherClassSchedule
         Me.Label8.BackColor = System.Drawing.Color.SteelBlue
         Me.Label8.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label8.Location = New System.Drawing.Point(1211, 40)
+        Me.Label8.Location = New System.Drawing.Point(1089, 40)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(63, 21)
         Me.Label8.TabIndex = 11
@@ -166,7 +166,7 @@ Partial Class AddTeacherClassSchedule
         Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSearch.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSearch.ForeColor = System.Drawing.Color.DimGray
-        Me.txtSearch.Location = New System.Drawing.Point(1280, 33)
+        Me.txtSearch.Location = New System.Drawing.Point(1158, 33)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(286, 33)
         Me.txtSearch.TabIndex = 10
@@ -180,7 +180,7 @@ Partial Class AddTeacherClassSchedule
         Me.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.panelBottom.Location = New System.Drawing.Point(20, 610)
         Me.panelBottom.Name = "panelBottom"
-        Me.panelBottom.Size = New System.Drawing.Size(1526, 69)
+        Me.panelBottom.Size = New System.Drawing.Size(1404, 69)
         Me.panelBottom.TabIndex = 3
         '
         'dgvTeacherSchedule
@@ -189,30 +189,30 @@ Partial Class AddTeacherClassSchedule
         Me.dgvTeacherSchedule.AllowUserToDeleteRows = False
         Me.dgvTeacherSchedule.AllowUserToResizeColumns = False
         Me.dgvTeacherSchedule.AllowUserToResizeRows = False
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgvTeacherSchedule.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvTeacherSchedule.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvTeacherSchedule.BackgroundColor = System.Drawing.Color.White
         Me.dgvTeacherSchedule.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvTeacherSchedule.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvTeacherSchedule.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvTeacherSchedule.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvTeacherSchedule.ColumnHeadersHeight = 70
         Me.dgvTeacherSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvTeacherSchedule.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.schedule_id, Me.subject_name, Me.teacher_name, Me.section_name, Me.classroom_name, Me.day, Me.start_time, Me.end_time, Me.teacherID})
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.DimGray
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DeepSkyBlue
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvTeacherSchedule.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.DimGray
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DeepSkyBlue
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvTeacherSchedule.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvTeacherSchedule.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvTeacherSchedule.EnableHeadersVisualStyles = False
         Me.dgvTeacherSchedule.Location = New System.Drawing.Point(20, 82)
@@ -222,7 +222,7 @@ Partial Class AddTeacherClassSchedule
         Me.dgvTeacherSchedule.RowHeadersVisible = False
         Me.dgvTeacherSchedule.RowHeadersWidth = 51
         Me.dgvTeacherSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvTeacherSchedule.Size = New System.Drawing.Size(1526, 528)
+        Me.dgvTeacherSchedule.Size = New System.Drawing.Size(1404, 528)
         Me.dgvTeacherSchedule.TabIndex = 20
         Me.dgvTeacherSchedule.TabStop = False
         '
@@ -307,7 +307,7 @@ Partial Class AddTeacherClassSchedule
         '
         Me.panelRightSide.BackColor = System.Drawing.Color.White
         Me.panelRightSide.Dock = System.Windows.Forms.DockStyle.Right
-        Me.panelRightSide.Location = New System.Drawing.Point(1546, 82)
+        Me.panelRightSide.Location = New System.Drawing.Point(1424, 82)
         Me.panelRightSide.Name = "panelRightSide"
         Me.panelRightSide.Size = New System.Drawing.Size(20, 597)
         Me.panelRightSide.TabIndex = 1
@@ -326,13 +326,14 @@ Partial Class AddTeacherClassSchedule
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1566, 679)
+        Me.ClientSize = New System.Drawing.Size(1444, 679)
         Me.Controls.Add(Me.dgvTeacherSchedule)
         Me.Controls.Add(Me.panelBottom)
         Me.Controls.Add(Me.panelRightSide)
         Me.Controls.Add(Me.panelLeftSide)
         Me.Controls.Add(Me.panelHeader)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "AddTeacherClassSchedule"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

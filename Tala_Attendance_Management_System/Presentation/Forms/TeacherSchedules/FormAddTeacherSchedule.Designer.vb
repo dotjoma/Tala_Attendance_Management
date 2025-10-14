@@ -22,6 +22,7 @@ Partial Class FormAddTeacherSchedule
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormAddTeacherSchedule))
         Me.panelHeader = New System.Windows.Forms.Panel()
         Me.LabelHome = New System.Windows.Forms.Label()
         Me.panelContainer = New System.Windows.Forms.Panel()
@@ -266,6 +267,7 @@ Partial Class FormAddTeacherSchedule
         Me.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.DimGray
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormAddTeacherSchedule"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

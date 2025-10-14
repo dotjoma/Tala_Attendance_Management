@@ -66,7 +66,7 @@ Partial Class FormAttendace
         Me.panelHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelHeader.Location = New System.Drawing.Point(0, 0)
         Me.panelHeader.Name = "panelHeader"
-        Me.panelHeader.Size = New System.Drawing.Size(1746, 57)
+        Me.panelHeader.Size = New System.Drawing.Size(1444, 57)
         Me.panelHeader.TabIndex = 3
         '
         'Label3
@@ -75,7 +75,7 @@ Partial Class FormAttendace
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(391, 20)
+        Me.Label3.Location = New System.Drawing.Point(89, 20)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(45, 19)
         Me.Label3.TabIndex = 22
@@ -121,7 +121,7 @@ Partial Class FormAttendace
         Me.Label1.BackColor = System.Drawing.Color.SteelBlue
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(1393, 23)
+        Me.Label1.Location = New System.Drawing.Point(1091, 23)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(64, 19)
         Me.Label1.TabIndex = 5
@@ -143,7 +143,7 @@ Partial Class FormAttendace
         '
         Me.txtSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtSearch.Location = New System.Drawing.Point(1465, 18)
+        Me.txtSearch.Location = New System.Drawing.Point(1163, 18)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(268, 26)
         Me.txtSearch.TabIndex = 2
@@ -155,7 +155,7 @@ Partial Class FormAttendace
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 464)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1746, 64)
+        Me.Panel1.Size = New System.Drawing.Size(1444, 64)
         Me.Panel1.TabIndex = 15
         '
         'dgvAttendance
@@ -197,7 +197,7 @@ Partial Class FormAttendace
         Me.dgvAttendance.RowHeadersVisible = False
         Me.dgvAttendance.RowHeadersWidth = 51
         Me.dgvAttendance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvAttendance.Size = New System.Drawing.Size(1646, 407)
+        Me.dgvAttendance.Size = New System.Drawing.Size(1344, 407)
         Me.dgvAttendance.TabIndex = 16
         Me.dgvAttendance.TabStop = False
         '
@@ -284,7 +284,7 @@ Partial Class FormAttendace
         'Panel3
         '
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel3.Location = New System.Drawing.Point(1696, 57)
+        Me.Panel3.Location = New System.Drawing.Point(1394, 57)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(50, 407)
         Me.Panel3.TabIndex = 18
@@ -294,13 +294,14 @@ Partial Class FormAttendace
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 19.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1746, 528)
+        Me.ClientSize = New System.Drawing.Size(1444, 528)
         Me.Controls.Add(Me.dgvAttendance)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.panelHeader)
         Me.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MaximizeBox = False
         Me.Name = "FormAttendace"
