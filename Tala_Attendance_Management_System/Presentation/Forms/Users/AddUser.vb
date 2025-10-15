@@ -65,11 +65,28 @@ Public Class AddUser
 
         ' Set default role to hr if creating new user
         If userID = 0 Then
-            cboUserRole.SelectedIndex = 0 ' Default to hr
+            Me.Height = 554
+            lblTitle.Text = "Add User"
+            cboUserRole.SelectedIndex = 0
+            chkShowPassword.Enabled = True
+            txtPassword.Enabled = True
+            btnGenerate.Enabled = True
+
+            lblPassword.Visible = True
+            chkShowPassword.Visible = True
+            txtPassword.Visible = True
+            btnGenerate.Visible = True
         Else
+            Me.Height = 478
+            lblTitle.Text = "Edit User"
             chkShowPassword.Enabled = False
             txtPassword.Enabled = False
             btnGenerate.Enabled = False
+
+            lblPassword.Visible = False
+            chkShowPassword.Visible = False
+            txtPassword.Visible = False
+            btnGenerate.Visible = False
         End If
     End Sub
     Private Function ValidatePasswordComplexity(password As String, ByRef errorMessage As String) As Boolean

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class AddUser
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,10 +20,10 @@ Partial Class AddUser
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.panelHeader = New System.Windows.Forms.Panel()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblTitle = New System.Windows.Forms.Label()
         Me.txtID = New System.Windows.Forms.Label()
         Me.panelBottom = New System.Windows.Forms.Panel()
         Me.btnCancel = New System.Windows.Forms.Button()
@@ -40,7 +40,7 @@ Partial Class AddUser
         Me.chkShowPassword = New System.Windows.Forms.CheckBox()
         Me.btnGenerate = New System.Windows.Forms.Button()
         Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblPassword = New System.Windows.Forms.Label()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.panelHeader.SuspendLayout()
@@ -51,7 +51,7 @@ Partial Class AddUser
         'panelHeader
         '
         Me.panelHeader.BackColor = System.Drawing.Color.SteelBlue
-        Me.panelHeader.Controls.Add(Me.Label5)
+        Me.panelHeader.Controls.Add(Me.lblTitle)
         Me.panelHeader.Controls.Add(Me.txtID)
         Me.panelHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelHeader.Location = New System.Drawing.Point(0, 0)
@@ -59,16 +59,16 @@ Partial Class AddUser
         Me.panelHeader.Size = New System.Drawing.Size(517, 73)
         Me.panelHeader.TabIndex = 2
         '
-        'Label5
+        'lblTitle
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(209, 22)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(90, 25)
-        Me.Label5.TabIndex = 40
-        Me.Label5.Text = "Add User"
+        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI Semibold", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitle.ForeColor = System.Drawing.Color.White
+        Me.lblTitle.Location = New System.Drawing.Point(90, 22)
+        Me.lblTitle.Name = "lblTitle"
+        Me.lblTitle.Size = New System.Drawing.Size(337, 25)
+        Me.lblTitle.TabIndex = 40
+        Me.lblTitle.Text = "Add User"
+        Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'txtID
         '
@@ -142,7 +142,7 @@ Partial Class AddUser
         Me.panelContainer.Controls.Add(Me.chkShowPassword)
         Me.panelContainer.Controls.Add(Me.btnGenerate)
         Me.panelContainer.Controls.Add(Me.txtPassword)
-        Me.panelContainer.Controls.Add(Me.Label2)
+        Me.panelContainer.Controls.Add(Me.lblPassword)
         Me.panelContainer.Controls.Add(Me.txtUsername)
         Me.panelContainer.Controls.Add(Me.Label1)
         Me.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill
@@ -277,16 +277,16 @@ Partial Class AddUser
         Me.txtPassword.TabIndex = 33
         Me.txtPassword.UseSystemPasswordChar = True
         '
-        'Label2
+        'lblPassword
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.DimGray
-        Me.Label2.Location = New System.Drawing.Point(51, 291)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(71, 19)
-        Me.Label2.TabIndex = 36
-        Me.Label2.Text = "Password:"
+        Me.lblPassword.AutoSize = True
+        Me.lblPassword.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPassword.ForeColor = System.Drawing.Color.DimGray
+        Me.lblPassword.Location = New System.Drawing.Point(51, 291)
+        Me.lblPassword.Name = "lblPassword"
+        Me.lblPassword.Size = New System.Drawing.Size(71, 19)
+        Me.lblPassword.TabIndex = 36
+        Me.lblPassword.Text = "Password:"
         '
         'txtUsername
         '
@@ -340,13 +340,13 @@ Partial Class AddUser
     Friend WithEvents panelContainer As Panel
     Friend WithEvents txtPassword As TextBox
     Friend WithEvents txtUsername As TextBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents lblPassword As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents btnSave As Button
     Friend WithEvents btnGenerate As Button
     Friend WithEvents btnCancel As Button
     Friend WithEvents txtID As Label
-    Friend WithEvents Label5 As Label
+    Friend WithEvents lblTitle As Label
     Friend WithEvents chkShowPassword As CheckBox
     Friend WithEvents txtName As TextBox
     Friend WithEvents Label6 As Label
