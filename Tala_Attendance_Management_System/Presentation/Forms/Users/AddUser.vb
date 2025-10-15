@@ -59,25 +59,55 @@ Public Class AddUser
         ' Initialize role ComboBox
         If cboUserRole.Items.Count = 0 Then
             cboUserRole.Items.Clear()
-            cboUserRole.Items.Add("admin")
             cboUserRole.Items.Add("hr")
-            cboUserRole.Items.Add("attendance")
+            cboUserRole.Items.Add("admin")
+            cboUserRole.Items.Add("teacher")
         End If
-        
-        ' Set default role to admin if creating new user
+
+        ' Set default role to hr if creating new user
         If userID = 0 Then
-            cboUserRole.SelectedIndex = 0 ' Default to admin
+            cboUserRole.SelectedIndex = 0 ' Default to hr
+        Else
+            chkShowPassword.Enabled = False
+            txtPassword.Enabled = False
+            btnGenerate.Enabled = False
         End If
     End Sub
-    Private Function ValidatePasswordComplexity(password As String) As Boolean
-        If password.Length < 8 Then Return False
+    Private Function ValidatePasswordComplexity(password As String, ByRef errorMessage As String) As Boolean
+        Dim missing As New List(Of String)
 
-        Dim hasLowercase As Boolean = password.Any(AddressOf Char.IsLower)
-        Dim hasUppercase As Boolean = password.Any(AddressOf Char.IsUpper)
-        Dim hasDigit As Boolean = password.Any(AddressOf Char.IsDigit)
-        Dim hasSpecial As Boolean = password.Any(Function(c) Not Char.IsLetterOrDigit(c))
+        ' Check length
+        If password.Length < 13 Then
+            missing.Add($"at least 13 characters (currently {password.Length})")
+        End If
 
-        Return hasLowercase AndAlso hasUppercase AndAlso hasDigit AndAlso hasSpecial
+        ' Check for lowercase
+        If Not password.Any(AddressOf Char.IsLower) Then
+            missing.Add("lowercase letter (a-z)")
+        End If
+
+        ' Check for uppercase
+        If Not password.Any(AddressOf Char.IsUpper) Then
+            missing.Add("uppercase letter (A-Z)")
+        End If
+
+        ' Check for digit
+        If Not password.Any(AddressOf Char.IsDigit) Then
+            missing.Add("number (0-9)")
+        End If
+
+        ' Check for special character
+        If Not password.Any(Function(c) Not Char.IsLetterOrDigit(c)) Then
+            missing.Add("special character (!@#$%^&*()-_=+[]{}|;:,.<>?/`~)")
+        End If
+
+        If missing.Count > 0 Then
+            errorMessage = "Password is missing: " & String.Join(", ", missing)
+            Return False
+        End If
+
+        errorMessage = ""
+        Return True
     End Function
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim cmd As Odbc.OdbcCommand
@@ -91,8 +121,9 @@ Public Class AddUser
         End If
 
         ' Validate password complexity
-        If Not ValidatePasswordComplexity(txtPassword.Text) Then
-            MessageBox.Show("Password must be at least 8 characters long and include at least one lowercase letter, one uppercase letter, one number, and one special character.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Dim passwordError As String = ""
+        If Not ValidatePasswordComplexity(txtPassword.Text, passwordError) Then
+            MessageBox.Show(passwordError, "Password Requirements", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
@@ -105,7 +136,7 @@ Public Class AddUser
                         MessageBox.Show("Please select a user role.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                         Return
                     End If
-                    
+
                     ' Insert a new record into the logins table
                     cmd = New Odbc.OdbcCommand("INSERT INTO logins(fullname, username, password, email, address, role, created_at) VALUES(?,?,?,?,?,?,?)", con)
                     With cmd.Parameters
@@ -114,7 +145,7 @@ Public Class AddUser
                         .AddWithValue("?", Trim(txtPassword.Text))
                         .AddWithValue("?", Trim(txtEmail.Text))
                         .AddWithValue("?", Trim(txtAddress.Text))
-                        .AddWithValue("?", LCase(cboUserRole.Text)) ' Use selected role
+                        .AddWithValue("?", LCase(cboUserRole.Text))
                         .AddWithValue("?", DateAndTime.Now)
                     End With
                     cmd.ExecuteNonQuery()
@@ -132,7 +163,7 @@ Public Class AddUser
                         MessageBox.Show("Please select a user role.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                         Return
                     End If
-                    
+
                     ' Update existing user record in the logins table
                     cmd = New Odbc.OdbcCommand("UPDATE logins SET fullname=?, username=?, password=?, email=?, address=?, role=? WHERE login_id=?", con)
                     With cmd.Parameters
@@ -170,7 +201,7 @@ Public Class AddUser
     End Sub
 
     Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
-        Dim passwordLength As Integer = 10
+        Dim passwordLength As Integer = 13
         Dim lowercase As String = "abcdefghijklmnopqrstuvwxyz"
         Dim uppercase As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         Dim digits As String = "0123456789"

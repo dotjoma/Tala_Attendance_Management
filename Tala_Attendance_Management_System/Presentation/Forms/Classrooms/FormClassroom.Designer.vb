@@ -341,5 +341,5 @@ Partial Class FormClassroom
     Friend WithEvents Panel3 As Panel
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents PictureBox5 As PictureBox
-    Friend WithEvents location As DataGridViewTextBoxColumn
+    Friend Shadows WithEvents location As DataGridViewTextBoxColumn
 End Class

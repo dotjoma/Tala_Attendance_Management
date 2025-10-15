@@ -29,6 +29,8 @@ Partial Class AddUser
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.panelContainer = New System.Windows.Forms.Panel()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.cboUserRole = New System.Windows.Forms.ComboBox()
         Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtEmail = New System.Windows.Forms.TextBox()
@@ -41,8 +43,6 @@ Partial Class AddUser
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cboUserRole = New System.Windows.Forms.ComboBox()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.panelHeader.SuspendLayout()
         Me.panelBottom.SuspendLayout()
         Me.panelContainer.SuspendLayout()
@@ -150,6 +150,27 @@ Partial Class AddUser
         Me.panelContainer.Name = "panelContainer"
         Me.panelContainer.Size = New System.Drawing.Size(517, 374)
         Me.panelContainer.TabIndex = 4
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.DimGray
+        Me.Label7.Location = New System.Drawing.Point(50, 240)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(72, 19)
+        Me.Label7.TabIndex = 49
+        Me.Label7.Text = "User Role:"
+        '
+        'cboUserRole
+        '
+        Me.cboUserRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboUserRole.FormattingEnabled = True
+        Me.cboUserRole.Items.AddRange(New Object() {"Hr", "Admin", "Teacher"})
+        Me.cboUserRole.Location = New System.Drawing.Point(128, 236)
+        Me.cboUserRole.Name = "cboUserRole"
+        Me.cboUserRole.Size = New System.Drawing.Size(138, 29)
+        Me.cboUserRole.TabIndex = 48
         '
         'txtAddress
         '
@@ -288,27 +309,6 @@ Partial Class AddUser
         Me.Label1.Size = New System.Drawing.Size(74, 19)
         Me.Label1.TabIndex = 35
         Me.Label1.Text = "Username:"
-        '
-        'cboUserRole
-        '
-        Me.cboUserRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboUserRole.FormattingEnabled = True
-        Me.cboUserRole.Items.AddRange(New Object() {"Admin", "Hr", "Attendance"})
-        Me.cboUserRole.Location = New System.Drawing.Point(128, 236)
-        Me.cboUserRole.Name = "cboUserRole"
-        Me.cboUserRole.Size = New System.Drawing.Size(138, 29)
-        Me.cboUserRole.TabIndex = 48
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.DimGray
-        Me.Label7.Location = New System.Drawing.Point(50, 240)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(72, 19)
-        Me.Label7.TabIndex = 49
-        Me.Label7.Text = "User Role:"
         '
         'AddUser
         '

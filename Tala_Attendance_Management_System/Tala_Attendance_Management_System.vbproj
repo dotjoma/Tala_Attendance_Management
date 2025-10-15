@@ -381,6 +381,12 @@
     <Compile Include="Presentation\Forms\Users\BatchGenerate.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Presentation\Forms\Users\ChangePassword.Designer.vb">
+      <DependentUpon>ChangePassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Forms\Users\ChangePassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Presentation\Forms\Users\ManageUser.Designer.vb">
       <DependentUpon>ManageUser.vb</DependentUpon>
     </Compile>
@@ -678,6 +684,8 @@
     <None Include="Resources\block_40x40.png" />
     <None Include="Resources\enable_default_40x40.png" />
     <Content Include="logo.ico" />
+    <None Include="Resources\reset_password_40x40.png" />
+    <None Include="Resources\reset_password_orange_40x40.png" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
