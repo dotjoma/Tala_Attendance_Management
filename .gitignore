@@ -97,3 +97,7 @@ $RECYCLE.BIN/
 
 Project_Release
 build
+
+# Version marker files (created during updates)
+v[0-9]*.[0-9]*.[0-9]*
+v[0-9]*.[0-9]*.[0-9]*.*
