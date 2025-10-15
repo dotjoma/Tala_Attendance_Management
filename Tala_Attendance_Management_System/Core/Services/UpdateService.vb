@@ -262,7 +262,7 @@ echo.
 echo  [STEP 3/6] Extracting update package...
 echo   ^> Source: {Path.GetFileName(updateFilePath)}
 echo   ^> Target: Temp\{Path.GetFileName(tempExtractDir)}
-powershell -command ""Expand-Archive -Path '{updateFilePath}' -DestinationPath '{tempExtractDir}' -Force""
+powershell -command ""Expand-Archive -LiteralPath '{updateFilePath.Replace("'", "''")}' -DestinationPath '{tempExtractDir.Replace("'", "''")}' -Force""
 if errorlevel 1 (
     color 0C
     echo.
