@@ -125,3 +125,15 @@ Tala_Attendance_Management_System/
 ├── CHANGELOG.md                      # Change History
 └── ACCOMPLISHED.md                   # This File
 ```
+
+### **10/15/25 Changes**
+
+- [x] Maximize yung space
+- [x] Dapat main admin lang makakagamit neto
+- [x] Dapat may indication kung ang I add mo ba na user is HR lang or Head Admin
+- [x] Change password button
+- [x] Lagyan ng Old password – new password bago mag confirm ng password
+- [x] Palitan ng dapat minimum of 13 Charactoers and password
+- [x] Iremove and delete user button – enable or disable lang 
+- [x] Dapat pag HR user ang nakalogin, hindi pwede I access etong form ng Hr
+- [x] Fix search
