@@ -166,7 +166,7 @@ Partial Class AddUser
         '
         Me.cboUserRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboUserRole.FormattingEnabled = True
-        Me.cboUserRole.Items.AddRange(New Object() {"Hr", "Admin", "Teacher"})
+        Me.cboUserRole.Items.AddRange(New Object() {"Hr", "Admin"})
         Me.cboUserRole.Location = New System.Drawing.Point(128, 236)
         Me.cboUserRole.Name = "cboUserRole"
         Me.cboUserRole.Size = New System.Drawing.Size(138, 29)

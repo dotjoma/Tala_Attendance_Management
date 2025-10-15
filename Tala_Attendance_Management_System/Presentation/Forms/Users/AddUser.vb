@@ -61,7 +61,6 @@ Public Class AddUser
             cboUserRole.Items.Clear()
             cboUserRole.Items.Add("hr")
             cboUserRole.Items.Add("admin")
-            cboUserRole.Items.Add("teacher")
         End If
 
         ' Set default role to hr if creating new user
