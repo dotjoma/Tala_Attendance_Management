@@ -1,25 +1,38 @@
 ﻿Imports Microsoft.Reporting.WinForms
 
 Public Class FormTeacherAttendanceReports
+    Private ReadOnly _logger As ILogger = LoggerFactory.Instance
+
     Private Sub rvAttendance_Load(sender As Object, e As EventArgs) Handles rvAttendance.Load
-        ' Load sections for the current teacher
-        Dim currentUserID As String = TeacherSchedule.currentUser
-        Dim sectionQuery As String = "
-            SELECT DISTINCT sc.section_id, CONCAT(sc.year_level, ' ', sc.section_name) AS section_name
-            FROM sections sc
-            JOIN class_schedules cs ON sc.section_id = cs.section_id
-            WHERE cs.teacherID = '" & currentUserID & "' AND sc.isActive = 1 AND cs.isActive=1 
-            ORDER BY CAST(sc.year_level AS SIGNED), sc.section_name"
-        loadCBO(sectionQuery, "section_id", "section_name", cbSection)
+        Try
+            ' Load sections for the current teacher
+            Dim currentUserID As String = TeacherSchedule.currentUser
+            _logger.LogDebug($"Loading sections for teacher ID: {currentUserID}")
+            
+            Dim sectionQuery As String = "
+                SELECT DISTINCT sc.section_id, CONCAT(sc.year_level, ' ', sc.section_name) AS section_name
+                FROM sections sc
+                JOIN class_schedules cs ON sc.section_id = cs.section_id
+                WHERE cs.teacherID = '" & currentUserID & "' AND sc.isActive = 1 AND cs.isActive=1 
+                ORDER BY CAST(sc.year_level AS SIGNED), sc.section_name"
+            loadCBO(sectionQuery, "section_id", "section_name", cbSection)
+            
+            _logger.LogInfo($"Loaded {cbSection.Items.Count} sections for teacher ID: {currentUserID}")
+        Catch ex As Exception
+            _logger.LogError($"Error loading sections: {ex.Message}")
+            MessageBox.Show("Error loading sections: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
     ' Validate that all inputs are provided
     Private Function ValidateInputs() As Boolean
         If String.IsNullOrEmpty(dtpFrom.Text) OrElse String.IsNullOrEmpty(dtpTo.Text) Then
+            _logger.LogWarning("Validation failed: Date range not selected")
             MessageBox.Show("Please select a valid date range.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return False
         End If
 
         If cbSection.SelectedIndex = -1 Then
+            _logger.LogWarning("Validation failed: Section not selected")
             MessageBox.Show("Please select a section.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return False
         End If
@@ -35,11 +48,14 @@ Public Class FormTeacherAttendanceReports
         Dim da As New Odbc.OdbcDataAdapter
         Dim dt As New DataTable
         Try
+            _logger.LogInfo("Generating teacher attendance report")
             connectDB()
 
             ' Get selected values from ComboBoxes
             Dim selectedSectionID As String = cbSection.SelectedValue.ToString()
             Dim selectedTeacherID As String = TeacherSchedule.currentUser
+            
+            _logger.LogDebug($"Report parameters - Teacher ID: {selectedTeacherID}, Section ID: {selectedSectionID}, Date From: {dtpFrom.Text}, Date To: {dtpTo.Text}")
 
             ' Modify SQL query to include filtering by teacherID and section_id
             cmd = New Odbc.OdbcCommand("
@@ -76,6 +92,8 @@ Public Class FormTeacherAttendanceReports
             ' Execute query and fill DataTable
             da.SelectCommand = cmd
             da.Fill(dt)
+            
+            _logger.LogInfo($"Report generated successfully with {dt.Rows.Count} attendance records")
 
             ' Set up the report viewer with the data
             With Me.rvAttendance.LocalReport
@@ -85,8 +103,11 @@ Public Class FormTeacherAttendanceReports
             End With
             Me.rvAttendance.Dock = DockStyle.Fill
             Me.rvAttendance.RefreshReport()
+            
+            _logger.LogDebug("Report viewer refreshed successfully")
         Catch ex As Exception
-            MessageBox.Show(ex.Message.ToString())
+            _logger.LogError($"Error generating attendance report: {ex.Message}")
+            MessageBox.Show("Error generating report: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             GC.Collect()
             con.Close()
