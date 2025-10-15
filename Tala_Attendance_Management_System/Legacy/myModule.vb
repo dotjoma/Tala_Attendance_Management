@@ -51,7 +51,7 @@ Module myModule
         Try
             Call connectDB()
             If fieldname.Length <> 0 Then
-                sql = sql + " AND (" + fieldname + " LIKE ? OR " + fieldnametwo + " LIKE ? OR " + fieldnamethree + " LIKE ?)"
+                sql = sql + " WHERE (" + fieldname + " LIKE ? OR " + fieldnametwo + " LIKE ? OR " + fieldnamethree + " LIKE ?)"
                 value = "%" + value + "%"
             End If
             cmd = New Odbc.OdbcCommand(sql, con)
