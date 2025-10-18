@@ -3183,6 +3183,24 @@
   <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="tmrHideCard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>105, 20</value>
+  </metadata>
+  <metadata name="DataSet_Attendance1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>228, 20</value>
+  </metadata>
+  <metadata name="DataSet_Attendance2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>389, 20</value>
+  </metadata>
+  <metadata name="DataSet_Attendance3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>535, 22</value>
+  </metadata>
+  <metadata name="Timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>701, 22</value>
+  </metadata>
+  <metadata name="DataSet_Attendance4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>792, 22</value>
+  </metadata>
   <data name="AnnouncementCard1.AnnouncementImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAYcAAAFQCAYAAABUJbLpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
@@ -3208,31 +3226,13 @@
         AABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="tmrHideCard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>105, 20</value>
-  </metadata>
-  <metadata name="DataSet_Attendance1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>228, 20</value>
-  </metadata>
-  <metadata name="DataSet_Attendance2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>389, 20</value>
-  </metadata>
-  <metadata name="DataSet_Attendance3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>535, 22</value>
-  </metadata>
-  <metadata name="Timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>701, 22</value>
-  </metadata>
-  <metadata name="DataSet_Attendance4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>792, 22</value>
-  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>31</value>
   </metadata>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA+YAAAOVCAYAAADk1vpIAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAA/7JJREFUeF7svQnXM116Vuf//z8Ik40BO0CCTQwkDGEwwRMQYiC2MUMDIUwNpPvL
+        vgAADr4B6kKxwAAA/7JJREFUeF7svQnXM116Vuf//z8Ik40BO0CCTQwkDGEwwRMQYiC2MUMDIUwNpPvL
         2q+5mvvbXSWVpKqS9Oh61tpLU9WpU2e8t06pnp/5z//5P39XSimllFJKKaWU5/AzfqOUUkoppZRSSinn
         UTEvpZRSSimllFKeSMW8lFJKKaWUUkp5IhXzUkoppZRSSinliVTMSymllFJKKaWUJ1IxL6WUUkoppZRS
         nkjFvJRSSimllFJKeSIV81JKKaWUUkop5YlUzEsppZRSSimllCdSMS+llFJKKaWUUp5IxbyUUkoppZRS

@@ -34,10 +34,8 @@ Partial Class FormAttendanceScanner
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.panelThisAnnouncement = New System.Windows.Forms.Panel()
-        Me.AnnouncementCard1 = New Tala_Attendance_Management_System.AnnouncementCard()
         Me.tmrHideCard = New System.Windows.Forms.Timer(Me.components)
         Me.pnlFacultyCard = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -50,10 +48,10 @@ Partial Class FormAttendanceScanner
         Me.DataSet_Attendance3 = New Tala_Attendance_Management_System.DataSet_Attendance()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.DataSet_Attendance4 = New Tala_Attendance_Management_System.DataSet_Attendance()
+        Me.AnnouncementCard1 = New Tala_Attendance_Management_System.AnnouncementCard()
         Me.panelHeader.SuspendLayout()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel7.SuspendLayout()
         Me.panelThisAnnouncement.SuspendLayout()
         Me.pnlFacultyCard.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -157,21 +155,11 @@ Partial Class FormAttendanceScanner
         'Panel7
         '
         Me.Panel7.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.Panel7.Controls.Add(Me.Label5)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel7.Location = New System.Drawing.Point(0, 798)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(1444, 33)
         Me.Panel7.TabIndex = 12
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(0, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(49, 19)
-        Me.Label5.TabIndex = 0
-        Me.Label5.Text = "Label5"
         '
         'Label3
         '
@@ -196,22 +184,6 @@ Partial Class FormAttendanceScanner
         Me.panelThisAnnouncement.Name = "panelThisAnnouncement"
         Me.panelThisAnnouncement.Size = New System.Drawing.Size(524, 696)
         Me.panelThisAnnouncement.TabIndex = 6
-        '
-        'AnnouncementCard1
-        '
-        Me.AnnouncementCard1.AnnouncementImage = CType(resources.GetObject("AnnouncementCard1.AnnouncementImage"), System.Drawing.Image)
-        Me.AnnouncementCard1.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.AnnouncementCard1.DateInfo = "Date"
-        Me.AnnouncementCard1.DayInfo = "Day"
-        Me.AnnouncementCard1.Description = "Letter"
-        Me.AnnouncementCard1.Header = """Header"""
-        Me.AnnouncementCard1.Location = New System.Drawing.Point(-1, -1)
-        Me.AnnouncementCard1.LookFor = "LookFor"
-        Me.AnnouncementCard1.Margin = New System.Windows.Forms.Padding(4)
-        Me.AnnouncementCard1.Name = "AnnouncementCard1"
-        Me.AnnouncementCard1.Size = New System.Drawing.Size(11, 680)
-        Me.AnnouncementCard1.TabIndex = 15
-        Me.AnnouncementCard1.TimeInfo = "Time"
         '
         'tmrHideCard
         '
@@ -311,6 +283,22 @@ Partial Class FormAttendanceScanner
         Me.DataSet_Attendance4.DataSetName = "DataSet_Attendance"
         Me.DataSet_Attendance4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'AnnouncementCard1
+        '
+        Me.AnnouncementCard1.AnnouncementImage = CType(resources.GetObject("AnnouncementCard1.AnnouncementImage"), System.Drawing.Image)
+        Me.AnnouncementCard1.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.AnnouncementCard1.DateInfo = "Date"
+        Me.AnnouncementCard1.DayInfo = "Day"
+        Me.AnnouncementCard1.Description = "Letter"
+        Me.AnnouncementCard1.Header = """Header"""
+        Me.AnnouncementCard1.Location = New System.Drawing.Point(-1, -1)
+        Me.AnnouncementCard1.LookFor = "LookFor"
+        Me.AnnouncementCard1.Margin = New System.Windows.Forms.Padding(4)
+        Me.AnnouncementCard1.Name = "AnnouncementCard1"
+        Me.AnnouncementCard1.Size = New System.Drawing.Size(11, 680)
+        Me.AnnouncementCard1.TabIndex = 15
+        Me.AnnouncementCard1.TimeInfo = "Time"
+        '
         'FormAttendanceScanner
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 19.0!)
@@ -335,13 +323,12 @@ Partial Class FormAttendanceScanner
         Me.Name = "FormAttendanceScanner"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Attendance"
+        Me.TopMost = True
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.panelHeader.ResumeLayout(False)
         Me.panelHeader.PerformLayout()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel7.ResumeLayout(False)
-        Me.Panel7.PerformLayout()
         Me.panelThisAnnouncement.ResumeLayout(False)
         Me.pnlFacultyCard.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
@@ -371,7 +358,6 @@ Partial Class FormAttendanceScanner
     Friend WithEvents PictureBox6 As PictureBox
     Friend WithEvents Label4 As Label
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Label5 As Label
     Friend WithEvents AnnouncementCard1 As AnnouncementCard
     Friend WithEvents DataSet_Attendance1 As DataSet_Attendance
     Friend WithEvents DataSet_Attendance2 As DataSet_Attendance
