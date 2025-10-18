@@ -4,6 +4,7 @@ Public Class FormAttendace
     Private ReadOnly _logger As ILogger = LoggerFactory.Instance
     Public strFilter As String = ""
     Private selectedAttendanceId As Integer = 0
+    Public Property UserRole As String = ""
 
     Public Sub DefaultSettings()
         dgvAttendance.CurrentCell = Nothing
@@ -86,11 +87,37 @@ Public Class FormAttendace
     End Sub
     
     Private Sub ApplyRoleBasedAccess()
-        ' Only Admin and HR can edit attendance records
-        Dim userRole As String = MainForm.currentUserRole.ToLower()
-        btnEdit.Visible = (userRole = "admin" OrElse userRole = "hr")
-        
-        _logger.LogInfo($"Role-based access applied - User role: {userRole}, Edit button visible: {btnEdit.Visible}")
+        Try
+            ' Try multiple sources for user role
+            Dim userRole As String = ""
+            
+            ' 1. Check if role was set directly on this form
+            If Not String.IsNullOrEmpty(Me.UserRole) Then
+                userRole = Me.UserRole.ToLower()
+            ' 2. Check MainForm.currentUserRole
+            ElseIf Not String.IsNullOrEmpty(MainForm.currentUserRole) Then
+                userRole = MainForm.currentUserRole.ToLower()
+            ' 3. Try to parse from MainForm.lblUser label text
+            ElseIf MainForm.lblUser IsNot Nothing AndAlso Not String.IsNullOrEmpty(MainForm.lblUser.Text) Then
+                Dim labelText As String = MainForm.lblUser.Text
+                If labelText.Contains("(Admin)") Then
+                    userRole = "admin"
+                ElseIf labelText.Contains("(HR)") Then
+                    userRole = "hr"
+                ElseIf labelText.Contains("(Attendance)") Then
+                    userRole = "attendance"
+                End If
+            End If
+            
+            ' Show edit button for Admin and HR only
+            btnEdit.Visible = (userRole = "admin" OrElse userRole = "hr")
+            
+            _logger.LogInfo($"Role-based access applied - User role: '{userRole}', Edit button visible: {btnEdit.Visible}")
+        Catch ex As Exception
+            _logger.LogError($"Error applying role-based access: {ex.Message}")
+            ' Default to hiding edit button if there's an error
+            btnEdit.Visible = False
+        End Try
     End Sub
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
