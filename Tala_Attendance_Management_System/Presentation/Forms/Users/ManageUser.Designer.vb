@@ -454,7 +454,7 @@ Partial Class ManageUser
     Friend WithEvents username As DataGridViewTextBoxColumn
     Friend WithEvents password As DataGridViewTextBoxColumn
     Friend WithEvents email As DataGridViewTextBoxColumn
-    Friend WithEvents location As DataGridViewTextBoxColumn
+    Friend Shadows WithEvents location As DataGridViewTextBoxColumn
     Friend WithEvents created_at As DataGridViewTextBoxColumn
     Friend WithEvents role As DataGridViewTextBoxColumn
     Friend WithEvents status As DataGridViewTextBoxColumn
