@@ -4,7 +4,7 @@
 Public Module Constants
     ' Application Info - UPDATE VERSION HERE ONLY!
     Public Const APP_NAME As String = "Tala Attendance Management System"
-    Public Const APP_VERSION As String = "2.3.3" 
+    Public Const APP_VERSION As String = "2.3.4" 
 
     ' Database
     Public Const DB_DSN As String = "tala_ams"
