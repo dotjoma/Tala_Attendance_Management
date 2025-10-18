@@ -3,6 +3,7 @@ Imports System.Data.SqlClient
 
 Public Class AddUser
     Public userID As Integer = 0
+    Private copiedCooldown = 15
 
     ' Function to get the maximum user ID
     Function GetUserID() As Integer
@@ -63,9 +64,11 @@ Public Class AddUser
             cboUserRole.Items.Add("admin")
         End If
 
+
         ' Set default role to hr if creating new user
         If userID = 0 Then
-            Me.Height = 554
+            btnCopy.Visible = False
+
             lblTitle.Text = "Add User"
             cboUserRole.SelectedIndex = 0
             chkShowPassword.Enabled = True
@@ -77,15 +80,16 @@ Public Class AddUser
             txtPassword.Visible = True
             btnGenerate.Visible = True
         Else
-            Me.Height = 478
+            btnCopy.Visible = True
+
             lblTitle.Text = "Edit User"
-            chkShowPassword.Enabled = False
+            chkShowPassword.Enabled = True
             txtPassword.Enabled = False
             btnGenerate.Enabled = False
 
-            lblPassword.Visible = False
-            chkShowPassword.Visible = False
-            txtPassword.Visible = False
+            lblPassword.Visible = True
+            chkShowPassword.Visible = True
+            txtPassword.Visible = True
             btnGenerate.Visible = False
         End If
     End Sub
@@ -275,6 +279,28 @@ Public Class AddUser
             txtPassword.UseSystemPasswordChar = False
         Else
             txtPassword.UseSystemPasswordChar = True
+        End If
+    End Sub
+
+    Private Sub btnCopy_Click(sender As Object, e As EventArgs) Handles btnCopy.Click
+        Dim copyText As String = Trim(txtPassword.Text)
+
+        If Not String.IsNullOrEmpty(copyText) Then
+            Clipboard.SetText(copyText)
+            Timer1.Start()
+            btnCopy.Enabled = False
+            btnCopy.BackgroundImage = My.Resources.copied_24x24
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        copiedCooldown -= 1
+
+        If copiedCooldown <= 0 Then
+            btnCopy.BackgroundImage = My.Resources.copy_24x24
+            copiedCooldown = 5
+            btnCopy.Enabled = True
+            Timer1.Stop()
         End If
     End Sub
 End Class

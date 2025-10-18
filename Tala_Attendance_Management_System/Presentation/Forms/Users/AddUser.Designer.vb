@@ -22,12 +22,11 @@ Partial Class AddUser
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.panelHeader = New System.Windows.Forms.Panel()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.txtID = New System.Windows.Forms.Label()
         Me.panelBottom = New System.Windows.Forms.Panel()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
         Me.panelContainer = New System.Windows.Forms.Panel()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.cboUserRole = New System.Windows.Forms.ComboBox()
@@ -43,6 +42,10 @@ Partial Class AddUser
         Me.lblPassword = New System.Windows.Forms.Label()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnCopy = New System.Windows.Forms.Button()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.panelHeader.SuspendLayout()
         Me.panelBottom.SuspendLayout()
         Me.panelContainer.SuspendLayout()
@@ -92,45 +95,10 @@ Partial Class AddUser
         Me.panelBottom.Size = New System.Drawing.Size(517, 68)
         Me.panelBottom.TabIndex = 3
         '
-        'btnCancel
-        '
-        Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCancel.AutoSize = True
-        Me.btnCancel.BackColor = System.Drawing.Color.White
-        Me.btnCancel.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_delete_40__1_
-        Me.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCancel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.ForeColor = System.Drawing.Color.Red
-        Me.btnCancel.Location = New System.Drawing.Point(261, 16)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(171, 40)
-        Me.btnCancel.TabIndex = 18
-        Me.btnCancel.Text = "&Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = False
-        '
-        'btnSave
-        '
-        Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSave.AutoSize = True
-        Me.btnSave.BackColor = System.Drawing.Color.White
-        Me.btnSave.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_plus_40
-        Me.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnSave.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSave.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.ForeColor = System.Drawing.Color.Green
-        Me.btnSave.Location = New System.Drawing.Point(77, 16)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(171, 40)
-        Me.btnSave.TabIndex = 17
-        Me.btnSave.Text = "&Save"
-        Me.btnSave.UseVisualStyleBackColor = False
-        '
         'panelContainer
         '
         Me.panelContainer.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.panelContainer.Controls.Add(Me.btnCopy)
         Me.panelContainer.Controls.Add(Me.Label7)
         Me.panelContainer.Controls.Add(Me.cboUserRole)
         Me.panelContainer.Controls.Add(Me.txtAddress)
@@ -310,6 +278,59 @@ Partial Class AddUser
         Me.Label1.TabIndex = 35
         Me.Label1.Text = "Username:"
         '
+        'btnCopy
+        '
+        Me.btnCopy.BackColor = System.Drawing.Color.Transparent
+        Me.btnCopy.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.copy_24x24
+        Me.btnCopy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnCopy.FlatAppearance.BorderSize = 0
+        Me.btnCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCopy.Location = New System.Drawing.Point(366, 288)
+        Me.btnCopy.Name = "btnCopy"
+        Me.btnCopy.Size = New System.Drawing.Size(29, 27)
+        Me.btnCopy.TabIndex = 50
+        Me.btnCopy.UseVisualStyleBackColor = False
+        Me.btnCopy.Visible = False
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCancel.AutoSize = True
+        Me.btnCancel.BackColor = System.Drawing.Color.White
+        Me.btnCancel.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_delete_40__1_
+        Me.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCancel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancel.ForeColor = System.Drawing.Color.Red
+        Me.btnCancel.Location = New System.Drawing.Point(261, 16)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(171, 40)
+        Me.btnCancel.TabIndex = 18
+        Me.btnCancel.Text = "&Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = False
+        '
+        'btnSave
+        '
+        Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSave.AutoSize = True
+        Me.btnSave.BackColor = System.Drawing.Color.White
+        Me.btnSave.BackgroundImage = Global.Tala_Attendance_Management_System.My.Resources.Resources.icons8_plus_40
+        Me.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnSave.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSave.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSave.ForeColor = System.Drawing.Color.Green
+        Me.btnSave.Location = New System.Drawing.Point(77, 16)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(171, 40)
+        Me.btnSave.TabIndex = 17
+        Me.btnSave.Text = "&Save"
+        Me.btnSave.UseVisualStyleBackColor = False
+        '
+        'Timer1
+        '
+        '
         'AddUser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 21.0!)
@@ -356,4 +377,6 @@ Partial Class AddUser
     Friend WithEvents Label4 As Label
     Friend WithEvents cboUserRole As ComboBox
     Friend WithEvents Label7 As Label
+    Friend WithEvents btnCopy As Button
+    Friend WithEvents Timer1 As Timer
 End Class
