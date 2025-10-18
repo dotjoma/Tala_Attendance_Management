@@ -44,7 +44,16 @@ Partial Class FormAttendace
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.dtpDateFrom = New System.Windows.Forms.DateTimePicker()
+        Me.dtpDateTo = New System.Windows.Forms.DateTimePicker()
+        Me.btnEdit = New System.Windows.Forms.Button()
+        Me.btnExport = New System.Windows.Forms.Button()
+        Me.btnPrint = New System.Windows.Forms.Button()
+        Me.attendanceID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.panelHeader.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvAttendance, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -137,6 +146,13 @@ Partial Class FormAttendace
         '
         Me.Panel1.BackColor = System.Drawing.Color.SteelBlue
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.btnPrint)
+        Me.Panel1.Controls.Add(Me.btnExport)
+        Me.Panel1.Controls.Add(Me.btnEdit)
+        Me.Panel1.Controls.Add(Me.dtpDateTo)
+        Me.Panel1.Controls.Add(Me.dtpDateFrom)
+        Me.Panel1.Controls.Add(Me.Label5)
+        Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 464)
         Me.Panel1.Name = "Panel1"
@@ -164,7 +180,7 @@ Partial Class FormAttendace
         Me.dgvAttendance.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dgvAttendance.ColumnHeadersHeight = 45
         Me.dgvAttendance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvAttendance.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column2, Me.Column1, Me.classroom, Me.subject_name, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
+        Me.dgvAttendance.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.attendanceID, Me.Column2, Me.Column1, Me.classroom, Me.subject_name, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
         DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -271,6 +287,94 @@ Partial Class FormAttendace
         Me.Label3.TabIndex = 22
         Me.Label3.Text = "Filter:"
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold)
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(15, 20)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(47, 19)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "From:"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold)
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(250, 20)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(27, 19)
+        Me.Label5.TabIndex = 1
+        Me.Label5.Text = "To:"
+        '
+        'dtpDateFrom
+        '
+        Me.dtpDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpDateFrom.Location = New System.Drawing.Point(68, 17)
+        Me.dtpDateFrom.Name = "dtpDateFrom"
+        Me.dtpDateFrom.Size = New System.Drawing.Size(165, 26)
+        Me.dtpDateFrom.TabIndex = 2
+        '
+        'dtpDateTo
+        '
+        Me.dtpDateTo.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpDateTo.Location = New System.Drawing.Point(283, 17)
+        Me.dtpDateTo.Name = "dtpDateTo"
+        Me.dtpDateTo.Size = New System.Drawing.Size(165, 26)
+        Me.dtpDateTo.TabIndex = 3
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.btnEdit.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEdit.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold)
+        Me.btnEdit.ForeColor = System.Drawing.Color.White
+        Me.btnEdit.Location = New System.Drawing.Point(1050, 12)
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(120, 38)
+        Me.btnEdit.TabIndex = 4
+        Me.btnEdit.Text = "Edit Record"
+        Me.btnEdit.UseVisualStyleBackColor = False
+        '
+        'btnExport
+        '
+        Me.btnExport.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.btnExport.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(113, Byte), Integer))
+        Me.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExport.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold)
+        Me.btnExport.ForeColor = System.Drawing.Color.White
+        Me.btnExport.Location = New System.Drawing.Point(1176, 12)
+        Me.btnExport.Name = "btnExport"
+        Me.btnExport.Size = New System.Drawing.Size(120, 38)
+        Me.btnExport.TabIndex = 5
+        Me.btnExport.Text = "Export CSV"
+        Me.btnExport.UseVisualStyleBackColor = False
+        '
+        'btnPrint
+        '
+        Me.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.btnPrint.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(219, Byte), Integer))
+        Me.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPrint.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold)
+        Me.btnPrint.ForeColor = System.Drawing.Color.White
+        Me.btnPrint.Location = New System.Drawing.Point(1302, 12)
+        Me.btnPrint.Name = "btnPrint"
+        Me.btnPrint.Size = New System.Drawing.Size(120, 38)
+        Me.btnPrint.TabIndex = 6
+        Me.btnPrint.Text = "Print"
+        Me.btnPrint.UseVisualStyleBackColor = False
+        '
+        'attendanceID
+        '
+        Me.attendanceID.DataPropertyName = "attendanceID"
+        Me.attendanceID.HeaderText = "ID"
+        Me.attendanceID.Name = "attendanceID"
+        Me.attendanceID.ReadOnly = True
+        Me.attendanceID.Visible = False
+        '
         'FormAttendace
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 19.0!)
@@ -291,6 +395,8 @@ Partial Class FormAttendace
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.panelHeader.ResumeLayout(False)
         Me.panelHeader.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvAttendance, System.ComponentModel.ISupportInitialize).EndInit()
@@ -316,4 +422,12 @@ Partial Class FormAttendace
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents dtpDateFrom As DateTimePicker
+    Friend WithEvents dtpDateTo As DateTimePicker
+    Friend WithEvents btnEdit As Button
+    Friend WithEvents btnExport As Button
+    Friend WithEvents btnPrint As Button
+    Friend WithEvents attendanceID As DataGridViewTextBoxColumn
 End Class
