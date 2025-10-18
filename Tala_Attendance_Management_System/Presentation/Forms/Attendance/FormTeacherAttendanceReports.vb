@@ -96,9 +96,18 @@ Public Class FormTeacherAttendanceReports
             _logger.LogInfo($"Report generated successfully with {dt.Rows.Count} attendance records")
 
             ' Set up the report viewer with the data
+            Dim reportPath As String = System.IO.Path.Combine(Application.StartupPath, "ReportAttendance.rdlc")
+            _logger.LogDebug($"Report path: {reportPath}")
+            
+            If Not System.IO.File.Exists(reportPath) Then
+                _logger.LogError($"Report file not found at: {reportPath}")
+                MessageBox.Show($"Report file not found at: {reportPath}", "Report Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+            
             With Me.rvAttendance.LocalReport
                 .DataSources.Clear()
-                .ReportPath = "ReportAttendance.rdlc"
+                .ReportPath = reportPath
                 .DataSources.Add(New ReportDataSource("DataSet1", dt))
             End With
             Me.rvAttendance.Dock = DockStyle.Fill
