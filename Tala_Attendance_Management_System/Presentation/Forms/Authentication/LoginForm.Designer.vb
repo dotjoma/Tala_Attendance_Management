@@ -27,13 +27,13 @@ Partial Class LoginForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.bbtnLogin = New System.Windows.Forms.Button()
         Me.ttxtUser = New System.Windows.Forms.TextBox()
         Me.ttxtPass = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel5.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
@@ -86,16 +86,6 @@ Partial Class LoginForm
         Me.Label2.Size = New System.Drawing.Size(99, 37)
         Me.Label2.TabIndex = 13
         Me.Label2.Text = "LOGIN"
-        '
-        'Panel1
-        '
-        Me.Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), System.Drawing.Image)
-        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(549, 448)
-        Me.Panel1.TabIndex = 12
         '
         'Button1
         '
@@ -163,6 +153,16 @@ Partial Class LoginForm
         Me.Label4.Size = New System.Drawing.Size(109, 30)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Username"
+        '
+        'Panel1
+        '
+        Me.Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), System.Drawing.Image)
+        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(549, 448)
+        Me.Panel1.TabIndex = 12
         '
         'LoginForm
         '
