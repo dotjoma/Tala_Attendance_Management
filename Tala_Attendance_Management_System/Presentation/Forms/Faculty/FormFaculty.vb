@@ -130,7 +130,14 @@ Public Class FormFaculty
 
     Private Sub FormFaculty_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _logger.LogInfo("FormFaculty - Form loaded, initializing default settings")
-        DefaultSettings()
+        
+        ' Show cursor loading while loading faculty data
+        Me.Cursor = Cursors.WaitCursor
+        Try
+            DefaultSettings()
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
     End Sub
 
     Private Sub btnToggleStatus_Click(sender As Object, e As EventArgs)
