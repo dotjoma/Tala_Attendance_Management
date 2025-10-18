@@ -53,6 +53,8 @@ Partial Class MainForm
         Me.AdministrationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManageDepartmentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AuditLogsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UserActivityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel5.SuspendLayout()
         Me.toolStripNav.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -308,7 +310,7 @@ Partial Class MainForm
         '
         'AdministrationToolStripMenuItem
         '
-        Me.AdministrationToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManageDepartmentToolStripMenuItem})
+        Me.AdministrationToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManageDepartmentToolStripMenuItem, Me.AuditLogsToolStripMenuItem})
         Me.AdministrationToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!)
         Me.AdministrationToolStripMenuItem.Name = "AdministrationToolStripMenuItem"
         Me.AdministrationToolStripMenuItem.Size = New System.Drawing.Size(112, 20)
@@ -326,6 +328,19 @@ Partial Class MainForm
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
+        '
+        'AuditLogsToolStripMenuItem
+        '
+        Me.AuditLogsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UserActivityToolStripMenuItem})
+        Me.AuditLogsToolStripMenuItem.Name = "AuditLogsToolStripMenuItem"
+        Me.AuditLogsToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.AuditLogsToolStripMenuItem.Text = "Audit Logs"
+        '
+        'UserActivityToolStripMenuItem
+        '
+        Me.UserActivityToolStripMenuItem.Name = "UserActivityToolStripMenuItem"
+        Me.UserActivityToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.UserActivityToolStripMenuItem.Text = "User Activity"
         '
         'MainForm
         '
@@ -393,4 +408,6 @@ Partial Class MainForm
     Friend WithEvents lblUser As Label
     Friend WithEvents AdministrationToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ManageDepartmentToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AuditLogsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents UserActivityToolStripMenuItem As ToolStripMenuItem
 End Class

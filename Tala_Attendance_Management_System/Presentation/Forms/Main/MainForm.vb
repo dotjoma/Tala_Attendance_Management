@@ -1,4 +1,4 @@
-﻿Imports System.Data.Odbc
+Imports System.Data.Odbc
 Imports System.Windows.Forms.DataVisualization.Charting
 Imports System.Windows.Forms
 Imports System.Drawing
@@ -159,12 +159,20 @@ Public Class MainForm
     End Sub
 
     ''' <summary>
-    ''' Check for application updates on startup
+    ''' Check for application updates on startup (runs silently in background)
     ''' </summary>
-    Private Sub CheckForUpdatesOnStartup()
+    Private Async Sub CheckForUpdatesOnStartup()
         Try
             _logger.LogInfo("Starting update check on application startup")
-            _updateManager.CheckForUpdatesOnStartup(Me)
+
+            ' Run update check in background without blocking UI
+            Await Task.Run(Sub()
+                               Try
+                                   _updateManager.CheckForUpdatesOnStartup(Me)
+                               Catch ex As Exception
+                                   _logger.LogError($"Background update check error: {ex.Message}")
+                               End Try
+                           End Sub)
         Catch ex As Exception
             _logger.LogError($"Error during startup update check: {ex.Message}")
         End Try
@@ -176,12 +184,17 @@ Public Class MainForm
     Public Async Sub CheckForUpdatesManually()
         Try
             _logger.LogInfo("Manual update check initiated")
-            Dim hasUpdate = Await _updateManager.CheckForUpdatesAsync(Me)
-            
+
+            ' Show cursor loading while checking for updates
+            Me.Cursor = Cursors.WaitCursor
+            Dim hasUpdate As Boolean = Await _updateManager.CheckForUpdatesAsync(Me)
+            Me.Cursor = Cursors.Default
+
             If Not hasUpdate Then
                 MessageBox.Show("Your application is up to date.", "No Updates Available", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
+            Me.Cursor = Cursors.Default
             _logger.LogError($"Error during manual update check: {ex.Message}")
             MessageBox.Show("Unable to check for updates. Please try again later.", "Update Check Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End Try
@@ -613,5 +626,9 @@ Public Class MainForm
         Catch ex As Exception
             _logger.LogError($"Error setting user role: {ex.Message}")
         End Try
+    End Sub
+
+    Private Sub UserActivityToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserActivityToolStripMenuItem.Click
+        FormUserActivityLogs.ShowDialog()
     End Sub
 End Class
